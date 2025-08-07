@@ -12,3 +12,16 @@
 /OrchardCore.GDS.Theme/bin/Debug/net8.0
 /OrchardCore.GDS.Theme/node_modules
 /OrchardCore.GDS.Theme/obj
+/OrchardCore.GDS.Theme/wwwroot/assets
+/OrchardCore.GDS.Theme/wwwroot/all.bundle.js
+/OrchardCore.GDS.Theme/wwwroot/all.css
+/OrchardCore.GDS.Theme/wwwroot/all.min.css
+/OrchardCore.GDS.Theme/wwwroot/govuk-frontend.min.js
+/OrchardCore.GDS.Theme/wwwroot/jquery.js
+/OrchardCore.GDS.Theme/wwwroot/jquery.min.js
+/OrchardCore.GDS.Theme/wwwroot/jquery.slim.js
+/OrchardCore.GDS.Theme/wwwroot/jquery.slim.min.js
+/OrchardCore.GDS.Theme/wwwroot/site.css
+/OrchardCore.GDS.Theme/wwwroot/site.js
+/OrchardCore.GDS.Theme/wwwroot/site.min.css
+/OrchardCore.GDS.Theme/wwwroot/site.min.js
