@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/OrchardCore.Cms.Web/App_Data
+/OrchardCore.Cms.Web/bin/Debug/net8.0
+/OrchardCore.Cms.Web/Localization
+/OrchardCore.Cms.Web/obj
+/OrchardCore.GDS.Components/bin/Debug/net8.0
+/OrchardCore.GDS.Components/obj
+/OrchardCore.GDS.Theme/bin/Debug/net8.0
+/OrchardCore.GDS.Theme/node_modules
+/OrchardCore.GDS.Theme/obj
