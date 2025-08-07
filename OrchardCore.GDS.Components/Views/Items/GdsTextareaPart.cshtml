@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.GDS.Components.Helpers;
+
+@model GdsTextareaPartViewModel
+@inject IHttpContextAccessor httpContextAccessor
+@inject ISessionHelper sessionHelper
+
+@{
+    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
+    var cssPart = Model.ContentItem.As<GdsCssPart>();
+    var labelPart = Model.ContentItem.As<GdsLabelPart>();
+    var hintPart = Model.ContentItem.As<GdsHintPart>();
+
+    var elementId = formElementPart.Id;
+    var fieldName = formInputElementPart.Name;
+    var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
+
+    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
+    var fieldValue = !string.IsNullOrEmpty(sessionValue) ? sessionValue : Model.Value;
+    var groupClass = "govuk-form-group";
+    var textareaClass = "govuk-textarea"; 
+    var withHint = hintPart.Hint?.Length > 0;
+    var withCount = Model.Count > 0;
+    var withStyle = cssPart.CssStyle?.Length > 0;
+    textareaClass += withCount ? " govuk-js-character-count" : "";
+    var areadescribedby = withCount ? $@"aria-describedby=""{fieldId}-info""" : withHint ? $@"aria-describedby=""{fieldId}-hint""" : "";
+
+    if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
+    {
+        fieldValue = fieldEntry.AttemptedValue;
+
+        if (fieldEntry.Errors.Count > 0)
+        {
+            groupClass += " govuk-form-group--error";
+            textareaClass += " govuk-textarea--error";
+        }
+    }
+}
+
+@Html.Raw(Html.StartWithCharacterCount(withCount, Model.CountWords, Model.Count, fieldId + "-group-count"))
+<div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
+    @if(labelPart.LabelStyle != "label")
+    {
+        @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, "govuk-label-wrapper"))
+        <label class="govuk-label @labelPart.LabelSize @labelPart.LabelClass" for="@fieldId">
+            @labelPart.Label
+        </label>
+        @Html.Raw(Html.EndLabelRapperTag(labelPart.LabelStyle))
+    }
+    else
+    {
+        <label class="govuk-label @labelPart.LabelClass" for="@fieldId">
+            @labelPart.Label
+        </label>
+    }
+    @if (withHint)
+    {
+        <div id="@fieldId-hint" class="govuk-hint @hintPart.HintClass">
+            @Html.Raw(hintPart.Hint)
+        </div>
+    }
+    @if(fieldEntry != null)
+    {
+        @foreach (var error in fieldEntry.Errors)
+        {
+            <p id="@fieldId-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+            </p>            
+        }
+    }
+    <textarea class="@textareaClass" @(withStyle ? @$"style=""{cssPart.CssStyle}""" : "") id="@fieldId" name="@fieldName" rows="@Model.Rows" @areadescribedby spellcheck="@Model.SpellCheck.ToString().ToLower()">@fieldValue</textarea>
+</div>
+@Html.Raw(Html.EndWithCharacterCount(withCount, Model.CountWords, Model.Count, fieldId))

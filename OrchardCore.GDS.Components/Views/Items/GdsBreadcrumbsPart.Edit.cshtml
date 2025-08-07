@@ -1,0 +1,10 @@
+﻿@model GdsBreadcrumbsPartViewModel
+
+<fieldset class="mb-3" asp-validation-class-for="MobileColapse">
+    <div class="form-check">
+        <input asp-for="MobileColapse" class="form-check-input" type="checkbox" />
+        <label asp-for="MobileColapse" class="form-check-label">@T["Mobile Colapse"]</label>
+    </div>
+    <span class="hint">@T["Whether breadcrumbs with colapse in a mobile mode."]</span>
+</fieldset>
+

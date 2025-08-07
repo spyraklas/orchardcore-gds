@@ -1,0 +1,58 @@
+@using OrchardCore
+@model GdsDateInputPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="DayValue" class="@Orchard.GetLabelClasses()">@T["Day Value"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="DayValue" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The day value for this field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="MonthValue" class="@Orchard.GetLabelClasses()">@T["Month Value"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="MonthValue" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The month value for this field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="YearValue" class="@Orchard.GetLabelClasses()">@T["Year Value"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="YearValue" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The year value for this field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="AutoComplete" class="@Orchard.GetLabelClasses()">@T["AutoComplete Text"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="AutoComplete" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The auto complete name attribute for this field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="DaySessionKey" class="@Orchard.GetLabelClasses()">@T["Day Session Key"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="DaySessionKey" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The session key value for day where application store a value for this field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="MonthSessionKey" class="@Orchard.GetLabelClasses()">@T["Month Session Key"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="MonthSessionKey" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The session key value for month where application store a value for this field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="YearSessionKey" class="@Orchard.GetLabelClasses()">@T["Year Session Key"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="YearSessionKey" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The session key value for year where application store a value for this field."]</span>
+    </div>
+</div>

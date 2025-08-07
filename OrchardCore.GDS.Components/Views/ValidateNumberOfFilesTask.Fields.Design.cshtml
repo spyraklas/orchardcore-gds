@@ -1,0 +1,6 @@
+﻿@model ActivityViewModel<ValidateNumberOfFilesTask>
+
+<header>
+    <h4><i class="fa-solid fa-shield-alt" aria-hidden="true"></i>@Model.Activity.GetTitleOrDefault(() => T["Validate Number of Files"])</h4>
+</header>
+<span>@T["Validates the uploaded number of files in the azure blob storage"]</span>

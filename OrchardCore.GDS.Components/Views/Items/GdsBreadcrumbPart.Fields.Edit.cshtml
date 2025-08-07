@@ -1,0 +1,18 @@
+@using OrchardCore
+@model GdsBreadcrumbPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Value" class="@Orchard.GetLabelClasses()">@T["Value"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Value" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The value for this breadcrumb."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Href" class="@Orchard.GetLabelClasses()">@T["Href"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Href" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The href attribute for the breadcrumb."]</span>
+    </div>
+</div>

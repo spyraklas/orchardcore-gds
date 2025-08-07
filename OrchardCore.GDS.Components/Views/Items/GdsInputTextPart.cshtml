@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.GDS.Components.Helpers;
+
+@model GdsInputTextPartViewModel
+@inject IHttpContextAccessor httpContextAccessor
+@inject ISessionHelper sessionHelper
+
+@{
+    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
+    var cssPart = Model.ContentItem.As<GdsCssPart>();
+    var labelPart = Model.ContentItem.As<GdsLabelPart>();
+    var hintPart = Model.ContentItem.As<GdsHintPart>();
+
+    var elementId = formElementPart.Id;
+    var fieldName = formInputElementPart.Name;
+    var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
+    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
+    var fieldValue = !string.IsNullOrEmpty(sessionValue) ? sessionValue : Model.Value;
+    var groupClass = "govuk-form-group";
+    var inputClass = "govuk-input";
+    var withHint = hintPart.Hint?.Length > 0;
+    var withStyle = cssPart.CssStyle?.Length > 0;
+
+    if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
+    {
+        fieldValue = fieldEntry.AttemptedValue;
+
+        if (fieldEntry.Errors.Count > 0)
+        {
+            groupClass += " govuk-form-group--error";
+            inputClass += " govuk-input--error";
+        }
+    }
+}
+
+<div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
+    @if(labelPart.LabelStyle != "label")
+    {
+        @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, "govuk-label-wrapper"))
+        <label class="govuk-label @labelPart.LabelSize @labelPart.LabelClass" for="@fieldId">
+            @labelPart.Label
+        </label>
+        @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+    }
+    else
+    {
+        <label class="govuk-label @labelPart.LabelSize @labelPart.LabelClass" for="@fieldId">
+            @labelPart.Label
+        </label>
+    }
+    @if (withHint)
+    {
+        <div id="@fieldId-hint" class="govuk-hint @hintPart.HintClass">
+            @Html.Raw(hintPart.Hint)
+        </div>
+    }
+    @if(fieldEntry != null)
+    {
+        @foreach (var error in fieldEntry.Errors)
+        {
+            <p id="@fieldId-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+            </p>            
+        }
+    }
+    <div class="govuk-input__wrapper">
+        @if (Model.Prefix?.Length > 0)
+        {
+            <div class="govuk-input__prefix" aria-hidden="true">@Model.Prefix</div>
+        }
+        <input id="@fieldId" name="@fieldName" class="@inputClass" @( withStyle ? @$"style=""{ cssPart.CssStyle }""" : "" ) type="@Model.Type" value="@fieldValue" placeholder="@Model.Placeholder" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : "") @(Model.AutoComplete?.Length > 0 ? Html.Raw(@$"autocomplete=""{Model.AutoComplete}-hint""") : "") spellcheck="@Model.SpellCheck.ToString().ToLower()" />
+        @if (Model.Suffix?.Length > 0)
+        {
+            <div class="govuk-input__suffix" aria-hidden="true">@Model.Suffix</div>
+        }
+    </div>
+</div>

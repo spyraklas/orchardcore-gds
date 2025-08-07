@@ -1,0 +1,6 @@
+﻿@model ActivityViewModel<DownloadBlobFileTask>
+
+<header>
+    <h4><i class="fa-solid fa-shield-alt" aria-hidden="true"></i>@Model.Activity.GetTitleOrDefault(() => T["Download a blob file"])</h4>
+</header>
+<span>@T["Download a file in the azure blob storage"]</span>

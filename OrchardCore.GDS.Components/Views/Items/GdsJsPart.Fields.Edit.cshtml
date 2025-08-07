@@ -1,0 +1,50 @@
+@using OrchardCore
+@model GdsJsPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="OnChange" class="@Orchard.GetLabelClasses()">@T["OnChange Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="OnChange" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The onchange attribute of the html element."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="OnClick" class="@Orchard.GetLabelClasses()">@T["OnClick Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="OnClick" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The onclick attribute of the html element."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="OnMouseOver" class="@Orchard.GetLabelClasses()">@T["OnMouseOver Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="OnMouseOver" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The onmouseover attribute of the html element."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="OnMouseOut" class="@Orchard.GetLabelClasses()">@T["OnMouseOut Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="OnMouseOut" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The onmouseout attribute of the html element."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="OnKeyDown" class="@Orchard.GetLabelClasses()">@T["OnKeyDown Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="OnKeyDown" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The onkeydown attribute of the html element."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="OnLoad" class="@Orchard.GetLabelClasses()">@T["OnLoad Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="OnLoad" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The onload attribute of the html element."]</span>
+    </div>
+</div>

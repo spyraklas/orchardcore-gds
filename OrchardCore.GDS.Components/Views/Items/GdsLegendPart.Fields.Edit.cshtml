@@ -1,0 +1,16 @@
+@using OrchardCore
+@model GdsLegendPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="LegendSize" class="@Orchard.GetLabelClasses()">@T["Legend Size"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <select asp-for="LegendSize" class="form-select content-preview-select field-type-select-menu">
+            <option value="" selected>@T["None"]</option>
+            <option value="govuk-fieldset__legend--s">@T["Small"]</option>
+            <option value="govuk-fieldset__legend--m">@T["Medium"]</option>
+            <option value="govuk-fieldset__legend--l">@T["Large"]</option>
+            <option value="govuk-fieldset__legend--xl">@T["Extra Large"]</option>
+        </select>
+        <span class="hint">@T["The legend size."]</span>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{% assign part = Model.ContentItem.Content.GdsWarningText %}
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">{{ part.Icon.Text }}</span>
+  <strong class="govuk-warning-text__text {{ part.Class.Text }}">
+    <span class="govuk-warning-text__assistive">{{ part.AssistiveText.Text }}</span>
+    {{ part.Description.Text | raw }}
+  </strong>
+</div>

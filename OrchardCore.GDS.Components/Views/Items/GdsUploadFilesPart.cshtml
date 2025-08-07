@@ -1,0 +1,135 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.GDS.Components.Handlers;
+@using OrchardCore.GDS.Components.Helpers;
+
+@model GdsUploadFilesPartViewModel
+@inject IHttpContextAccessor httpContextAccessor
+@inject ISessionHelper sessionHelper
+@inject IBlobFilesHandler blobFilesHandler
+
+@{
+    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
+    var jsPart = Model.ContentItem.As<GdsJsPart>();
+    var cssPart = Model.ContentItem.As<GdsCssPart>();
+    var labelPart = Model.ContentItem.As<GdsLabelPart>();
+    var hintPart = Model.ContentItem.As<GdsHintPart>();
+
+    var elementId = formElementPart.Id;
+    var fieldName = formInputElementPart.Name;
+    var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
+    var groupClass = "govuk-form-group";
+    var inputClass = "govuk-file-upload";
+    var withHint = hintPart.Hint?.Length > 0;
+    var withStyle = cssPart.CssStyle?.Length > 0;
+
+    if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
+    {
+        if (fieldEntry.Errors.Count > 0)
+        {
+            groupClass += " govuk-form-group--error";
+            inputClass += " govuk-file-upload--error";
+        }
+    }
+}
+
+<form method="post" enctype="multipart/form-data" action="@Model.UploadAction">
+    @Html.AntiForgeryToken()
+    <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
+        @if(labelPart.LabelStyle != "label")
+        {
+            @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, "govuk-label-wrapper"))
+            <label class="govuk-label @labelPart.LabelSize @labelPart.LabelClass" for="@fieldId">
+                @labelPart.Label
+            </label>
+            @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+        }
+        else
+        {
+            <label class="govuk-label @labelPart.LabelSize @labelPart.LabelClass" for="@fieldId">
+                @labelPart.Label
+            </label>
+        }
+        @if (withHint)
+        {
+            <div id="@fieldId-hint" class="govuk-hint @hintPart.HintClass">
+                @Html.Raw(hintPart.Hint)
+            </div>
+        }
+        @if(fieldEntry != null)
+        {
+            @foreach (var error in fieldEntry.Errors)
+            {
+                <p id="@fieldId-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                </p>            
+            }
+        }
+        <input id="@fieldId" name="@fieldName" class="@inputClass" type="file" accept="@Model.FileTypesAllowed" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : "") @Html.Raw(Html.BuildJsAttributes(jsPart)) />
+    </div>
+    <div class="govuk-button-group">
+        <button id="submit" name="submit" type="submit" class="govuk-button" data-module="govuk-button">
+            @Model.ButtonValue
+        </button>
+    </div>
+</form>
+@{
+    string fileReference = string.Empty;
+    List<BlobFile> storedFiles = new();
+
+    if (httpContextAccessor.HttpContext.Session.Keys.Contains(Model.FilesSessionKey))
+    {
+        fileReference = httpContextAccessor.HttpContext.Session.GetString(Model.FilesSessionKey);
+    }
+
+    if (!string.IsNullOrEmpty(fileReference))
+    {
+        storedFiles = await blobFilesHandler.GetStoredFilesAsync(fileReference);
+    }
+}
+@if(storedFiles.Count > 0)
+{
+    <dl class="govuk-summary-list">
+    @foreach (BlobFile file in storedFiles)
+    {   
+    <div class="govuk-summary-list__row @(!Model.WithDownload && !Model.WithRemove ? "govuk-summary-list__row--no-actions" : "" )">
+        <dt class="govuk-summary-list__key">
+            @file.OriginalName
+        </dt>            
+        <dd class="govuk-summary-list__value">
+            Size: @Html.DisplayFileSize(file.Size)
+        </dd>
+        <dd class="govuk-summary-list__value">
+            Type: @file.ContentType
+        </dd>
+        @if(Model.WithDownload || Model.WithRemove)
+        {
+        <dd class="govuk-summary-list__actions">
+            <ul class="govuk-summary-list__actions-list">
+                @if(Model.WithDownload)
+                {
+                <li class="govuk-summary-list__actions-list-item">
+                    <form method="post" enctype="application/x-www-form-urlencoded" action="@Model.DownloadAction">
+                        @Html.AntiForgeryToken()
+                        <input id="filepath" name="filepath" type="hidden" value="@file.PathWithName" />
+                        <a href="#" class="govuk-link" onclick="this.closest('form').submit();return false;">Download<span class="govuk-visually-hidden">@file.OriginalName</span></a>
+                    </form>
+                </li>
+                }
+                @if(Model.WithRemove)
+                {
+                <li class="govuk-summary-list__actions-list-item">
+                    <form method="post" enctype="application/x-www-form-urlencoded" action="@Model.RemoveAction">
+                        @Html.AntiForgeryToken()
+                        <input id="filepath" name="filepath" type="hidden" value="@file.PathWithName" />
+                        <a href="#" class="govuk-link" onclick="this.closest('form').submit();return false;">Remove<span class="govuk-visually-hidden">@file.OriginalName</span></a>
+                    </form>
+                </li>
+                }
+            </ul>
+        </dd>
+        }
+    </div>
+    }
+    </dl>
+}

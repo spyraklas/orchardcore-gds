@@ -1,0 +1,1897 @@
+{
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "GdsRowFull",
+          "DisplayName": "Gds Row Full",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsRowFull",
+              "Name": "GdsRowFull",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "Column",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Column",
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsRowColumns",
+          "DisplayName": "Gds Row Columns",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsRowColumns",
+              "Name": "GdsRowColumns",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "LeftColumn",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Left Column",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "RightColumn",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Right Column",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsHeading",
+          "DisplayName": "Gds Heading",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsHeading",
+              "Name": "GdsHeading",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsInsetText",
+          "DisplayName": "Gds Inset Text",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget",
+              "Description": "Provides a GovUk Inset Text item"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsInsetText",
+              "Name": "GdsInsetText",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1",
+                  "Editor": "Trumbowyg"
+                },
+                "HtmlBodyPartSettings": {},
+                "HtmlBodyPartTrumbowygEditorSettings": {
+                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\"viewHTML\"],\r\n        [\"undo\", \"redo\"],\r\n        [\"formatting\"],\r\n        [\"strong\", \"em\", \"del\"],\r\n        [\"foreColor\", \"backColor\"],\r\n        [\"superscript\", \"subscript\"],\r\n        [\"link\"],\r\n        [\"insertShortcode\"],\r\n        [\"image\"],\r\n        [\"align\"],\r\n        [\"unorderedList\", \"orderedList\"],\r\n        [\"horizontalRule\"],\r\n        [\"removeformat\"],\r\n        [\"fullscreen\"]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"],\r\n            ico: \"justifyLeft\"\r\n        },\r\n        image: {\r\n            dropdown: [\"insertImage\", \"base64\", \"noembed\"],\r\n            ico: \"insertImage\"\r\n        }\r\n    }\r\n}",
+                  "InsertMediaWithUrl": true
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsBody",
+          "DisplayName": "Gds Body",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsBody",
+              "Name": "GdsBody",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "GdsCssPart",
+              "Name": "GdsCssPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsDetails",
+          "DisplayName": "Gds Details",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget",
+              "Description": "Provides a GovUk details item"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsDetails",
+              "Name": "GdsDetails",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2",
+                  "Editor": "Trumbowyg"
+                },
+                "HtmlBodyPartSettings": {},
+                "HtmlBodyPartTrumbowygEditorSettings": {
+                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\"viewHTML\"],\r\n        [\"undo\", \"redo\"],\r\n        [\"formatting\"],\r\n        [\"strong\", \"em\", \"del\"],\r\n        [\"foreColor\", \"backColor\"],\r\n        [\"superscript\", \"subscript\"],\r\n        [\"link\"],\r\n        [\"insertShortcode\"],\r\n        [\"image\"],\r\n        [\"align\"],\r\n        [\"unorderedList\", \"orderedList\"],\r\n        [\"horizontalRule\"],\r\n        [\"removeformat\"],\r\n        [\"fullscreen\"]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"],\r\n            ico: \"justifyLeft\"\r\n        },\r\n        image: {\r\n            dropdown: [\"insertImage\", \"base64\", \"noembed\"],\r\n            ico: \"insertImage\"\r\n        }\r\n    }\r\n}",
+                  "InsertMediaWithUrl": true
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 3
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsPanel",
+          "DisplayName": "Gds Panel",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsPanel",
+              "Name": "GdsPanel",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 3
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "LiquidPart",
+              "Name": "LiquidPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsFieldset",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Label",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LabelClass",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label Class",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Label",
+                      "value": "label"
+                    },
+                    {
+                      "name": "Header 1",
+                      "value": "h1"
+                    },
+                    {
+                      "name": "Header 2",
+                      "value": "h2"
+                    },
+                    {
+                      "name": "Header 3",
+                      "value": "h3"
+                    },
+                    {
+                      "name": "Header 4",
+                      "value": "h4"
+                    },
+                    {
+                      "name": "Header 5",
+                      "value": "h5"
+                    },
+                    {
+                      "name": "Header 6",
+                      "value": "h6"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "label"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LabelStyle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label Style",
+                  "Editor": "PredefinedList",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "label",
+                      "value": "label"
+                    },
+                    {
+                      "name": "Header 1",
+                      "value": "h1"
+                    },
+                    {
+                      "name": "Header 2",
+                      "value": "h2"
+                    },
+                    {
+                      "name": "Header 3",
+                      "value": "h3"
+                    },
+                    {
+                      "name": "Header 4",
+                      "value": "h4"
+                    },
+                    {
+                      "name": "Header 5",
+                      "value": "h5"
+                    },
+                    {
+                      "name": "Header 6",
+                      "value": "h6"
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LabelSize",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label Size",
+                  "Editor": "PredefinedList",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Extra Large",
+                      "value": "govuk-fieldset__legend--xl"
+                    },
+                    {
+                      "name": "Large",
+                      "value": "govuk-fieldset__legend--l"
+                    },
+                    {
+                      "name": "Medium",
+                      "value": "govuk-fieldset__legend--m"
+                    },
+                    {
+                      "name": "Small",
+                      "value": "govuk-fieldset__legend--s"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "govuk-fieldset__legend--l"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsNotificationBanner",
+          "DisplayName": "Gds Notification Banner",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsNotificationBanner",
+              "Name": "GdsNotificationBanner",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 3
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsWarningText",
+          "DisplayName": "Gds Warning Text",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsWarningText",
+              "Name": "GdsWarningText",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsTag",
+          "DisplayName": "Gds Tag",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsTag",
+              "Name": "GdsTag",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsPhaseBanner",
+          "DisplayName": "Gds Phase Banner",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsPhaseBanner",
+              "Name": "GdsPhaseBanner",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsTabs",
+          "DisplayName": "Gds Tabs",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsTabs",
+              "Name": "GdsTabs",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "BagPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Bag",
+                  "Description": "Provides a collection behavior for your content item where you can place other content items.",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "GdsTab"
+                  ],
+                  "ContainedStereotypes": []
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsTab",
+          "DisplayName": "Gds Tab",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsTab",
+              "Name": "GdsTab",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsBackLink",
+          "DisplayName": "Gds Back Link",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsBackLink",
+              "Name": "GdsBackLink",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsSectionBreak",
+          "DisplayName": "Gds Section Break",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsSectionBreak",
+              "Name": "GdsSectionBreak",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsSummaryList",
+          "DisplayName": "Gds Summary List",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsSummaryList",
+              "Name": "GdsSummaryList",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "GdsCssPart",
+              "Name": "GdsCssPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "BagPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Bag",
+                  "Description": "Provides a collection behavior for your content item where you can place other content items.",
+                  "Position": "2"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "GdsSummaryListRow"
+                  ],
+                  "ContainedStereotypes": []
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "ActionsList",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Actions List",
+                  "Description": "Adds a list of actions in the header of your Summary List"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "GdsSummaryListActions"
+                  ],
+                  "ContainedStereotypes": []
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsSummaryListRow",
+          "DisplayName": "Gds Summary List Row",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsSummaryListRow",
+              "Name": "GdsSummaryListRow",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "BagPart",
+              "Name": "BagPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "DisplayName": "Bag",
+                  "Description": "Provides a collection behavior for your content item where you can place other content items.",
+                  "Position": "1"
+                },
+                "BagPartSettings": {
+                  "ContainedContentTypes": [
+                    "GdsSummaryListColumn"
+                  ],
+                  "ContainedStereotypes": []
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "GdsCssPart",
+              "Name": "GdsCssPart",
+              "Settings": {}
+            }
+          ]
+        },
+        {
+          "Name": "GdsSummaryListColumn",
+          "DisplayName": "Gds Summary List Column",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsSummaryListColumn",
+              "Name": "GdsSummaryListColumn",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "GdsCssPart",
+              "Name": "GdsCssPart",
+              "Settings": {}
+            }
+          ]
+        },
+        {
+          "Name": "GdsSummaryListActions",
+          "DisplayName": "Gds Summary List Actions",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsSummaryListActions",
+              "Name": "GdsSummaryListActions",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "GdsCssPart",
+              "Name": "GdsCssPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "FlowPart",
+          "Settings": {
+            "ContentPartSettings": {
+              "Attachable": true,
+              "Reusable": true,
+              "Description": "Provides a customizable body for your content item where you can build a content structure with widgets."
+            }
+          },
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "GdsBody",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Id",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Id",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Size",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Size",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Default",
+                      "value": "govuk-body"
+                    },
+                    {
+                      "name": "Large",
+                      "value": "govuk-body-l"
+                    },
+                    {
+                      "name": "Small",
+                      "value": "govuk-body-s"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "govuk-body"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TextAlignment",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Text Alignment",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "None",
+                      "value": ""
+                    },
+                    {
+                      "name": "Left",
+                      "value": "govuk-!-text-align-left"
+                    },
+                    {
+                      "name": "Right",
+                      "value": "govuk-!-text-align-right"
+                    },
+                    {
+                      "name": "Centre",
+                      "value": "govuk-!-text-align-centre"
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "FontSize",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Font Size",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "None",
+                      "value": ""
+                    },
+                    {
+                      "name": "Size 14",
+                      "value": "govuk-!-font-size-14"
+                    },
+                    {
+                      "name": "Size 16",
+                      "value": "govuk-!-font-size-16"
+                    },
+                    {
+                      "name": "Size 19",
+                      "value": "govuk-!-font-size-19"
+                    },
+                    {
+                      "name": "Size 24",
+                      "value": "govuk-!-font-size-24"
+                    },
+                    {
+                      "name": "Size 27",
+                      "value": "govuk-!-font-size-27"
+                    },
+                    {
+                      "name": "Size 36",
+                      "value": "govuk-!-font-size-36"
+                    },
+                    {
+                      "name": "Size 48",
+                      "value": "govuk-!-font-size-48"
+                    },
+                    {
+                      "name": "Size 80",
+                      "value": "govuk-!-font-size-80"
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "FontWeight",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Font Weight",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Regular",
+                      "value": "govuk-!-font-weight-regular"
+                    },
+                    {
+                      "name": "Bold",
+                      "value": "govuk-!-font-weight-bold"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "govuk-!-font-weight-regular"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsHeading",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Value",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Value",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Class",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Class",
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Style",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Style",
+                  "Editor": "PredefinedList",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Extra Large",
+                      "value": "govuk-heading-xl"
+                    },
+                    {
+                      "name": "Large",
+                      "value": "govuk-heading-l"
+                    },
+                    {
+                      "name": "Medium",
+                      "value": "govuk-heading-m"
+                    },
+                    {
+                      "name": "Small",
+                      "value": "govuk-heading-s"
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Type",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Type",
+                  "Editor": "PredefinedList",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Header 1",
+                      "value": "h1"
+                    },
+                    {
+                      "name": "Header 2",
+                      "value": "h2"
+                    },
+                    {
+                      "name": "Header 3",
+                      "value": "h3"
+                    },
+                    {
+                      "name": "Header 4",
+                      "value": "h4"
+                    },
+                    {
+                      "name": "Header 5",
+                      "value": "h5"
+                    },
+                    {
+                      "name": "Header 6",
+                      "value": "h6"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "h1"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsNotificationBanner",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Id",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Id",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Role",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Role",
+                  "Editor": "PredefinedList",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Region",
+                      "value": "region"
+                    },
+                    {
+                      "name": "Alert",
+                      "value": "alert"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "region"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LabelStyle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label Style",
+                  "Editor": "PredefinedList",
+                  "Position": "3"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Label",
+                      "value": "label"
+                    },
+                    {
+                      "name": "Header 1",
+                      "value": "h1"
+                    },
+                    {
+                      "name": "Header 2",
+                      "value": "h2"
+                    },
+                    {
+                      "name": "Header 3",
+                      "value": "h3"
+                    },
+                    {
+                      "name": "Header 4",
+                      "value": "h4"
+                    },
+                    {
+                      "name": "Header 5",
+                      "value": "h5"
+                    },
+                    {
+                      "name": "Header 6",
+                      "value": "h6"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "label"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LabelClass",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label Class",
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Style",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Style",
+                  "Editor": "PredefinedList",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Important",
+                      "value": " "
+                    },
+                    {
+                      "name": "Sucess",
+                      "value": "govuk-notification-banner--success"
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsWarningText",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Icon",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Icon"
+                },
+                "TextFieldSettings": {},
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Class",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Class"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "AssistiveText",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Assistive Text"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsTag",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Label",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Class",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Class",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Color",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Color",
+                  "Editor": "PredefinedList",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Default",
+                      "value": " "
+                    },
+                    {
+                      "name": "Grey",
+                      "value": "govuk-tag--grey"
+                    },
+                    {
+                      "name": "Green",
+                      "value": "govuk-tag--green"
+                    },
+                    {
+                      "name": "Turquoise",
+                      "value": "govuk-tag--turquoise"
+                    },
+                    {
+                      "name": "Blue",
+                      "value": "govuk-tag--blue"
+                    },
+                    {
+                      "name": "Purple",
+                      "value": "govuk-tag--purple"
+                    },
+                    {
+                      "name": "Pink",
+                      "value": "govuk-tag--pink"
+                    },
+                    {
+                      "name": "Red",
+                      "value": "govuk-tag--red"
+                    },
+                    {
+                      "name": "Orange",
+                      "value": "govuk-tag--orange"
+                    },
+                    {
+                      "name": "Yellow",
+                      "value": "govuk-tag--yellow"
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsPhaseBanner",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Label",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "LabelClass",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "LabelClass",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsTab",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Id",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Id",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Title",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Title",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Required": true
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "BooleanField",
+              "Name": "Selected",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Selected",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsBackLink",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Value",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Value",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Class",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Class",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Href",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Href",
+                  "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsSectionBreak",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Size",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Size",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Default",
+                      "value": " "
+                    },
+                    {
+                      "name": "Medium",
+                      "value": "govuk-section-break--m"
+                    },
+                    {
+                      "name": "Large",
+                      "value": "govuk-section-break--l"
+                    },
+                    {
+                      "name": "Extra Large",
+                      "value": "govuk-section-break--xl"
+                    }
+                  ],
+                  "Editor": 1
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsTabs",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "TitleStyle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Title Style",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Label",
+                      "value": "label"
+                    },
+                    {
+                      "name": "Header 1",
+                      "value": "h1"
+                    },
+                    {
+                      "name": "Header 2",
+                      "value": "h2"
+                    },
+                    {
+                      "name": "Header 3",
+                      "value": "h3"
+                    },
+                    {
+                      "name": "Header 4",
+                      "value": "h4"
+                    },
+                    {
+                      "name": "Header 5",
+                      "value": "h5"
+                    },
+                    {
+                      "name": "Header 6",
+                      "value": "h6"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "h2"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsRowColumns",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Style",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Style",
+                  "Editor": "PredefinedList",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "One Half",
+                      "value": "one-half"
+                    },
+                    {
+                      "name": "Two Thirds",
+                      "value": "two-thirds"
+                    },
+                    {
+                      "name": "One Third",
+                      "value": "one-third"
+                    },
+                    {
+                      "name": "Three Quarters",
+                      "value": "three-quarters"
+                    },
+                    {
+                      "name": "One Quarter",
+                      "value": "one-quarter"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "two-thirds"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsSummaryListRow",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "BooleanField",
+              "Name": "NoActions",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "No Actions"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsSummaryList",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "BooleanField",
+              "Name": "NoBorders",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "No Borders",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Title",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Title"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TitleStyle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Title Style",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Label",
+                      "value": "label"
+                    },
+                    {
+                      "name": "Header 1",
+                      "value": "h1"
+                    },
+                    {
+                      "name": "Header 2",
+                      "value": "h2"
+                    },
+                    {
+                      "name": "Header 3",
+                      "value": "h3"
+                    },
+                    {
+                      "name": "Header 4",
+                      "value": "h4"
+                    },
+                    {
+                      "name": "Header 5",
+                      "value": "h5"
+                    },
+                    {
+                      "name": "Header 6",
+                      "value": "h6"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "label"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsSummaryListColumn",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Type",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Type",
+                  "Editor": "PredefinedList"
+                },
+                "TextFieldSettings": {},
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Key",
+                      "value": "-list__key"
+                    },
+                    {
+                      "name": "Value",
+                      "value": "-list__value"
+                    },
+                    {
+                      "name": "Actions",
+                      "value": "-list__actions"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "-list__key"
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Templates",
+      "Templates": {
+        "GdsAccordionSection__FlowPart": {
+          "Content": "[file:text('Templates/GdsAccordionSection-FlowPart.liquid')]",
+          "Description": null
+        },
+        "GdsAccordion__BagPart": {
+          "Content": "[file:text('Templates/GdsAccordion-BagPart.liquid')]",
+          "Description": null
+        },
+        "GdsBreadcrumbs__BagPart": {
+          "Content": "[file:text('Templates/GdsBreadcrumbs-BagPart.liquid')]",
+          "Description": null
+        },
+        "GdsRadio__FlowPart": {
+          "Content": "[file:text('Templates/GdsRadio-FlowPart.liquid')]",
+          "Description": null
+        },
+        "GdsRadioGroup__BagPart": {
+          "Content": "[file:text('Templates/GdsRadioGroup-BagPart.liquid')]",
+          "Description": null
+        },
+        "GdsCheckboxGroup__BagPart": {
+          "Content": "[file:text('Templates/GdsCheckboxGroup-BagPart.liquid')]",
+          "Description": null
+        },
+        "GdsSelect__BagPart": {
+          "Content": "[file:text('Templates/GdsSelect-BagPart.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsRadioGroup": {
+          "Content": "[file:text('Templates/Widget-GdsRadioGroup.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsCheckboxGroup": {
+          "Content": "[file:text('Templates/Widget-GdsCheckboxGroup.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsButton": {
+          "Content": "[file:text('Templates/Widget-GdsButton.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsBreadcrumbs": {
+          "Content": "[file:text('Templates/Widget-GdsBreadcrumbs.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsInputText": {
+          "Content": "[file:text('Templates/Widget-GdsInputText.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsTextarea": {
+          "Content": "[file:text('Templates/Widget-GdsTextarea.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsErrorSummary": {
+          "Content": "[file:text('Templates/Widget-GdsErrorSummary.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsAccordion": {
+          "Content": "[file:text('Templates/Widget-GdsAccordion.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsHeading": {
+          "Content": "[file:text('Templates/Widget-GdsHeading.liquid')]",
+          "Description": null
+        },
+        "Widget__GovUkInsetText": {
+          "Content": "[file:text('Templates/Widget-GovUkInsetText.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsDetails": {
+          "Content": "[file:text('Templates/Widget-GdsDetails.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsParagraph": {
+          "Content": "[file:text('Templates/Widget-GdsParagraph.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsPanel": {
+          "Content": "[file:text('Templates/Widget-GdsPanel.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsFieldset": {
+          "Content": "[file:text('Templates/Widget-GdsFieldset.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsNotificationBanner": {
+          "Content": "[file:text('Templates/Widget-GdsNotificationBanner.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsWarningText": {
+          "Content": "[file:text('Templates/Widget-GdsWarningText.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsTag": {
+          "Content": "[file:text('Templates/Widget-GdsTag.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsPhaseBanner": {
+          "Content": "[file:text('Templates/Widget-GdsPhaseBanner.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsTabs": {
+          "Content": "[file:text('Templates/Widget-GdsTabs.liquid')]",
+          "Description": null
+        },
+        "Content__GdsTab": {
+          "Content": "[file:text('Templates/Content-GdsTab.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsBackLink": {
+          "Content": "[file:text('Templates/Widget-GdsBackLink.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsSectionBreak": {
+          "Content": "[file:text('Templates/Widget-GdsSectionBreak.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsRowFull": {
+          "Content": "[file:text('Templates/Widget-GdsRowFull.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsRowColumns": {
+          "Content": "[file:text('Templates/Widget-GdsRowColumns.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsSelect": {
+          "Content": "[file:text('Templates/Widget-GdsSelect.liquid')]",
+          "Description": null
+        },
+        "Content__GdsSummaryListColumn": {
+          "Content": "[file:text('Templates/Content-GdsSummaryListColumn.liquid')]",
+          "Description": null
+        },
+        "Content__GdsSummaryListRow": {
+          "Content": "[file:text('Templates/Content-GdsSummaryListRow.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsSummaryList": {
+          "Content": "[file:text('Templates/Widget-GdsSummaryList.liquid')]",
+          "Description": null
+        },
+        "Content__GdsSummaryListActions": {
+          "Content": "[file:text('Templates/Content-GdsSummaryListActions.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsDateInput": {
+          "Content": "[file:text('Templates/Widget-GdsDateInput.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsBody": {
+          "Content": "[file:text('Templates/Widget-GdsBody.liquid')]",
+          "Description": null
+        }
+      }
+    }
+  ]
+}

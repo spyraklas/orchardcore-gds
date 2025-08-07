@@ -1,0 +1,6 @@
+﻿@model ActivityViewModel<UploadBlobFileTask>
+
+<header>
+    <h4><i class="fa-solid fa-shield-alt" aria-hidden="true"></i>@Model.Activity.GetTitleOrDefault(() => T["Upload a blob file"])</h4>
+</header>
+<span>@T["Uploads a file in the azure blob storage"]</span>

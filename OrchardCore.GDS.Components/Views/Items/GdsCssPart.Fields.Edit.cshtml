@@ -1,0 +1,18 @@
+@using OrchardCore
+@model GdsCssPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="CssClass" class="@Orchard.GetLabelClasses()">@T["Css Class Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="CssClass" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The class attribute of the html element."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="CssStyle" class="@Orchard.GetLabelClasses()">@T["Css Style Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="CssStyle" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The style attribute of the html element."]</span>
+    </div>
+</div>

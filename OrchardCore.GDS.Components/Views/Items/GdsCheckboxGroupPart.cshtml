@@ -1,0 +1,118 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.ContentManagement.Display;
+@using OrchardCore.Flows.Models;
+@using OrchardCore.GDS.Components.Helpers;
+@using OrchardCore.Mvc.Utilities
+
+@model GdsCheckboxGroupPartViewModel
+@inject IContentItemDisplayManager ContentItemDisplayManager
+@inject IHttpContextAccessor httpContextAccessor
+@inject ISessionHelper sessionHelper
+
+@{
+    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
+    var bagPart = Model.ContentItem.As<BagPart>();
+    var cssPart = Model.ContentItem.As<GdsCssPart>();
+    var labelPart = Model.ContentItem.As<GdsLabelPart>();
+    var hintPart = Model.ContentItem.As<GdsHintPart>();
+
+    var elementId = formElementPart.Id;
+    var fieldName = formInputElementPart.Name;
+    var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
+    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
+
+    var groupClass = "govuk-form-group";
+    var withHint = hintPart.Hint?.Length > 0;
+    bool withError = false;
+    var checkboxDivClass = "govuk-checkboxes";
+
+    if (Model.SmallCheckboxes)
+    {
+        checkboxDivClass += " govuk-checkboxes--small";
+    }
+
+        if (ViewData.ModelState.TryGetValue(fieldName, out var fieldEntry))
+    {
+        if (fieldEntry.Errors.Count > 0)
+        {
+            withError = true;
+            groupClass += " govuk-form-group--error";
+        }
+    }
+}
+
+<div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
+    <fieldset class="govuk-fieldset" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : withError ? Html.Raw(@$"aria-describedby=""{fieldId}-error""") : "") >
+        <legend class="govuk-fieldset__legend @Model.LegendSize">
+            @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, $"govuk-fieldset__heading {labelPart.LabelSize} {labelPart.LabelClass}"))
+            @labelPart.Label
+            @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+        </legend>
+        @if (withHint)
+        {
+            <div id="@fieldId-hint" class="govuk-hint">
+                @Html.Raw(hintPart.Hint)
+            </div>
+        }
+        @if (withError)
+        {
+            @foreach (var error in fieldEntry.Errors)
+            {
+                <p id="@fieldId-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                </p>
+            }
+        }
+        <div class="@checkboxDivClass" data-module="govuk-checkboxes">
+            @foreach (var item in bagPart.ContentItems)
+            {
+                if (item.ContentType == "GdsCheckbox")
+                {
+                    var part = item.ContentItem.As<GdsCheckboxPart>();
+                    var checkboxFormElementPart = item.ContentItem.As<FormElementPart>();
+                    var checkboxCssPart = item.ContentItem.As<GdsCssPart>();
+                    var checkboxJsPart = item.ContentItem.As<GdsJsPart>();
+                    var checkboxHintPart = item.ContentItem.As<GdsHintPart>();
+                    var checkboxElementId = checkboxFormElementPart.Id;
+                    var withCheckboxHint = checkboxHintPart.Hint?.Length > 0;
+                    var checkboxChecked = string.Empty;
+                    if (!string.IsNullOrEmpty(sessionValue))
+                        checkboxChecked = part.Value == sessionValue ? "checked" : "";
+                    else
+                        checkboxChecked = part.Selected ? "checked" : "";
+
+                    <div class="govuk-checkboxes__item">
+                        <input id="@checkboxElementId" name="@fieldName" type="checkbox" value="@part.Value" @(part.ConditionalFlow ? Html.Raw($@"data-aria-controls=""conditional-{checkboxElementId}""") : "") @Html.Raw(Html.BuildCssAttributes(checkboxCssPart, "govuk-checkboxes__input")) @Html.Raw(Html.BuildJsAttributes(checkboxJsPart)) @checkboxChecked>
+                        <label class="govuk-label govuk-checkboxes__label @part.LabelClass" for="@checkboxElementId">
+                            @part.Label
+                        </label>
+                        @if (withCheckboxHint)
+                        {
+                            <div id="@checkboxElementId-hint" class="govuk-hint govuk-checkboxes__hint @checkboxHintPart.HintClass">
+                                @checkboxHintPart.Hint
+                            </div>
+                        }
+                        @if (part.ConditionalFlow)
+                        {
+                            var flowPart = item.ContentItem.As<FlowPart>();
+                            var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(flowPart.ContentItem, Model.BuildPartDisplayContext.Updater, "Detail", Model.BuildPartDisplayContext.GroupId);
+
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-@checkboxElementId">
+                                @await DisplayAsync(widgetContent)
+                            </div>
+                        }
+                    </div>
+                }
+                else if (item.ContentType == "GdsCheckboxDivider")
+                {
+                    var part = item.ContentItem.As<GdsCheckboxDividerPart>();
+                    var cssPartDivider = item.ContentItem.As<GdsCssPart>();
+
+                    <div class="govuk-checkboxes__divider @cssPartDivider.CssClass" @(cssPartDivider.CssStyle?.Length > 0 ? @$"style=""{cssPartDivider.CssStyle}""" : "")>@Html.Raw(@part.Value)</div>
+                }
+
+            }
+        </div>
+    </fieldset>
+</div>

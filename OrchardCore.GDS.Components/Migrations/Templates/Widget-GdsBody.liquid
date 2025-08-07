@@ -1,0 +1,8 @@
+{% assign part = Model.ContentItem.Content.GdsBody %}
+{% assign cssPart = Model.ContentItem.Content.GdsCssPart %}
+
+<div id="{{ part.Id.Text }}" class="{{ part.Size.Text }} {{ cssPart.CssClass }} {{ part.TextAlignment.Text }} {{ part.FontSize.Text }} {{ part.FontWeight.Text }}" style="{{ cssPart.CssStyle }}">
+{% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+    {{ item | shape_build_display: "Detail" | shape_render }}
+{% endfor %}    
+</div>

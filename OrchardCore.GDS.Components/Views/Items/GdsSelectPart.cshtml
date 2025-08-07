@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.Flows.Models;
+@using OrchardCore.GDS.Components.Helpers;
+@model GdsSelectPartViewModel
+@inject IHttpContextAccessor httpContextAccessor
+@inject ISessionHelper sessionHelper
+
+@{
+    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
+    var bagPart = Model.ContentItem.As<BagPart>();
+    var cssPart = Model.ContentItem.As<GdsCssPart>();
+    var labelPart = Model.ContentItem.As<GdsLabelPart>();
+    var hintPart = Model.ContentItem.As<GdsHintPart>();
+
+    var elementId = formElementPart.Id;
+    var fieldName = formInputElementPart.Name;
+    var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
+    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
+
+    var groupClass = "govuk-form-group";
+    var selectClass = "govuk-select"; 
+    var withHint = hintPart.Hint?.Length > 0;
+    var withStyle = cssPart.CssStyle?.Length > 0;
+    var describedby = withHint ? $"{fieldId}-hint" : "";
+
+    if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
+    {
+        if (fieldEntry.Errors.Count > 0)
+        {
+            groupClass += " govuk-form-group--error";
+            selectClass += " govuk-select--error";
+            describedby += $" {fieldId}-error";
+        }
+    }
+}
+
+<div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
+    @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, $"govuk-label {labelPart.LabelSize} {labelPart.LabelClass}"))
+    @labelPart.Label
+    @Html.Raw(Html.EndLabelRapperTag(labelPart.LabelStyle))
+    @if (withHint)
+    {
+        <div id="@fieldId-hint" class="govuk-hint @hintPart.HintClass">
+            @Html.Raw(hintPart.Hint)
+        </div>
+    }
+    @if (fieldEntry != null)
+    {
+        @foreach (var error in fieldEntry.Errors)
+        {
+            <p id="@fieldId-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+            </p>
+        }
+    }
+    <select class="@selectClass" @(withStyle ? @$"style=""{cssPart.CssStyle}""" : "") id="@fieldId" name="@fieldName" @(describedby.Length > 0 ? Html.Raw(@$"aria-describedby=""{describedby}""") : "")>
+        @foreach (var item in bagPart.ContentItems)
+        {
+            var part = item.ContentItem.As<GdsSelectOptionPart>();
+            var selected = string.Empty;
+            if (!string.IsNullOrEmpty(sessionValue))
+                selected = part.Value == sessionValue ? "selected" : "";
+            else
+                selected = part.Selected ? "selected" : "";
+
+
+            @Html.Raw(Html.SelectOptionTag(part.Value, part.Label, selected))
+        }
+    </select>
+</div>

@@ -1,0 +1,12 @@
+@using OrchardCore
+@model GdsCheckboxDividerPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Value" class="@Orchard.GetLabelClasses()">@T["Value"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Value" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The value for this field."]</span>
+    </div>
+</div>
+
+

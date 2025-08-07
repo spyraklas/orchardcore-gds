@@ -1,0 +1,48 @@
+@using OrchardCore
+@model GdsLabelPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Label" class="@Orchard.GetLabelClasses()">@T["Label Text"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Label" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The text for the label field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="LabelClass" class="@Orchard.GetLabelClasses()">@T["Label Class Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="LabelClass" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The class attribute for the label field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="LabelStyle" class="@Orchard.GetLabelClasses()">@T["Label Style"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <select asp-for="LabelStyle" class="form-select content-preview-select field-type-select-menu">
+            <option value="label" selected>@T["Label"]</option>
+            <option value="h1">@T["Header 1"]</option>
+            <option value="h2">@T["Header 2"]</option>
+            <option value="h3">@T["Header 3"]</option>
+            <option value="h4">@T["Header 4"]</option>
+            <option value="h5">@T["Header 5"]</option>
+            <option value="h6">@T["Header 6"]</option>
+        </select>
+        <span class="hint">@T["The label tag style."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="LabelSize" class="@Orchard.GetLabelClasses()">@T["Label Size"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <select asp-for="LabelSize" class="form-select content-preview-select field-type-select-menu">
+            <option value="" selected>@T["None"]</option>
+            <option value="govuk-label--s">@T["Small"]</option>
+            <option value="govuk-label--m">@T["Medium"]</option>
+            <option value="govuk-label--l">@T["Large"]</option>
+            <option value="govuk-label--xl">@T["Extra Large"]</option>
+        </select>
+        <span class="hint">@T["The label size."]</span>
+    </div>
+</div>

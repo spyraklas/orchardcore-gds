@@ -1,0 +1,39 @@
+﻿@using OrchardCore
+@using OrchardCore.GDS.Components.Workflows.ViewModels
+@model ValidateNumberOfFilesTaskViewModel
+
+<div class="@Orchard.GetWrapperClasses()" asp-validation-class-for="FieldName">
+    <label asp-for="FieldName" class="@Orchard.GetLabelClasses()">@T["Field Name"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input type="text" asp-for="FieldName" class="form-control" />
+        <span asp-validation-for="FieldName"></span>
+        <span class="hint">@T["The name of the form field to validate."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()" asp-validation-class-for="ErrorMessage">
+    <label asp-for="ErrorMessage" class="@Orchard.GetLabelClasses()">@T["Error Message"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input type="text" asp-for="ErrorMessage" class="form-control" />
+        <span asp-validation-for="ErrorMessage"></span>
+        <span class="hint">@T["The validation error message to display."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()" asp-validation-class-for="SessionKey">
+    <label asp-for="SessionKey" class="@Orchard.GetLabelClasses()">@T["Session Key"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input type="text" asp-for="SessionKey" class="form-control" />
+        <span asp-validation-for="SessionKey"></span>
+        <span class="hint">@T["The name of the session key variable."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()" asp-validation-class-for="MaxNumberOfFiles">
+    <label asp-for="MaxNumberOfFiles" class="@Orchard.GetLabelClasses()">@T["Max Number Of Files"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input type="number" asp-for="MaxNumberOfFiles" class="form-control" />
+        <span asp-validation-for="MaxNumberOfFiles"></span>
+        <span class="hint">@T["The max number of files can be uploaded."]</span>
+    </div>
+</div>

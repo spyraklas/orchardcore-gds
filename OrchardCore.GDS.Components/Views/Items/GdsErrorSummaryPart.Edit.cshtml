@@ -1,0 +1,10 @@
+﻿@using OrchardCore
+@model GdsErrorSummaryPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Title" class="@Orchard.GetLabelClasses()">@T["Title"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Title" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The error summary title."]</span>
+    </div>
+</div>

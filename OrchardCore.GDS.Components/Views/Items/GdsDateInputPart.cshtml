@@ -1,0 +1,143 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.GDS.Components.Helpers;
+
+@model GdsDateInputPartViewModel
+@inject IHttpContextAccessor httpContextAccessor
+@inject ISessionHelper sessionHelper
+
+@{
+    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
+    var cssPart = Model.ContentItem.As<GdsCssPart>();
+    var labelPart = Model.ContentItem.As<GdsLabelPart>();
+    var hintPart = Model.ContentItem.As<GdsHintPart>();
+    var legendPart = Model.ContentItem.As<GdsLegendPart>();
+
+    var elementId = formElementPart.Id;
+    var fieldName = formInputElementPart.Name;
+    var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
+        var sessionDayValue = Model.DaySessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.DaySessionKey, httpContextAccessor) : "";
+    var fieldDayValue = !string.IsNullOrEmpty(sessionDayValue) ? sessionDayValue : Model.DayValue;
+    var sessionMonthValue = Model.MonthSessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.MonthSessionKey, httpContextAccessor) : "";
+    var fieldMonthValue = !string.IsNullOrEmpty(sessionMonthValue) ? sessionMonthValue : Model.MonthValue;
+    var sessionYearValue = Model.YearSessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.YearSessionKey, httpContextAccessor) : "";
+    var fieldYearValue = !string.IsNullOrEmpty(sessionYearValue) ? sessionYearValue : Model.YearValue;
+
+    var groupClass = "govuk-form-group";
+    var dateClass = $"govuk-date-input";
+    var inputDayClass = "govuk-input govuk-date-input__input govuk-input--width-2 ";
+    var inputMonthClass = "govuk-input govuk-date-input__input govuk-input--width-2 ";
+    var inputYearClass = "govuk-input govuk-date-input__input govuk-input--width-4 ";
+    var withHint = hintPart.Hint?.Length > 0;
+    var withStyle = cssPart.CssStyle?.Length > 0;
+
+    if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
+    {
+        if (fieldEntry.Errors.Count > 0)
+        {
+            groupClass += " govuk-form-group--error";
+            inputDayClass += " govuk-input--error";
+            inputMonthClass += " govuk-input--error";
+            inputYearClass += " govuk-input--error";
+        }
+    }
+
+    if (ViewData.ModelState.TryGetValue(fieldId + "-day", out var dayFieldEntry))
+    {
+        fieldDayValue = dayFieldEntry.AttemptedValue;
+
+        if (dayFieldEntry.Errors.Count > 0)
+        {
+            groupClass += " govuk-form-group--error";
+            inputDayClass += " govuk-input--error";
+        }
+    }
+
+    if (ViewData.ModelState.TryGetValue(fieldId + "-month", out var monthFieldEntry))
+    {
+        fieldMonthValue = monthFieldEntry.AttemptedValue;
+
+        if (monthFieldEntry.Errors.Count > 0)
+        {
+            groupClass += " govuk-form-group--error";
+            inputMonthClass += " govuk-input--error";
+        }
+    }
+
+    if (ViewData.ModelState.TryGetValue(fieldId + "-year", out var yearFieldEntry))
+    {
+        fieldYearValue = yearFieldEntry.AttemptedValue;
+
+        if (yearFieldEntry.Errors.Count > 0)
+        {
+            groupClass += " govuk-form-group--error";
+            inputYearClass += " govuk-input--error";
+        }
+    }
+}
+
+<div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
+    <fieldset class="govuk-fieldset" role="group" @(withHint ? $@"aria-describedby=""{fieldId}-hint""" : "")>
+        <legend class="govuk-fieldset__legend @legendPart.LegendSize">
+            @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, $"govuk-fieldset__heading {labelPart.LabelSize} {labelPart.LabelClass}"))
+            @labelPart.Label
+            @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+        </legend>
+        @if (withHint)
+        {
+            <div id="@fieldId-hint" class="govuk-hint @hintPart.HintClass">
+                @Html.Raw(hintPart.Hint)
+            </div>
+        }
+        @if (dayFieldEntry != null || dayFieldEntry != null || monthFieldEntry != null || yearFieldEntry != null)
+        {
+            if (fieldEntry != null)
+            {
+                foreach (var error in fieldEntry.Errors)
+                {
+                    <p id="@fieldId-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                    </p>
+                }
+            }
+            foreach (var error in dayFieldEntry.Errors)
+            {
+                <p id="@fieldId-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                </p>
+            }
+            foreach (var error in monthFieldEntry.Errors)
+            {
+                <p id="@fieldId-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                </p>
+            }
+            foreach (var error in yearFieldEntry.Errors)
+            {
+                <p id="@fieldId-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                </p>
+            }
+        }
+        <div class="@dateClass" id="@fieldId" @(withStyle ? @$"style=""{cssPart.CssStyle}""" : "")>
+            <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="@fieldId-day">Day</label>
+                    <input class="@inputDayClass" id="@fieldId-day" name="@fieldId-day" type="text" @(Model.AutoComplete?.Length > 0 ? Html.Raw(@$"autocomplete=""{Model.AutoComplete}-day""") : "") inputmode="numeric" value="@fieldDayValue">
+                </div>
+            </div>
+            <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="@fieldId-month">Month</label>
+                    <input class="@inputMonthClass" id="@fieldId-month" name="@fieldId-month" type="text" @(Model.AutoComplete?.Length > 0 ? Html.Raw(@$"autocomplete=""{Model.AutoComplete}-month""") : "") inputmode="numeric" value="@fieldMonthValue">
+                </div>
+            </div>
+            <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="@fieldId-year">Year</label>
+                    <input class="@inputYearClass" id="@fieldId-year" name="@fieldId-year" type="text" @(Model.AutoComplete?.Length > 0 ? Html.Raw(@$"autocomplete=""{Model.AutoComplete}-year""") : "") inputmode="numeric" value="@fieldYearValue">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

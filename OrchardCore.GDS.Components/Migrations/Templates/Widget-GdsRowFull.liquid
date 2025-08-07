@@ -1,0 +1,7 @@
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        {% for item in Model.ContentItem.Content.Column.Widgets %}
+            {{ item | shape_build_display: "Detail" | shape_render }}
+        {% endfor %}
+    </div>
+</div>

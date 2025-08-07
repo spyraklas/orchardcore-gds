@@ -1,0 +1,12 @@
+{% assign part = Model.ContentItem.Content.GdsFieldset %}
+
+<fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend {{ part.LabelSize.Text }}">
+    <{{ part.LabelStyle.Text }} class="govuk-fieldset__heading {{ part.LabelClass.Text }}">
+      {{ part.Label.Text | row }}
+    </{{ part.LabelStyle.Text }}>
+  </legend>
+  {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+    {{ item | shape_build_display: "Detail" | shape_render }}
+  {% endfor %}
+</fieldset>

@@ -1,0 +1,4 @@
+{% for itemId in Model.ContentItem.Content.SharedContentPicker.Items.ContentItemIds %}
+    {% assign shared_content = Content.ContentItemId[itemId] %}   
+    {{ shared_content | shape_build_display: "Detail" | shape_render }}
+{% endfor %}

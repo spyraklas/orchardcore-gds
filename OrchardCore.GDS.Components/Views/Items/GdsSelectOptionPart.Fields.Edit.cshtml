@@ -1,0 +1,26 @@
+@using OrchardCore
+@model GdsSelectOptionPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Label" class="@Orchard.GetLabelClasses()">@T["Label"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Label" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The text for the select option field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Value" class="@Orchard.GetLabelClasses()">@T["Value"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Value" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The value for the select option field."]</span>
+    </div>
+</div>
+
+<fieldset class="mb-3" asp-validation-class-for="Selected">
+    <div class="form-check">
+        <input asp-for="Selected" class="form-check-input" type="checkbox" />
+        <label asp-for="Selected" class="form-check-label">@T["Selected"]</label>
+    </div>
+    <span class="hint">@T["Option element is selected."]</span>
+</fieldset>

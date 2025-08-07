@@ -1,0 +1,38 @@
+﻿@using OrchardCore.Flows.Models;
+@using OrchardCore.Mvc.Utilities
+@model GdsAccordionPartViewModel
+@inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
+
+@{ var bagPart = Model.ContentItem.As<BagPart>(); }
+
+<div class="govuk-accordion @Model.Class" data-module="govuk-accordion" id="@Model.Id">
+    @foreach (var item in bagPart.ContentItems)
+    {
+        var part = item.ContentItem.As<GdsAccordionSectionPart>();
+        var withSummary = part.Summary.Length > 0;
+
+        <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+                @Html.Raw(Html.StartLabelRapperTag(part.TitleStyle, "govuk-accordion__section-heading " + part.TitleClass))
+                    <span class="govuk-accordion__section-button" id="@Model.Id-heading-@part.Id">
+                        @part.Title
+                    </span>
+                @Html.Raw(@Html.EndLabelRapperTag(part.TitleStyle))
+                @if (withSummary)
+                {
+                    <div class="govuk-accordion__section-summary govuk-body @part.SummaryClass" id="@Model.Id-summary-@part.Id">
+                        @Html.Raw(part.Summary)
+                    </div>
+                }
+            </div>
+            <div id="@Model.Id-content-@part.Id" class="govuk-accordion__section-content" aria-labelledby="@Model.Id-heading-@part.Id">
+                @{
+                    var flowPart = part.ContentItem.As<FlowPart>();
+                    var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(flowPart.ContentItem, Model.BuildPartDisplayContext.Updater, "Detail", Model.BuildPartDisplayContext.GroupId);
+
+                    @await DisplayAsync(widgetContent)
+                }
+            </div>
+        </div>
+    }
+</div>

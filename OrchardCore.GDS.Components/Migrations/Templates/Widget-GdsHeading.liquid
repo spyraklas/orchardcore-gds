@@ -1,0 +1,4 @@
+{% assign heading = Model.ContentItem.Content.GdsHeading %}
+<{{ heading.Type.Text }} class="{{ heading.Style.Text }} {{ heading.Class.Text }}">    
+    {{ heading.Value.Text | raw }}
+</{{ heading.Type.Text }}>

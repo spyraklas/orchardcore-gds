@@ -1,0 +1,66 @@
+@using OrchardCore
+@model GdsUploadFilesPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="UploadAction" class="@Orchard.GetLabelClasses()">@T["Upload Action"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="UploadAction" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["Form action for uploading blob files"]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="ButtonValue" class="@Orchard.GetLabelClasses()">@T["Button Value"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="ButtonValue" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["Form submit button value"]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="FileTypesAllowed" class="@Orchard.GetLabelClasses()">@T["File Types Allowed"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="FileTypesAllowed" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["Comma seperate file extensions allowed for upload (example: .pdf,.jpg,.jpeg,.png,.gif)."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="FilesSessionKey" class="@Orchard.GetLabelClasses()">@T["Files Session Key"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="FilesSessionKey" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["Files session key that contain the reference of the azure blob folder containing the uploaded files"]</span>
+    </div>
+</div>
+
+<fieldset class="mb-3" asp-validation-class-for="WithDownload">
+    <div class="form-check">
+        <input asp-for="WithDownload" class="form-check-input" type="checkbox" />
+        <label asp-for="WithDownload" class="form-check-label">@T["With Download Action"]</label>
+    </div>
+    <span class="hint">@T["Files can be downloaded"]</span>
+</fieldset>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="DownloadAction" class="@Orchard.GetLabelClasses()">@T["Download Action"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="DownloadAction" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["Form action for downloading blob files"]</span>
+    </div>
+</div>
+
+<fieldset class="mb-3" asp-validation-class-for="WithRemove">
+    <div class="form-check">
+        <input asp-for="WithRemove" class="form-check-input" type="checkbox" />
+        <label asp-for="WithRemove" class="form-check-label">@T["With Remove Action"]</label>
+    </div>
+    <span class="hint">@T["Files can be removed"]</span>
+</fieldset>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="RemoveAction" class="@Orchard.GetLabelClasses()">@T["Remove Action"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="RemoveAction" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["Form action for removing blob files"]</span>
+    </div>
+</div>

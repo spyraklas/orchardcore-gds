@@ -1,0 +1,14 @@
+{% assign type = Model.ContentItem.Content.GdsSummaryListColumn.Type.Text %}
+{% assign cssClass = Model.ContentItem.Content.GdsCssPart.CssClass %}
+{% assign cssStyle = Model.ContentItem.Content.GdsCssPart.CssStyle %}
+
+{% assign styleAttribute = "" %}
+{% if cssStyle.size > 0 %}
+    {% assign styleAttribute = cssStyle | prepend: "style=\"" | append: "\"" %}
+{% endif %}
+
+<dd class="govuk-summary{{ type }} {{ cssClass }}" {{ styleAttribute | raw }}>
+{% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+    {{ item | shape_build_display: "Detail" | shape_render }}
+{% endfor %}
+</dd>

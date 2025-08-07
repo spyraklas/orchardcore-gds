@@ -1,0 +1,29 @@
+{% assign tabsPart = Model.ContentItem.Content.GdsTabs %}
+
+<div class="govuk-tabs" data-module="govuk-tabs"> 
+  <{{ Model.ContentItem.Content.GdsTabs.TitleStyle.Text }} class="govuk-tabs__title">{{ Model.ContentItem | display_text }}</{{ Model.ContentItem.Content.GdsTabs.TitleStyle.Text }}>
+  <ul class="govuk-tabs__list">
+    {% for tab in Model.Content.BagPart.ContentItems %}
+        {% assign tabPart = tab.ContentItem.Content.GdsTab %}
+        {% assign setectedClass = "" %}
+        {% if tabPart.Selected.Value == true %}
+            {% assign setectedClass = "govuk-tabs__list-item--selected" %}
+        {% endif %}
+                
+        <li class="govuk-tabs__list-item  {{ setectedClass }}">
+            <a class="govuk-tabs__tab" href="#{{ tabPart.Id.Text }}">{{ tabPart.Title.Text }}</a>
+        </li>
+    {% endfor %}
+  </ul>
+  {% for tab in Model.Content.BagPart.ContentItems %}
+      {% assign tabPart = tab.ContentItem.Content.GdsTab %}
+      {% assign hiddenClass = "" %}
+      {% if tabPart.Sectected.Value == false %}
+          {% assign hiddenClass = "govuk-tabs__panel--hidden" %}
+      {% endif %}
+
+      <div class="govuk-tabs__panel {{ hiddenClass }}" id="{{ tabPart.Id.Text }}">
+          {{ tab | shape_build_display: "Detail" | shape_render }}
+      </div>
+  {% endfor %}
+  </div>

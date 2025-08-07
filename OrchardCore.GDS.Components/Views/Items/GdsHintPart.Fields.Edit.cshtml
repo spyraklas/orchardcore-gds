@@ -1,0 +1,18 @@
+@using OrchardCore
+@model GdsHintPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Hint" class="@Orchard.GetLabelClasses()">@T["Hint Text"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <textarea asp-for="Hint" rows="5" class="form-control content-preview-text"></textarea>
+        <span class="hint">@T["The text or html for the hint of this field."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="HintClass" class="@Orchard.GetLabelClasses()">@T["Hint Class Attribute"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="HintClass" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The class attribute for the hint of this field."]</span>
+    </div>
+</div>

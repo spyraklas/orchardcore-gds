@@ -1,0 +1,4 @@
+{% assign paragraph = Model.ContentItem.Content.GdsParagraph %}
+<p class="{{ paragraph.Size.Text }}">
+    {{ paragraph.Contents.Html | remove: "<p>" | remove: "</p>" | raw }}
+</p>

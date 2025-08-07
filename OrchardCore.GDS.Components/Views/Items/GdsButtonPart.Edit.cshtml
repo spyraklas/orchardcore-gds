@@ -1,0 +1,84 @@
+@using OrchardCore
+@model GdsButtonPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Value" class="@Orchard.GetLabelClasses()">@T["Value"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Value" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The value for this button."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Class" class="@Orchard.GetLabelClasses()">@T["Class"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Class" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The class attribute for the button."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Style" class="@Orchard.GetLabelClasses()">@T["Style"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <select asp-for="Style" class="form-select content-preview-select field-type-select-menu">
+            <option value="">@T["Default"]</option>
+            <option value="govuk-button--start">@T["Start"]</option>
+            <option value="govuk-button--secondary">@T["Secondary"]</option>
+            <option value="govuk-button--warning">@T["Warning"]</option>
+            <option value="govuk-button--inverse">@T["Inverse"]</option>
+        </select>
+        <span class="hint">@T["The button style."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Type" class="@Orchard.GetLabelClasses()">@T["Type"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <select asp-for="Type" class="form-select content-preview-select field-type-select-menu">
+            <option value="button">@T["Button"]</option>
+            <option value="submit">@T["Submit"]</option>
+            <option value="reset">@T["Reset"]</option>
+        </select>
+        <span class="hint">@T["The button type."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Href" class="@Orchard.GetLabelClasses()">@T["Href"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Href" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The href attribute for the start button."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="Target" class="@Orchard.GetLabelClasses()">@T["Target"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="Target" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The target attribute for the start button."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="OnClick" class="@Orchard.GetLabelClasses()">@T["OnClick"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="OnClick" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The onclick attribute for the button."]</span>
+    </div>
+</div>
+
+<fieldset class="mb-3" asp-validation-class-for="Disabled">
+    <div class="form-check">
+        <input asp-for="Disabled" class="form-check-input" type="checkbox" />
+        <label asp-for="Disabled" class="form-check-label">@T["Disabled"]</label>
+    </div>
+    <span class="hint">@T["Whether button is disabled."]</span>
+</fieldset>
+
+<fieldset class="mb-3" asp-validation-class-for="PreventDoubleClick">
+    <div class="form-check">
+        <input asp-for="PreventDoubleClick" class="form-check-input" type="checkbox" />
+        <label asp-for="PreventDoubleClick" class="form-check-label">@T["Prevent Double Click"]</label>
+    </div>
+    <span class="hint">@T["Whether to prevent button from double click button."]</span>
+</fieldset>

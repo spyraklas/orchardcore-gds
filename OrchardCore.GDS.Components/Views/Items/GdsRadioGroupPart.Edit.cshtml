@@ -1,0 +1,56 @@
+@using OrchardCore
+@model GdsRadioGroupPartViewModel
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="LegendSize" class="@Orchard.GetLabelClasses()">@T["Legend Size"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <select asp-for="LegendSize" class="form-select content-preview-select field-type-select-menu">
+            <option value="" selected>@T["None"]</option>
+            <option value="govuk-fieldset__legend--s">@T["Small"]</option>
+            <option value="govuk-fieldset__legend--m">@T["Medium"]</option>
+            <option value="govuk-fieldset__legend--l">@T["Large"]</option>
+            <option value="govuk-fieldset__legend--xl">@T["Extra Large"]</option>
+        </select>
+        <span class="hint">@T["The legend size."]</span>
+    </div>
+</div>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="LegendStyle" class="@Orchard.GetLabelClasses()">@T["Legend Size"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <select asp-for="LegendStyle" class="form-select content-preview-select field-type-select-menu">
+            <option value="label">@T["Label"]</option>
+            <option value="h1">@T["Header 1"]</option>
+            <option value="h2">@T["Header 2"]</option>
+            <option value="h3">@T["Header 3"]</option>
+            <option value="h4">@T["Header 4"]</option>
+            <option value="h5">@T["Header 5"]</option>
+            <option value="h6">@T["Header 6"]</option>
+        </select>
+        <span class="hint">@T["The label style."]</span>
+    </div>
+</div>
+
+<fieldset class="mb-3" asp-validation-class-for="Inline">
+    <div class="form-check">
+        <input asp-for="Inline" class="form-check-input" type="checkbox" />
+        <label asp-for="Inline" class="form-check-label">@T["Inline radios"]</label>
+    </div>
+    <span class="hint">@T["Inline radios display buttons."]</span>
+</fieldset>
+
+<fieldset class="mb-3" asp-validation-class-for="SmallRadios">
+    <div class="form-check">
+        <input asp-for="SmallRadios" class="form-check-input" type="checkbox" />
+        <label asp-for="SmallRadios" class="form-check-label">@T["Small radio buttons"]</label>
+    </div>
+    <span class="hint">@T["Display small size radio buttons."]</span>
+</fieldset>
+
+<div class="@Orchard.GetWrapperClasses()">
+    <label asp-for="SessionKey" class="@Orchard.GetLabelClasses()">@T["Session Key"]</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input asp-for="SessionKey" type="text" class="form-control content-preview-text" />
+        <span class="hint">@T["The session key value where application store a value for this field."]</span>
+    </div>
+</div>

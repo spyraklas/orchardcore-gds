@@ -1,0 +1,35 @@
+﻿@model GdsErrorSummaryPartViewModel
+
+@{
+    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var elementId = formElementPart.Id;
+}
+
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+{
+    <div id="@elementId" class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+            <h2 class="govuk-error-summary__title">
+                @Model.Title
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    @foreach (var key in ViewData.ModelState.Keys)
+                    {
+                        if (ViewData.ModelState.TryGetValue(key, out var fieldEntry))
+                        {
+                            var fieldErrorList = fieldEntry.Errors.ToList();
+
+                            foreach (var error in fieldErrorList)
+                            {
+                                <li>
+                                    <a href="#@key">@error.ErrorMessage</a>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+}

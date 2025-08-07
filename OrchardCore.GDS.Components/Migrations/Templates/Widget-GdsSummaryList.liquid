@@ -1,0 +1,42 @@
+{% assign part = Model.ContentItem.Content.GdsSummaryList %}
+{% assign actionListItems = Model.ContentItem.Content.ActionsList.ContentItems %}
+{% assign cssClass = Model.ContentItem.Content.GdsCssPart.CssClass %}
+{% assign cssStyle = Model.ContentItem.Content.GdsCssPart.CssStyle %}
+
+{% assign styleAttribute = "" %}
+{% if cssStyle.size > 0 %}
+    {% assign styleAttribute = cssStyle | prepend: "style=\"" | append: "\"" %}
+{% endif %}
+
+{% assign noBorders = "" %}
+{% if part.NoBorders.Value == true %}
+    {% assign noBorders = "govuk-summary-list--no-border" %}
+{% endif %}
+
+{% if part.Title.Text.size > 0 or actionListItems.size > 0 %}
+<div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <{{ part.TitleStyle.Text }} class="govuk-summary-card__title">{{ part.Title.Text }}</{{ part.TitleStyle.Text }}>
+    {%if actionListItems.size > 0 %}
+        <ul class="govuk-summary-card__actions">
+        {% for item in actionListItems %}
+            {{ item | shape_build_display: "Detail" | shape_render }}
+        {% endfor %}
+        </ul>
+    {% endif %}
+  </div>
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list {{ noBorders }} {{ cssClass }}" {{ styleAttribute | raw }}>
+    {% for item in Model.ContentItem.Content.BagPart.ContentItems %}
+        {{ item | shape_build_display: "Detail" | shape_render }}
+    {% endfor %}
+    </dl>
+  </div>
+</div>    
+{% else %}
+    <dl class="govuk-summary-list {{ noBorders }} {{ cssClass }}" {{ styleAttribute | raw }}>
+    {% for item in Model.ContentItem.Content.BagPart.ContentItems %}
+        {{ item | shape_build_display: "Detail" | shape_render }}
+    {% endfor %}
+    </dl>
+{% endif %}

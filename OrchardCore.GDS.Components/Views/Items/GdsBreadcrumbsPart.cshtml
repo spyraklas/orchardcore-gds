@@ -1,0 +1,25 @@
+﻿@model GdsBreadcrumbsPartViewModel
+@using Newtonsoft.Json
+@inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
+
+@{
+    var cssClass = "govuk-breadcrumbs";
+    if (Model.MobileColapse)
+    {
+        cssClass += " govuk-breadcrumbs--collapse-on-mobile";
+    }
+}
+
+<div class="@cssClass">
+    <ol class="govuk-breadcrumbs__list">
+        @foreach (var item in Model.ContentItem.Content.BagPart.ContentItems)
+        {
+            ContentItem obj = JsonConvert.DeserializeObject<ContentItem>(item.ToString());
+            GdsBreadcrumbPart part = JsonConvert.DeserializeObject<GdsBreadcrumbPart>(obj.Content.GdsBreadcrumbPart.ToString());
+
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="@part.Href">@part.Value</a>
+            </li>
+        }
+    </ol>
+</div>

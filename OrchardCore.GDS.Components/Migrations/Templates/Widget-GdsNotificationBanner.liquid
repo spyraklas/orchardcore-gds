@@ -1,0 +1,16 @@
+{% assign part = Model.ContentItem.Content.GdsNotificationBanner %}
+
+<div class="govuk-notification-banner {{ part.Style.Text }}" role="{{ part.Role.Text }}"
+  aria-labelledby="{{ part.Id.Text }}-title"
+  data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <{{ part.LabelStyle.Text }} class="govuk-notification-banner__title {{ part.LabelClass.Text }}" id="{{ part.Id.Text }}-title">
+      {{ Model.ContentItem  | display_text }}
+    </{{ part.LabelStyle.Text }}>
+  </div>
+  <div class="govuk-notification-banner__content">
+    {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+        {{ item | shape_build_display: "Detail" | shape_render }}
+    {% endfor %}
+  </div>
+</div>

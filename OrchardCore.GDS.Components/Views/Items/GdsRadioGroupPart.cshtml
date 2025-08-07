@@ -1,0 +1,118 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.ContentManagement.Display;
+@using OrchardCore.Flows.Models;
+@using OrchardCore.GDS.Components.Helpers;
+@using OrchardCore.Mvc.Utilities
+
+@model GdsRadioGroupPartViewModel
+@inject IContentItemDisplayManager ContentItemDisplayManager
+@inject IHttpContextAccessor httpContextAccessor
+@inject ISessionHelper sessionHelper
+
+@{
+    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
+    var bagPart = Model.ContentItem.As<BagPart>();
+    var cssPart = Model.ContentItem.As<GdsCssPart>();
+    var labelPart = Model.ContentItem.As<GdsLabelPart>();
+    var hintPart = Model.ContentItem.As<GdsHintPart>();
+
+    var elementId = formElementPart.Id;
+    var fieldName = formInputElementPart.Name;
+    var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
+    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
+    var groupClass = "govuk-form-group";
+    var withHint = hintPart.Hint?.Length > 0;
+    bool withError = false;
+    var radioDivClass = "govuk-radios";
+    if (Model.Inline)
+    {
+        radioDivClass += " govuk-radios--inline";
+    }
+    if (Model.SmallRadios)
+    {
+        radioDivClass += " govuk-radios--small";
+    }
+
+    if (ViewData.ModelState.TryGetValue(fieldName, out var fieldEntry))
+    {
+        if (fieldEntry.Errors.Count > 0)
+        {
+            withError = true;
+            groupClass += " govuk-form-group--error";
+        }
+    }
+}
+
+<div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
+    <fieldset class="govuk-fieldset" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : withError ? Html.Raw(@$"aria-describedby=""{fieldId}-error""") : "")>
+        <legend class="govuk-fieldset__legend @Model.LegendSize">
+            @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, @$"govuk-fieldset__heading {labelPart.LabelSize} {labelPart.LabelClass}"))
+            @labelPart.Label
+            @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+        </legend>
+        @if (withHint)
+        {
+            <div id="@fieldId-hint" class="govuk-hint @hintPart.HintClass">
+                @Html.Raw(hintPart.Hint)
+            </div>
+        }
+        @if (withError)
+        {
+            @foreach (var error in fieldEntry.Errors)
+            {
+                <p id="@fieldId-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                </p>
+            }
+        }
+        <div class="@radioDivClass" data-module="govuk-radios">
+            @foreach (var item in bagPart.ContentItems)
+            {
+                if (item.ContentType == "GdsRadio")
+                {
+                    var part = item.ContentItem.As<GdsRadioPart>();
+                    var radioFormElementPart = item.ContentItem.As<FormElementPart>();
+                    var radioCssPart = item.ContentItem.As<GdsCssPart>();
+                    var radioJsPart = item.ContentItem.As<GdsJsPart>();
+                    var radioHintPart = item.ContentItem.As<GdsHintPart>();
+                    var radioElementId = radioFormElementPart.Id;
+                    var radioChecked = string.Empty;
+                    if (!string.IsNullOrEmpty(sessionValue))
+                        radioChecked = part.Value == sessionValue ? "checked" : "";                       
+                    else
+                        radioChecked = part.Selected ? "checked" : "";
+
+                    <div class="govuk-radios__item">
+                        <input id="@radioElementId" name="@fieldName" type="radio" value="@part.Value" @(part.ConditionalFlow ? Html.Raw($@"data-aria-controls=""conditional-{radioElementId}""") : "") @Html.Raw(Html.BuildCssAttributes(radioCssPart, "govuk-radios__input" )) @Html.Raw(Html.BuildJsAttributes(radioJsPart)) @radioChecked>
+                        <label class="govuk-label govuk-radios__label @part.LabelClass" @(radioCssPart.CssStyle?.Length > 0 ? @$"style=""{radioCssPart.CssStyle}""" : "") for="@radioElementId">
+                            @part.Label
+                        </label>
+                    </div>
+                    @if (radioHintPart.Hint?.Length > 0)
+                    {
+                        <div id="@radioElementId-hint" class="govuk-hint govuk-radios__hint @radioHintPart.HintClass">
+                            @Html.Raw(radioHintPart.Hint)
+                        </div>
+                    }                  
+                    @if (part.ConditionalFlow)
+                    {
+                        var flowPart = item.ContentItem.As<FlowPart>();
+                        var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(flowPart.ContentItem, Model.BuildPartDisplayContext.Updater, "Detail", Model.BuildPartDisplayContext.GroupId);
+
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-@radioElementId">
+                            @await DisplayAsync(widgetContent)
+                        </div>
+                    }
+                }
+                else if (item.ContentType == "GdsRadioDivider")
+                {
+                    var part = item.ContentItem.As<GdsRadioDividerPart>();
+                    var dividerCssPart = Model.ContentItem.As<GdsCssPart>();
+
+                    <div class="govuk-radios__divider @dividerCssPart.CssClass" @(dividerCssPart.CssStyle?.Length > 0 ? @$"style=""{dividerCssPart.CssStyle}""" : "")>@Html.Raw(@part.Value)</div>
+                }
+            }
+        </div>
+    </fieldset>
+</div>

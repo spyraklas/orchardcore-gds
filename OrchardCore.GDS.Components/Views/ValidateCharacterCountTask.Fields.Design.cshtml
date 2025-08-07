@@ -1,0 +1,6 @@
+﻿@model ActivityViewModel<ValidateCharacterCountTask>
+
+<header>
+    <h4><i class="fa-solid fa-shield-alt" aria-hidden="true"></i>@Model.Activity.GetTitleOrDefault(() => T["Validate Character Count For Form Field"])</h4>
+</header>
+<span>@T["Validate characters count for <em>{0}</em>", Model.Activity.FieldName]</span>

@@ -1,0 +1,897 @@
+{
+  "name": "GovUK GDS Website",
+  "displayName": "GovUK GDS Website",
+  "description": "Ready to use GovUK GDS website.",
+  "author": "DfE - National Career Services Team",
+  "website": "https://nationalcareers.service.gov.uk",
+  "version": "1.0.0",
+  "issetuprecipe": true,
+  "categories": [ "default" ],
+  "tags": [ "GovUK GDS" ],
+
+  // The variables are evaluated the first time they are accessed, and reused across steps
+  "variables": {
+    "landingContentItemId": "[js:uuid()]"
+    // "now": "[js: new Date().toISOString()]"
+  },
+
+  "steps": [
+    {
+      "name": "Feature",
+      "enable": [
+        "Application.Default",
+        "OrchardCore.GDS.Forms",
+        "OrchardCore.Settings",
+        "OrchardCore.Admin",
+        "OrchardCore.Liquid",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.Shortcodes",
+        "OrchardCore.Html",
+        "OrchardCore.Recipes.Core",
+        "OrchardCore.Title",
+        "OrchardCore.AdminMenu",
+        "OrchardCore.Templates",
+        "OrchardCore.Alias",
+        "OrchardCore.ArchiveLater",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Scripting",
+        "OrchardCore.Recipes",
+        "OrchardCore.ContentFields",
+        "OrchardCore.Roles.Core",
+        "OrchardCore.Users",
+        "OrchardCore.ContentPreview",
+        "OrchardCore.Deployment",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Deployment.Remote",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.DynamicCache",
+        "OrchardCore.Resources",
+        "OrchardCore.Widgets",
+        "OrchardCore.Features",
+        "OrchardCore.Flows",
+        "OrchardCore.Forms",
+        "OrchardCore.GDS.Components",
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Https",
+        "OrchardCore.Indexing",
+        "OrchardCore.Rules",
+        "OrchardCore.Layers",
+        "OrchardCore.Lists",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Navigation",
+        "OrchardCore.Placements",
+        "OrchardCore.PublishLater",
+        "OrchardCore.Queries",
+        "OrchardCore.Roles",
+        "OrchardCore.Search.Lucene",
+        "OrchardCore.Security",
+        "OrchardCore.Shortcodes.Templates",
+        "OrchardCore.Spatial",
+        "OrchardCore.Taxonomies",
+        "OrchardCore.Taxonomies.ContentsAdminList",
+        "OrchardCore.Themes",
+        "OrchardCore.Workflows",
+        "OrchardCore.Workflows.Http",
+        "OrchardCore.Workflows.Session",
+        "OrchardCore.Workflows.Timers",
+        "OrchardCore.GDS.Theme",
+        "TheAdmin"
+      ]
+    },
+    {
+      "name": "Themes",
+      "Site": "OrchardCore.GDS.Theme",
+      "Admin": "TheAdmin"
+    },
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Administrator",
+          "Description": "Administrator",
+          "Permissions": []
+        },
+        {
+          "Name": "Moderator",
+          "Description": "Moderator",
+          "Permissions": []
+        },
+        {
+          "Name": "Editor",
+          "Description": "Editor",
+          "Permissions": []
+        },
+        {
+          "Name": "Author",
+          "Description": "Author",
+          "Permissions": []
+        },
+        {
+          "Name": "Contributor",
+          "Description": "Contributor",
+          "Permissions": []
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "Authenticated",
+          "Permissions": []
+        },
+        {
+          "Name": "Anonymous",
+          "Description": "Anonymous",
+          "Permissions": []
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "HomeRoute": {
+        "Area": "OrchardCore.Contents",
+        "Controller": "Item",
+        "Action": "Display",
+        "contentItemId": "[js: variables('landingContentItemId')]"
+      }
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Page",
+          "DisplayName": "Page",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Page",
+              "Name": "Page",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "ArchiveLaterPart",
+              "Name": "ArchiveLaterPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "ShowHomepageOption": true,
+                  "AllowUpdatePath": true
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                },
+                "FlowPartSettings": {
+                  "ContainedContentTypes": []
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            },
+            {
+              "PartName": "PublishLaterPart",
+              "Name": "PublishLaterPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "5"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 3
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Header",
+          "DisplayName": "Header",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Header",
+              "Name": "Header",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Footer",
+          "DisplayName": "Footer",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Footer",
+              "Name": "Footer",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HtmlEditor",
+          "DisplayName": "Html Editor",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget",
+              "Description": "Provides a html with editor content item"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HtmlEditor",
+              "Name": "HtmlEditor",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1",
+                  "Editor": "Trumbowyg"
+                },
+                "HtmlBodyPartSettings": {},
+                "HtmlBodyPartTrumbowygEditorSettings": {
+                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\"viewHTML\"],\r\n        [\"undo\", \"redo\"],\r\n        [\"formatting\"],\r\n        [\"strong\", \"em\", \"del\"],\r\n        [\"foreColor\", \"backColor\"],\r\n        [\"superscript\", \"subscript\"],\r\n        [\"link\"],\r\n        [\"insertShortcode\"],\r\n        [\"image\"],\r\n        [\"align\"],\r\n        [\"unorderedList\", \"orderedList\"],\r\n        [\"horizontalRule\"],\r\n        [\"removeformat\"],\r\n        [\"fullscreen\"]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"],\r\n            ico: \"justifyLeft\"\r\n        },\r\n        image: {\r\n            dropdown: [\"insertImage\", \"base64\", \"noembed\"],\r\n            ico: \"insertImage\"\r\n        }\r\n    }\r\n}",
+                  "InsertMediaWithUrl": true
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HtmlRaw",
+          "DisplayName": "Html Raw",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget",
+              "Description": "Provides a html raw content item"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HtmlRaw",
+              "Name": "HtmlRaw",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SharedContent",
+          "DisplayName": "Shared Content",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SharedContent",
+              "Name": "SharedContent",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SharedContentPicker",
+          "DisplayName": "Shared Content Picker",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SharedContentPicker",
+              "Name": "SharedContentPicker",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LiquidEditor",
+          "DisplayName": "Liquid Editor",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Widget"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LiquidEditor",
+              "Name": "LiquidEditor",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "LiquidPart",
+              "Name": "LiquidPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "Page",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "JavaScript",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "JavaScript",
+                  "Editor": "Monaco",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Required": false
+                },
+                "TextFieldMonacoEditorSettings": {
+                  "Options": "{\r\n  \u0022automaticLayout\u0022: true,\r\n  \u0022language\u0022: \u0022javascript\u0022\r\n}"
+                },
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Footer",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Html",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Html",
+                  "Editor": "TextArea",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {},
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SharedContentPicker",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "Items",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Items"
+                },
+                "ContentPickerFieldSettings": {
+                  "Required": true,
+                  "Multiple": true,
+                  "DisplayedContentTypes": [
+                    "SharedContent"
+                  ],
+                  "DisplayedStereotypes": []
+                },
+                "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Layers",
+      "Layers": [
+        {
+          "Name": "Always",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.BooleanCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "BooleanCondition",
+                "ConditionId": "[js: uuid()]"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "[js: uuid()]"
+          }
+        },
+        {
+          "Name": "Is Homepage",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.HomepageCondition, OrchardCore.Rules",
+                "Value": true,
+                "Name": "HomepageCondition",
+                "ConditionId": "[js: uuid()]"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "[js: uuid()]"
+          }
+        },
+        {
+          "Name": "Is Not Homepage",
+          "Rule": null,
+          "Description": null,
+          "LayerRule": {
+            "Conditions": [
+              {
+                "$type": "OrchardCore.Rules.Models.HomepageCondition, OrchardCore.Rules",
+                "Value": false,
+                "Name": "HomepageCondition",
+                "ConditionId": "[js: uuid()]"
+              }
+            ],
+            "Name": null,
+            "ConditionId": "[js: uuid()]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "LayerSettings": {
+        "Zones": [
+          "CookieBanner",
+          "Header",
+          "PhaseBanner",
+          "Breadcrumbs",
+          "BackLink",
+          "Footer"
+        ]
+      },
+      "AdminSettings": {
+        "DisplayDarkMode": true,
+        "DisplayMenuFilter": false,
+        "DisplayNewMenu": false,
+        "DisplayTitlesInTopbar": true
+      },
+      "HttpsSettings": {
+        "EnableStrictTransportSecurity": false,
+        "RequireHttps": true,
+        "RequireHttpsPermanent": false,
+        "SslPort": 44300
+      }
+    },
+    {
+      "name": "Placements",
+      "Placements": {
+        "FlowPart_Edit": [
+          {
+            "place": "Parts:2",
+            "displayType": null,
+            "differentiator": null,
+            "alternates": null,
+            "wrappers": null,
+            "shape": null,
+            "contentType": [
+              "Page"
+            ]
+          }
+        ],
+        "TitlePart_Edit": [
+          {
+            "place": "Parts:0",
+            "displayType": null,
+            "differentiator": null,
+            "alternates": null,
+            "wrappers": null,
+            "shape": null,
+            "contentType": [
+              "Page"
+            ]
+          }
+        ],
+        "AutoroutePart_Edit": [
+          {
+            "place": "Parts:1",
+            "displayType": null,
+            "differentiator": null,
+            "alternates": null,
+            "wrappers": null,
+            "shape": null,
+            "contentType": [
+              "Page"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Templates",
+      "Templates": {
+        "Content": {
+          "Content": "[file:text('Templates/Content.liquid')]",
+          "Description": null
+        },
+        "Content__Page": {
+          "Content": "[file:text('Templates/Content-Page.liquid')]",
+          "Description": null
+        },
+        "Content__SharedContent": {
+          "Content": "[file:text('Templates/Content-SharedContent.liquid')]",
+          "Description": null
+        },
+        "Menu": {
+          "Content": "[file:text('Templates/Menu.liquid')]",
+          "Description": null
+        },
+        "MenuItem": {
+          "Content": "[file:text('Templates/MenuItem.liquid')]",
+          "Description": null
+        },
+        "MenuItemLink__LinkMenuItem": {
+          "Content": "[file:text('Templates/MenuItemLink-LinkMenuItem.liquid')]",
+          "Description": null
+        },
+        "Widget__Footer": {
+          "Content": "[file:text('Templates/Widget-Footer.liquid')]",
+          "Description": null
+        },
+        "Widget__Header": {
+          "Content": "[file:text('Templates/Widget-Header.liquid')]",
+          "Description": null
+        },
+        "Widget__HtmlRaw": {
+          "Content": "[file:text('Templates/Widget-HtmlRaw.liquid')]",
+          "Description": null
+        },
+        "Widget__HtmlEditor": {
+          "Content": "[file:text('Templates/Widget-HtmlEditor.liquid')]",
+          "Description": null
+        },
+        "Widget__SharedContentPicker": {
+          "Content": "[file:text('Templates/Widget-SharedContentPicker.liquid')]",
+          "Description": null
+        },
+        "Widget__LiquidEditor": {
+          "Content": "[file:text('Templates/Widget-LiquidEditor.liquid')]",
+          "Description": null
+        }
+      }
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "[js:uuid()]",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "Page",
+          "DisplayText": "[js: parameters('SiteName')]",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Page": {},
+          "ArchiveLaterPart": {
+            "ScheduledArchiveUtc": null
+          },
+          "AutoroutePart": {
+            "Path": "home",
+            "SetHomepage": true
+          },
+          "FlowPart": {
+            "Widgets": []
+          },
+          "PublishLaterPart": {
+            "ScheduledPublishUtc": null
+          },
+          "TitlePart": {
+            "Title": "Home"
+          }
+        },
+        {
+          "ContentItemId": "[js:uuid()]",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "Menu",
+          "DisplayText": "Main Menu",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Main Menu"
+          },
+          "AliasPart": {
+            "Alias": "main-menu"
+          },
+          "MenuPart": {},
+          "MenuItemsListPart": {
+            "MenuItems": []
+          },
+          "@WeldedPartSettings": {
+            "MenuPart": {
+              "Position": "3"
+            },
+            "MenuItemsListPart": {
+              "Position": "4"
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js:uuid()]",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "Header",
+          "DisplayText": "Header",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Header": {},
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "Header",
+            "Layer": "Always"
+          }
+        },
+        {
+          "ContentItemId": "[js:uuid()]",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "GdsPhaseBanner",
+          "DisplayText": "Phase Banner",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "GdsPhaseBanner": {
+            "Label": {
+              "Text": "Beta"
+            },
+            "LabelClass": {
+              "Text": "test-class"
+            },
+            "Description": {
+              "Html": "This is a new service – your <a class=\"govuk-link\" href=\"#\">feedback</a> will help us to improve it."
+            }
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "PhaseBanner",
+            "Layer": "Always"
+          }
+        },
+        {
+          "ContentItemId": "[js:uuid()]",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "Footer",
+          "DisplayText": "Footer",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Footer": {
+            "Html": {
+              "Text": "      <div class=\"govuk-footer__meta-item govuk-footer__meta-item--grow\">\r\n        <h2 class=\"govuk-visually-hidden\">Support links</h2>\r\n        <ul class=\"govuk-footer__inline-list\">\r\n          <li class=\"govuk-footer__inline-list-item\">\r\n            <a class=\"govuk-footer__link\" href=\"#\">\r\n              Terms of Use\r\n            </a>\r\n          </li>\r\n          <li class=\"govuk-footer__inline-list-item\">\r\n            <a class=\"govuk-footer__link\" href=\"#\">\r\n              Cookies\r\n            </a>\r\n          </li>\r\n          <li class=\"govuk-footer__inline-list-item\">\r\n            <a class=\"govuk-footer__link\" href=\"#\">\r\n              Contact Us\r\n            </a>\r\n          </li>\r\n        </ul>\r\n        <svg\r\n          aria-hidden=\"true\"\r\n          focusable=\"false\"\r\n          class=\"govuk-footer__licence-logo\"\r\n          xmlns=\"http://www.w3.org/2000/svg\"\r\n          viewBox=\"0 0 483.2 195.7\"\r\n          height=\"17\"\r\n          width=\"41\">\r\n          <path\r\n            fill=\"currentColor\"\r\n            d=\"M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145\" />\r\n        </svg>\r\n        <span class=\"govuk-footer__licence-description\">\r\n          All content is available under the\r\n          <a\r\n            class=\"govuk-footer__link\"\r\n            href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\"\r\n            rel=\"license\">Open Government Licence v3.0</a>, except where otherwise stated\r\n        </span>\r\n      </div>\r\n      <div class=\"govuk-footer__meta-item\">\r\n        <a\r\n          class=\"govuk-footer__link govuk-footer__copyright-logo\"\r\n          href=\"https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/\">© Crown copyright</a>\r\n      </div>"
+            }
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1.0,
+            "Zone": "Footer",
+            "Layer": "Always"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AdminMenu",
+      "data": [
+        {
+          "Id": "[js:uuid()]",
+          "Name": "Contents",
+          "Enabled": true,
+          "MenuItems": [
+            {
+              "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+              "ShowAll": false,
+              "IconClass": null,
+              "ContentTypes": [
+                {
+                  "ContentTypeId": "Page",
+                  "IconClass": "far fa-file-alt"
+                }
+              ],
+              "UniqueId": "[js:uuid()]",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Items": [],
+              "Classes": []
+            },
+            {
+              "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+              "ShowAll": false,
+              "IconClass": null,
+              "ContentTypes": [
+                {
+                  "ContentTypeId": "Taxonomy",
+                  "IconClass": "fas fa-tags"
+                }
+              ],
+              "UniqueId": "[js:uuid()]",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Items": [],
+              "Classes": []
+            },
+            {
+              "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+              "ShowAll": false,
+              "IconClass": null,
+              "ContentTypes": [
+                {
+                  "ContentTypeId": "SharedContent",
+                  "IconClass": "fas fa-share-square"
+                }
+              ],
+              "UniqueId": "[js:uuid()]",
+              "Enabled": true,
+              "Text": null,
+              "Id": null,
+              "Href": null,
+              "Url": null,
+              "Position": null,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Culture": null,
+              "Items": [],
+              "Classes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

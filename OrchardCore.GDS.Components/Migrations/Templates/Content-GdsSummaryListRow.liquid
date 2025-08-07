@@ -1,0 +1,19 @@
+{% assign part = Model.ContentItem.Content.GdsSummaryListRow %}
+{% assign cssClass = Model.ContentItem.Content.GdsCssPart.CssClass %}
+{% assign cssStyle = Model.ContentItem.Content.GdsCssPart.CssStyle %}
+
+{% assign styleAttribute = "" %}
+{% if cssStyle.size > 0 %}
+    {% assign styleAttribute = cssStyle | prepend: "style=\"" | append: "\"" %}
+{% endif %}
+
+{% assign noActions = "" %}
+{% if cssStyle.size > 0 %}
+    {% assign noActions = "govuk-summary-list__row--no-actions" %}
+{% endif %}
+
+<div class="govuk-summary-list__row {{ noActions }} {{ cssClass }}" {{ styleAttribute | raw }}>
+{% for item in Model.ContentItem.Content.BagPart.ContentItems %}
+    {{ item | shape_build_display: "Detail" | shape_render }}
+{% endfor %}
+</div>
