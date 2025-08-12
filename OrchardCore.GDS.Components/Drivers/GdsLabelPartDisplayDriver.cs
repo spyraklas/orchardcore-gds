@@ -24,11 +24,11 @@ namespace OrchardCore.GDS.Components.Drivers
             .Location("Parts:0#Label;19");
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsLabelPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsLabelPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsLabelPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Label = viewModel.Label?.Trim();
                 part.LabelClass = viewModel.LabelClass?.Trim();
@@ -36,7 +36,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.LabelSize = viewModel.LabelSize?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

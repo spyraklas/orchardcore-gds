@@ -34,11 +34,11 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsDateInputPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsDateInputPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsDateInputPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.DayValue = viewModel.DayValue?.Trim();
                 part.MonthValue = viewModel.MonthValue?.Trim();
@@ -49,7 +49,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.YearSessionKey = viewModel.YearSessionKey?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
 
         private Task BuildViewModel(GdsDateInputPartViewModel model, GdsDateInputPart part)

@@ -1,6 +1,5 @@
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Display.Models;
-using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.GDS.Components.Models;
 using OrchardCore.GDS.Components.ViewModels;
@@ -35,11 +34,11 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsInputTextPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsInputTextPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsInputTextPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Placeholder = viewModel.Placeholder?.Trim();
                 part.Value = viewModel.Value?.Trim();
@@ -51,7 +50,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.SessionKey = viewModel.SessionKey?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
 
         private Task BuildViewModel(GdsInputTextPartViewModel model, GdsInputTextPart part)

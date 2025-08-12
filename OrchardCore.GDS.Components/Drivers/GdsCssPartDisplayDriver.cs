@@ -22,17 +22,17 @@ namespace OrchardCore.GDS.Components.Drivers
             .Location("Parts:0#CSS;40");
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsCssPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsCssPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsCssPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.CssClass = viewModel.CssClass?.Trim();
                 part.CssStyle = viewModel.CssStyle?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

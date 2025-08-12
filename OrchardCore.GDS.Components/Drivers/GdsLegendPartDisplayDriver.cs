@@ -20,16 +20,16 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsLegendPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsLegendPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsLegendPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.LegendSize = viewModel.LegendSize?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

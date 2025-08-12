@@ -31,11 +31,11 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsCheckboxGroupPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsCheckboxGroupPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsCheckboxGroupPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.LegendSize = viewModel.LegendSize?.Trim();
                 part.LegendStyle = viewModel.LegendStyle?.Trim();
@@ -43,7 +43,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.SessionKey = viewModel.SessionKey?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
 
         private Task BuildViewModel(GdsCheckboxGroupPartViewModel model, GdsCheckboxGroupPart part, BuildPartDisplayContext context)

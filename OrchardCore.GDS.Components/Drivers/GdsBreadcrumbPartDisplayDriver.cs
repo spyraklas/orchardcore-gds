@@ -21,17 +21,17 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsBreadcrumbPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsBreadcrumbPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsBreadcrumbPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Href = viewModel.Href?.Trim();
                 part.Value = viewModel.Value?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

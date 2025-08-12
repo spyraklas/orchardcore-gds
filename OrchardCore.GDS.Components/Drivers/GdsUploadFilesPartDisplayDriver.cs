@@ -35,11 +35,11 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsUploadFilesPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsUploadFilesPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsUploadFilesPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.UploadAction = viewModel.UploadAction?.Trim();
                 part.ButtonValue = viewModel.ButtonValue?.Trim();
@@ -51,7 +51,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.WithRemove = viewModel.WithRemove;
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
 
         private Task BuildViewModel(GdsUploadFilesPartViewModel model, GdsUploadFilesPart part)
