@@ -23,8 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OrchardCore.DSI\OrchardCore.DSI.csproj" />
     <ProjectReference Include="..\OrchardCore.GDS.Components\OrchardCore.GDS.Components.csproj" />
     <ProjectReference Include="..\OrchardCore.GDS.Theme\OrchardCore.GDS.Theme.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
