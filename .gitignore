@@ -25,3 +25,8 @@
 /OrchardCore.GDS.Theme/wwwroot/site.js
 /OrchardCore.GDS.Theme/wwwroot/site.min.css
 /OrchardCore.GDS.Theme/wwwroot/site.min.js
+/GovUK.DSI/bin/Debug/net8.0
+/GovUK.DSI/obj
+/OrchardCore.DSI/bin/Debug/net8.0
+/OrchardCore.DSI/obj
+/OrchardCore.Cms.Web/appsettings.Development.json
