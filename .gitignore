@@ -30,3 +30,9 @@
 /OrchardCore.DSI/bin/Debug/net8.0
 /OrchardCore.DSI/obj
 /OrchardCore.Cms.Web/appsettings.Development.json
+/OrchardCore.GDS.Theme/wwwroot/css
+/OrchardCore.GDS.Theme/wwwroot/js
+/OrchardCore.Cms.Web/bin/Debug/net10.0
+/OrchardCore.GDS.Theme/bin/Debug/net10.0
+/OrchardCore.DSI/bin/Debug/net10.0
+/OrchardCore.GDS.Components/bin/Debug/net10.0
