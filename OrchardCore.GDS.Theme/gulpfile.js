@@ -40,7 +40,7 @@ function GdsStyles() {
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
-        .pipe(replace(/assets\//g, 'gdscontents/assets/'))
+        .pipe(replace(/assets\//g, 'OrchardCore.GDS.Theme/assets/'))
         .pipe(rename('govuk-frontend.css'))
         .pipe(dest('./wwwroot/css/',))
         .pipe(csso({ restructure: false }))
