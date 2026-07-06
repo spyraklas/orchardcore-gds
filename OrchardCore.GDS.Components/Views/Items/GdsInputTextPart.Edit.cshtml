@@ -1,9 +1,9 @@
 @using OrchardCore
 @model GdsInputTextPartViewModel
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Type" class="@Orchard.GetLabelClasses()">@T["Type"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Type" class="ocat-label">@T["Type"]</label>
+    <div class="ocat-end">
         <select asp-for="Type" class="form-select content-preview-select field-type-select-menu">
             <option value="text">@T["Text"]</option>
             <option value="number">@T["Number"]</option>
@@ -16,41 +16,41 @@
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Placeholder" class="@Orchard.GetLabelClasses()">@T["Placeholder Text"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Placeholder" class="ocat-label">@T["Placeholder Text"]</label>
+    <div class="ocat-end">
         <input asp-for="Placeholder" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The text to display when the field has no value."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Value" class="@Orchard.GetLabelClasses()">@T["Value"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Value" class="ocat-label">@T["Value"]</label>
+    <div class="ocat-end">
         <input asp-for="Value" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The value for this field."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="AutoComplete" class="@Orchard.GetLabelClasses()">@T["AutoComplete Text"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="AutoComplete" class="ocat-label">@T["AutoComplete Text"]</label>
+    <div class="ocat-end">
         <input asp-for="AutoComplete" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The auto complete name attribute for this field."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Prefix" class="@Orchard.GetLabelClasses()">@T["Prefix Text"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Prefix" class="ocat-label">@T["Prefix Text"]</label>
+    <div class="ocat-end">
         <input asp-for="Prefix" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The text to display the prefix of the field."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Prefix" class="@Orchard.GetLabelClasses()">@T["Suffix Text"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Prefix" class="ocat-label">@T["Suffix Text"]</label>
+    <div class="ocat-end">
         <input asp-for="Suffix" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The text to display the suffix of the field."]</span>
     </div>
@@ -64,9 +64,9 @@
     <span class="hint">@T["Whether input text to do perform spell check."]</span>
 </fieldset>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="SessionKey" class="@Orchard.GetLabelClasses()">@T["Session Key"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="SessionKey" class="ocat-label">@T["Session Key"]</label>
+    <div class="ocat-end">
         <input asp-for="SessionKey" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The session key value where application store a value for this field."]</span>
     </div>

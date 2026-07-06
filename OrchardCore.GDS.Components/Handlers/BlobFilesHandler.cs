@@ -120,7 +120,7 @@ namespace OrchardCore.GDS.Components.Handlers
                 {
                     //containerClient.GetBlobsByHierarchy();
 
-                    await foreach (BlobItem blobItem in containerClient.GetBlobsAsync(BlobTraits.Metadata))
+                    await foreach (BlobItem blobItem in containerClient.GetBlobsAsync(new GetBlobsOptions() { Traits = BlobTraits.Metadata }))
                     {
                         if (blobItem.Metadata != null && blobItem.Metadata.TryGetValue("Reference", out string referenceValue))
                         {
@@ -242,7 +242,7 @@ namespace OrchardCore.GDS.Components.Handlers
 
                 if (preExistResult.Value)
                 {
-                    await foreach (BlobItem blobItem in containerClient.GetBlobsAsync(BlobTraits.Metadata))
+                    await foreach (BlobItem blobItem in containerClient.GetBlobsAsync(new GetBlobsOptions() { Traits = BlobTraits.Metadata }))
                     {
                         if (blobItem.Metadata != null && blobItem.Metadata.TryGetValue("PathWithName", out string nameValue))
                         {

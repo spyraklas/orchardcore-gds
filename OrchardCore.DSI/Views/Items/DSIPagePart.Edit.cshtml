@@ -1,17 +1,17 @@
 ﻿@using OrchardCore
 @model DSIPageViewModel
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="ValidatedRoles" class="@Orchard.GetLabelClasses()">@T["Validated Roles"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="ValidatedRoles" class="ocat-label">@T["Validated Roles"]</label>
+    <div class="ocat-end">
         <input asp-for="ValidatedRoles" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["Type the user rules you need for access this page."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="InvalidRedirectUrl" class="@Orchard.GetLabelClasses()">@T["InvalidRedirectUrl"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="InvalidRedirectUrl" class="ocat-label">@T["InvalidRedirectUrl"]</label>
+    <div class="ocat-end">
         <input asp-for="InvalidRedirectUrl" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The Invalid Redirect Url."]</span>
     </div>

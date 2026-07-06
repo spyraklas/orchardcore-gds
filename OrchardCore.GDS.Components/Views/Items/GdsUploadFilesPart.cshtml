@@ -8,12 +8,12 @@
 @inject IBlobFilesHandler blobFilesHandler
 
 @{
-    var formElementPart = Model.ContentItem.As<FormElementPart>();
-    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
-    var jsPart = Model.ContentItem.As<GdsJsPart>();
-    var cssPart = Model.ContentItem.As<GdsCssPart>();
-    var labelPart = Model.ContentItem.As<GdsLabelPart>();
-    var hintPart = Model.ContentItem.As<GdsHintPart>();
+    var formElementPart = Model.ContentItem.Get<FormElementPart>(nameof(FormElementPart));
+    var formInputElementPart = Model.ContentItem.Get<FormInputElementPart>(nameof(FormInputElementPart));
+    var jsPart = Model.ContentItem.Get<GdsJsPart>(nameof(GdsJsPart));
+    var cssPart = Model.ContentItem.Get<GdsCssPart>(nameof(GdsCssPart));
+    var labelPart = Model.ContentItem.Get<GdsLabelPart>(nameof(GdsLabelPart));
+    var hintPart = Model.ContentItem.Get<GdsHintPart>(nameof(GdsHintPart));
 
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;

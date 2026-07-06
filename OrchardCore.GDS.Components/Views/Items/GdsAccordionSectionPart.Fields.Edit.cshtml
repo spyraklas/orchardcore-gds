@@ -1,33 +1,33 @@
 @using OrchardCore
 @model GdsAccordionSectionPartViewModel
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Id" class="@Orchard.GetLabelClasses()">@T["Id"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Id" class="ocat-label">@T["Id"]</label>
+    <div class="ocat-end">
         <input asp-for="Id" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The id for this element."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Class" class="@Orchard.GetLabelClasses()">@T["Class"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Class" class="ocat-label">@T["Class"]</label>
+    <div class="ocat-end">
         <input asp-for="Class" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The class for this element."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Title" class="@Orchard.GetLabelClasses()">@T["Title"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Title" class="ocat-label">@T["Title"]</label>
+    <div class="ocat-end">
         <input asp-for="Title" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The title for this element."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="TitleStyle" class="@Orchard.GetLabelClasses()">@T["Title Style"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="TitleStyle" class="ocat-label">@T["Title Style"]</label>
+    <div class="ocat-end">
         <select asp-for="TitleStyle" class="form-select content-preview-select field-type-select-menu">
             <option value="label">@T["Label"]</option>
             <option value="h1">@T["Header 1"]</option>
@@ -41,25 +41,25 @@
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="TitleClass" class="@Orchard.GetLabelClasses()">@T["Title Class Attribute"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="TitleClass" class="ocat-label">@T["Title Class Attribute"]</label>
+    <div class="ocat-end">
         <input asp-for="TitleClass" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The class attribute for the title field."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Summary" class="@Orchard.GetLabelClasses()">@T["Summary Text"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Summary" class="ocat-label">@T["Summary Text"]</label>
+    <div class="ocat-end">
         <textarea asp-for="Summary" rows="5" class="form-control content-preview-text"></textarea>
         <span class="hint">@T["The text or html for the summary element."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="SummaryClass" class="@Orchard.GetLabelClasses()">@T["Summary Class Attribute"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="SummaryClass" class="ocat-label">@T["Summary Class Attribute"]</label>
+    <div class="ocat-end">
         <input asp-for="SummaryClass" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The class attribute for the summary of this element."]</span>
     </div>

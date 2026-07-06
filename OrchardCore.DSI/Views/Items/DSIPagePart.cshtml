@@ -9,8 +9,11 @@
 @inject ShellSettings _shellSettings
 
 @{
-    var dsiPagePart = Model.ContentItem.As<DSIPagePart>();
-    var autoroutePart = Model.ContentItem.As<AutoroutePart>();
+    DSIPagePart dsiPagePart = null;
+    AutoroutePart autoroutePart = null;
+    Model.ContentItem.TryGet<DSIPagePart>(out dsiPagePart);
+    Model.ContentItem.TryGet<AutoroutePart>(out autoroutePart);
+
     var redirectUrl = $"/{_shellSettings.RequestUrlPrefix}/{autoroutePart.Path}/";
     var redirectLoginUrl = $"/{_shellSettings.RequestUrlPrefix}/dsi/login/?redirectUrl={redirectUrl}";
 
