@@ -2,7 +2,6 @@
 @using OrchardCore.ContentManagement.Display;
 @using OrchardCore.Flows.Models;
 @using OrchardCore.GDS.Components.Helpers;
-@using OrchardCore.Mvc.Utilities
 
 @model GdsCheckboxGroupPartViewModel
 @inject IContentItemDisplayManager ContentItemDisplayManager
@@ -10,12 +9,12 @@
 @inject ISessionHelper sessionHelper
 
 @{
-    var formElementPart = Model.ContentItem.As<FormElementPart>();
-    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
-    var bagPart = Model.ContentItem.As<BagPart>();
-    var cssPart = Model.ContentItem.As<GdsCssPart>();
-    var labelPart = Model.ContentItem.As<GdsLabelPart>();
-    var hintPart = Model.ContentItem.As<GdsHintPart>();
+    var formElementPart = Model.ContentItem.Get<FormElementPart>(nameof(FormElementPart));
+    var formInputElementPart = Model.ContentItem.Get<FormInputElementPart>(nameof(FormInputElementPart));
+    var bagPart = Model.ContentItem.Get<BagPart>(nameof(BagPart));
+    var cssPart = Model.ContentItem.Get<GdsCssPart>(nameof(GdsCssPart));
+    var labelPart = Model.ContentItem.Get<GdsLabelPart>(nameof(GdsLabelPart));
+    var hintPart = Model.ContentItem.Get<GdsHintPart>(nameof(GdsHintPart));
 
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;
@@ -69,11 +68,11 @@
             {
                 if (item.ContentType == "GdsCheckbox")
                 {
-                    var part = item.ContentItem.As<GdsCheckboxPart>();
-                    var checkboxFormElementPart = item.ContentItem.As<FormElementPart>();
-                    var checkboxCssPart = item.ContentItem.As<GdsCssPart>();
-                    var checkboxJsPart = item.ContentItem.As<GdsJsPart>();
-                    var checkboxHintPart = item.ContentItem.As<GdsHintPart>();
+                    var part = item.ContentItem.Get<GdsCheckboxPart>(nameof(GdsCheckboxPart));
+                    var checkboxFormElementPart = item.ContentItem.Get<FormElementPart>(nameof(FormElementPart));
+                    var checkboxCssPart = item.ContentItem.Get<GdsCssPart>(nameof(GdsCssPart));
+                    var checkboxJsPart = item.ContentItem.Get<GdsJsPart>(nameof(GdsJsPart));
+                    var checkboxHintPart = item.ContentItem.Get<GdsHintPart>(nameof(GdsHintPart));
                     var checkboxElementId = checkboxFormElementPart.Id;
                     var withCheckboxHint = checkboxHintPart.Hint?.Length > 0;
                     var checkboxChecked = string.Empty;
@@ -95,7 +94,7 @@
                         }
                         @if (part.ConditionalFlow)
                         {
-                            var flowPart = item.ContentItem.As<FlowPart>();
+                            var flowPart = item.ContentItem.Get<FlowPart>(nameof(FlowPart));
                             var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(flowPart.ContentItem, Model.BuildPartDisplayContext.Updater, "Detail", Model.BuildPartDisplayContext.GroupId);
 
                             <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-@checkboxElementId">
@@ -106,8 +105,8 @@
                 }
                 else if (item.ContentType == "GdsCheckboxDivider")
                 {
-                    var part = item.ContentItem.As<GdsCheckboxDividerPart>();
-                    var cssPartDivider = item.ContentItem.As<GdsCssPart>();
+                    var part = item.ContentItem.Get<GdsCheckboxDividerPart>(nameof(GdsCheckboxDividerPart));
+                    var cssPartDivider = item.ContentItem.Get<GdsCssPart>(nameof(GdsCssPart));
 
                     <div class="govuk-checkboxes__divider @cssPartDivider.CssClass" @(cssPartDivider.CssStyle?.Length > 0 ? @$"style=""{cssPartDivider.CssStyle}""" : "")>@Html.Raw(@part.Value)</div>
                 }

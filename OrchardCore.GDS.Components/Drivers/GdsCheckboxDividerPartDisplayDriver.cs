@@ -20,16 +20,16 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsCheckboxDividerPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsCheckboxDividerPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsCheckboxDividerPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Value = viewModel.Value?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

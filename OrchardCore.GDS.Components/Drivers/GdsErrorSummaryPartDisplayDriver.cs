@@ -28,16 +28,16 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsErrorSummaryPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsErrorSummaryPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsErrorSummaryPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Title = viewModel.Title?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
 
         private Task BuildViewModel(GdsErrorSummaryPartViewModel model, GdsErrorSummaryPart part, BuildPartDisplayContext context)

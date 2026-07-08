@@ -26,11 +26,11 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsAccordionSectionPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsAccordionSectionPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsAccordionSectionPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Id = viewModel.Id?.Trim();
                 part.Class = viewModel.Class?.Trim();
@@ -41,7 +41,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.SummaryClass = viewModel.SummaryClass?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

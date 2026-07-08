@@ -1,25 +1,25 @@
 @using OrchardCore
 @model GdsLabelPartViewModel
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Label" class="@Orchard.GetLabelClasses()">@T["Label Text"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Label" class="ocat-label">@T["Label Text"]</label>
+    <div class="ocat-end">
         <input asp-for="Label" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The text for the label field."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="LabelClass" class="@Orchard.GetLabelClasses()">@T["Label Class Attribute"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="LabelClass" class="ocat-label">@T["Label Class Attribute"]</label>
+    <div class="ocat-end">
         <input asp-for="LabelClass" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The class attribute for the label field."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="LabelStyle" class="@Orchard.GetLabelClasses()">@T["Label Style"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="LabelStyle" class="ocat-label">@T["Label Style"]</label>
+    <div class="ocat-end">
         <select asp-for="LabelStyle" class="form-select content-preview-select field-type-select-menu">
             <option value="label" selected>@T["Label"]</option>
             <option value="h1">@T["Header 1"]</option>
@@ -33,9 +33,9 @@
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="LabelSize" class="@Orchard.GetLabelClasses()">@T["Label Size"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="LabelSize" class="ocat-label">@T["Label Size"]</label>
+    <div class="ocat-end">
         <select asp-for="LabelSize" class="form-select content-preview-select field-type-select-menu">
             <option value="" selected>@T["None"]</option>
             <option value="govuk-label--s">@T["Small"]</option>

@@ -36,11 +36,11 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsButtonPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsButtonPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsButtonPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Type = viewModel.Type?.Trim();
                 part.Style = viewModel.Style?.Trim();
@@ -53,7 +53,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.PreventDoubleClick = viewModel.PreventDoubleClick;
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
 
         private Task BuildViewModel(GdsButtonPartViewModel model, GdsButtonPart part, BuildPartDisplayContext context)

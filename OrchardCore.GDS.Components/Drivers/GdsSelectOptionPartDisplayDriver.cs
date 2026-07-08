@@ -22,18 +22,18 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsSelectOptionPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsSelectOptionPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsSelectOptionPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Value = viewModel.Value?.Trim();
                 part.Label = viewModel.Label?.Trim();
                 part.Selected = viewModel.Selected;
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

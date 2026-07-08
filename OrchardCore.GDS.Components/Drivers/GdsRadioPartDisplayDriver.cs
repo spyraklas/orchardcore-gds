@@ -24,11 +24,11 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsRadioPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsRadioPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsRadioPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Value = viewModel.Value?.Trim();
                 part.LabelClass = viewModel.LabelClass?.Trim();
@@ -37,7 +37,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.ConditionalFlow = viewModel.ConditionalFlow;
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

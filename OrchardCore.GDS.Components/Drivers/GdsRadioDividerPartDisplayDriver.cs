@@ -20,16 +20,16 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsRadioDividerPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsRadioDividerPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsRadioDividerPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Value = viewModel.Value?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

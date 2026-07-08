@@ -33,11 +33,11 @@ namespace OrchardCore.GDS.Components.Drivers
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsTextareaPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsTextareaPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsTextareaPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Value = viewModel.Value?.Trim();
                 part.SpellCheck = viewModel.SpellCheck;
@@ -47,7 +47,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.SessionKey = viewModel.SessionKey?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
 
         private Task BuildViewModel(GdsTextareaPartViewModel model, GdsTextareaPart part)

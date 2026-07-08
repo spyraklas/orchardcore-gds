@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Http
+@using OrchardCore.Autoroute.Models
+@using OrchardCore.DSI.Core
+@using OrchardCore.Environment.Shell
+
+@model DSIPageViewModel
+@inject IDSIUserHandler _DSIUserHandler
+@inject IHttpContextAccessor _httpContextAccessor
+@inject ShellSettings _shellSettings
+
+@{
+    DSIPagePart dsiPagePart = null;
+    AutoroutePart autoroutePart = null;
+    Model.ContentItem.TryGet<DSIPagePart>(out dsiPagePart);
+    Model.ContentItem.TryGet<AutoroutePart>(out autoroutePart);
+
+    var redirectUrl = $"/{_shellSettings.RequestUrlPrefix}/{autoroutePart.Path}/";
+    var redirectLoginUrl = $"/{_shellSettings.RequestUrlPrefix}/dsi/login/?redirectUrl={redirectUrl}";
+
+    //TODO Validate with user session
+    if (!await _DSIUserHandler.IsAuthorized())
+    {
+        _httpContextAccessor.HttpContext.Response.Redirect(redirectLoginUrl);
+    }
+    else if (!await _DSIUserHandler.IsAuthenticated(dsiPagePart?.ValidatedRoles))
+    {
+        _httpContextAccessor.HttpContext.Response.Redirect(dsiPagePart?.InvalidRedirectUrl);
+    }
+}
+
+
+

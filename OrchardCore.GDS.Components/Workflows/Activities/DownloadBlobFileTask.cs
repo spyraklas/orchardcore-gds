@@ -57,8 +57,12 @@ namespace OrchardCore.GDS.Components.Workflows.Activities
 
                 var response = _httpContextAccessor.HttpContext.Response;
 
-                response.Headers.Add("Content-Disposition", "attachment; filename=" + file.OriginalName);
-                response.Headers.Add("Content-Length", file.Content.Length.ToString(CultureInfo.InvariantCulture));
+                if(!response.Headers.ContainsKey("Content-Disposition"))
+                    response.Headers.Append("Content-Disposition", "attachment; filename=" + file.OriginalName);
+
+                if (!response.Headers.ContainsKey("Content-Length"))
+                    response.Headers.Append("Content-Length", file.Content.Length.ToString(CultureInfo.InvariantCulture));
+
                 response.ContentType = file.ContentType;
                 response.StatusCode = 200;
                 await response.Body.WriteAsync(file.Content);

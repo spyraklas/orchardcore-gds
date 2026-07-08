@@ -28,7 +28,7 @@
     "sass": "1.63.6"
   },
   "dependencies": {
-    "govuk-frontend": "5.11.1",
-    "jquery": "3.7.1"
+    "govuk-frontend": "6.3.0",
+    "jquery": "4.0.0"
   }
 }

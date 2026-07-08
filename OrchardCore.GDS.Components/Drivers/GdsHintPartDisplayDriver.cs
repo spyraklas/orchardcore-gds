@@ -23,17 +23,17 @@ namespace OrchardCore.GDS.Components.Drivers
 
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(GdsHintPart part, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(GdsHintPart part, UpdatePartEditorContext context)
         {
             var viewModel = new GdsHintPartViewModel();
 
-            if (await updater.TryUpdateModelAsync(viewModel, Prefix))
+            if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.Hint = viewModel.Hint?.Trim();
                 part.HintClass = viewModel.HintClass?.Trim();
             }
 
-            return Edit(part);
+            return await EditAsync(part, context);
         }
     }
 }

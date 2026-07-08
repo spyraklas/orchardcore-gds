@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ Culture.Name }}" class="govuk-template govuk-template--rebranded app-html-class">
+<html lang="{{ Culture.Name }}" class="govuk-template">
 <head>
     <meta charset="utf-8">
     <title>GOV.UK - {% page_title Site.SiteName, position: "before", separator: " - " %}</title>
@@ -16,7 +16,7 @@
     {% link rel:"apple-touch-icon", href:"~/OrchardCore.GDS.Theme/assets/rebrand/images/govuk-icon-180.png" %}
     {% link rel:"manifest", href:"~/OrchardCore.GDS.Theme/assets/rebrand/manifest.json" %}
 
-    {% style name:"gds-theme-frontend", version:"5", at:"Head" %}
+    {% style name:"gds-theme-frontend", version:"6.3.0", at:"Head" %}
     {% style name:"gds-theme", version:"1.0.0", at:"Head" %}
 
     {% resources type: "HeadLink" %}
@@ -32,7 +32,7 @@
 
     <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
-    <header class="govuk-header" data-module="govuk-header">
+    <header class="govuk-template__header">
     {% render_section "Header", required: false %}
     </header>
 
@@ -48,7 +48,7 @@
     </footer>
        
     {% script name:"gds-theme-jquery", at:"Foot" %}
-    {% script name:"gds-theme-frontend", at:"Foot" %}
+    {% script name:"gds-theme-frontend", type:"module", at:"Foot" %}
     {% script name:"gds-theme", at:"Foot" %}
     
     {% resources type: "FootScript" %}
@@ -56,7 +56,7 @@
     <script type="module">
         import {
             initAll
-        } from '/OrchardCore.GDS.Theme/govuk-frontend.min.js'
+        } from '/OrchardCore.GDS.Theme/js/govuk-frontend.min.js'
         initAll()
     </script>
 
