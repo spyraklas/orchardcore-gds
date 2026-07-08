@@ -13,28 +13,28 @@ namespace OrchardCore.GDS.Theme
 
             _manifest
                 .DefineScript("gds-theme")
-                .SetUrl("~/OrchardCore.GDS.Theme/site.min.js", "~/OrchardCore.GDS.Theme/site.js")
+                .SetUrl("~/OrchardCore.GDS.Theme/js/site.min.js", "~/OrchardCore.GDS.Theme/js/site.js")
                 .SetVersion("1.0.0");
 
             _manifest
                 .DefineStyle("gds-theme")
-                .SetUrl("~/OrchardCore.GDS.Theme/site.min.css", "~/OrchardCore.GDS.Theme/site.css")
+                .SetUrl("~/OrchardCore.GDS.Theme/css/site.min.css", "~/OrchardCore.GDS.Theme/css/site.css")
                 .SetVersion("1.0.0");
 
             _manifest
                 .DefineScript("gds-theme-frontend")
-                .SetUrl("~/OrchardCore.GDS.Theme/govuk-frontend.min.js", "~/OrchardCore.GDS.Theme/govuk-frontend.min.js")
-                .SetVersion("5.11.0");
+                .SetUrl("~/OrchardCore.GDS.Theme/js/govuk-frontend.min.js", "~/OrchardCore.GDS.Theme/js/govuk-frontend.min.js")
+                .SetVersion("6.3.0");
 
             _manifest
                 .DefineStyle("gds-theme-frontend")
-                .SetUrl("~/OrchardCore.GDS.Theme/all.min.css", "~/OrchardCore.GDS.Theme/all.css")
-                .SetVersion("5.11.0");
+                .SetUrl("~/OrchardCore.GDS.Theme/css/govuk-frontend.min.css", "~/OrchardCore.GDS.Theme/css/govuk-frontend.css")
+                .SetVersion("6.3.0");
 
             _manifest
                 .DefineScript("gds-theme-jquery")
-                .SetUrl("~/OrchardCore.GDS.Theme/jquery.min.js", "~/OrchardCore.GDS.Theme/jquery.js")
-                .SetVersion("3.7.1");
+                .SetUrl("~/OrchardCore.GDS.Theme/js/jquery.min.js", "~/OrchardCore.GDS.Theme/js/jquery.js")
+                .SetVersion("4.0.0");
         }
 
         public void Configure(ResourceManagementOptions options)

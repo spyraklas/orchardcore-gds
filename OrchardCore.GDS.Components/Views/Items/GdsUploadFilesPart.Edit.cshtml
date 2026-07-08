@@ -1,33 +1,33 @@
 @using OrchardCore
 @model GdsUploadFilesPartViewModel
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="UploadAction" class="@Orchard.GetLabelClasses()">@T["Upload Action"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="UploadAction" class="ocat-label">@T["Upload Action"]</label>
+    <div class="ocat-end">
         <input asp-for="UploadAction" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["Form action for uploading blob files"]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="ButtonValue" class="@Orchard.GetLabelClasses()">@T["Button Value"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="ButtonValue" class="ocat-label">@T["Button Value"]</label>
+    <div class="ocat-end">
         <input asp-for="ButtonValue" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["Form submit button value"]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="FileTypesAllowed" class="@Orchard.GetLabelClasses()">@T["File Types Allowed"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="FileTypesAllowed" class="ocat-label">@T["File Types Allowed"]</label>
+    <div class="ocat-end">
         <input asp-for="FileTypesAllowed" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["Comma seperate file extensions allowed for upload (example: .pdf,.jpg,.jpeg,.png,.gif)."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="FilesSessionKey" class="@Orchard.GetLabelClasses()">@T["Files Session Key"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="FilesSessionKey" class="ocat-label">@T["Files Session Key"]</label>
+    <div class="ocat-end">
         <input asp-for="FilesSessionKey" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["Files session key that contain the reference of the azure blob folder containing the uploaded files"]</span>
     </div>
@@ -41,9 +41,9 @@
     <span class="hint">@T["Files can be downloaded"]</span>
 </fieldset>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="DownloadAction" class="@Orchard.GetLabelClasses()">@T["Download Action"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="DownloadAction" class="ocat-label">@T["Download Action"]</label>
+    <div class="ocat-end">
         <input asp-for="DownloadAction" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["Form action for downloading blob files"]</span>
     </div>
@@ -57,9 +57,9 @@
     <span class="hint">@T["Files can be removed"]</span>
 </fieldset>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="RemoveAction" class="@Orchard.GetLabelClasses()">@T["Remove Action"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="RemoveAction" class="ocat-label">@T["Remove Action"]</label>
+    <div class="ocat-end">
         <input asp-for="RemoveAction" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["Form action for removing blob files"]</span>
     </div>

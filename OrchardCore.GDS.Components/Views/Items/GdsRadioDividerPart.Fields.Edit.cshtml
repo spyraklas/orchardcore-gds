@@ -1,9 +1,9 @@
 @using OrchardCore
 @model GdsRadioDividerPartViewModel
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Value" class="@Orchard.GetLabelClasses()">@T["Value"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Value" class="ocat-label">@T["Value"]</label>
+    <div class="ocat-end">
         <input asp-for="Value" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The value for this field."]</span>
     </div>

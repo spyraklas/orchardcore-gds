@@ -2,7 +2,6 @@
 @using OrchardCore.ContentManagement.Display;
 @using OrchardCore.Flows.Models;
 @using OrchardCore.GDS.Components.Helpers;
-@using OrchardCore.Mvc.Utilities
 
 @model GdsRadioGroupPartViewModel
 @inject IContentItemDisplayManager ContentItemDisplayManager
@@ -10,12 +9,12 @@
 @inject ISessionHelper sessionHelper
 
 @{
-    var formElementPart = Model.ContentItem.As<FormElementPart>();
-    var formInputElementPart = Model.ContentItem.As<FormInputElementPart>();
-    var bagPart = Model.ContentItem.As<BagPart>();
-    var cssPart = Model.ContentItem.As<GdsCssPart>();
-    var labelPart = Model.ContentItem.As<GdsLabelPart>();
-    var hintPart = Model.ContentItem.As<GdsHintPart>();
+    var formElementPart = Model.ContentItem.Get<FormElementPart>(nameof(FormElementPart));
+    var formInputElementPart = Model.ContentItem.Get<FormInputElementPart>(nameof(FormInputElementPart));
+    var bagPart = Model.ContentItem.Get<BagPart>(nameof(BagPart));
+    var cssPart = Model.ContentItem.Get<GdsCssPart>(nameof(GdsCssPart));
+    var labelPart = Model.ContentItem.Get<GdsLabelPart>(nameof(GdsLabelPart));
+    var hintPart = Model.ContentItem.Get<GdsHintPart>(nameof(GdsHintPart));
 
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;
@@ -71,11 +70,11 @@
             {
                 if (item.ContentType == "GdsRadio")
                 {
-                    var part = item.ContentItem.As<GdsRadioPart>();
-                    var radioFormElementPart = item.ContentItem.As<FormElementPart>();
-                    var radioCssPart = item.ContentItem.As<GdsCssPart>();
-                    var radioJsPart = item.ContentItem.As<GdsJsPart>();
-                    var radioHintPart = item.ContentItem.As<GdsHintPart>();
+                    var part = item.ContentItem.Get<GdsRadioPart>(nameof(GdsRadioPart));
+                    var radioFormElementPart = item.ContentItem.Get<FormElementPart>(nameof(FormElementPart));
+                    var radioCssPart = item.ContentItem.Get<GdsCssPart>(nameof(GdsCssPart));
+                    var radioJsPart = item.ContentItem.Get<GdsJsPart>(nameof(GdsJsPart));
+                    var radioHintPart = item.ContentItem.Get<GdsHintPart>(nameof(GdsHintPart));
                     var radioElementId = radioFormElementPart.Id;
                     var radioChecked = string.Empty;
                     if (!string.IsNullOrEmpty(sessionValue))
@@ -97,7 +96,7 @@
                     }                  
                     @if (part.ConditionalFlow)
                     {
-                        var flowPart = item.ContentItem.As<FlowPart>();
+                        var flowPart = item.ContentItem.Get<FlowPart>(nameof(FlowPart));
                         var widgetContent = await ContentItemDisplayManager.BuildDisplayAsync(flowPart.ContentItem, Model.BuildPartDisplayContext.Updater, "Detail", Model.BuildPartDisplayContext.GroupId);
 
                         <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-@radioElementId">
@@ -107,8 +106,8 @@
                 }
                 else if (item.ContentType == "GdsRadioDivider")
                 {
-                    var part = item.ContentItem.As<GdsRadioDividerPart>();
-                    var dividerCssPart = Model.ContentItem.As<GdsCssPart>();
+                    var part = item.ContentItem.Get<GdsRadioDividerPart>(nameof(GdsRadioDividerPart));
+                    var dividerCssPart = item.ContentItem.Get<GdsCssPart>(nameof(GdsCssPart));
 
                     <div class="govuk-radios__divider @dividerCssPart.CssClass" @(dividerCssPart.CssStyle?.Length > 0 ? @$"style=""{dividerCssPart.CssStyle}""" : "")>@Html.Raw(@part.Value)</div>
                 }

@@ -6,6 +6,7 @@ const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const csso = require('gulp-csso');
 const replace = require('gulp-replace');
+const del = require('del');
 
 // Clean the wwwroot folder
 function clean() {
@@ -20,46 +21,57 @@ function GdsAssets() {
 }
 
 function GdsScripts() {
-    return src('./node_modules/govuk-frontend/dist/govuk/*.js')
-        .pipe(dest('./wwwroot/'));
+    return src('./node_modules/govuk-frontend/dist/govuk/all.bundle.js')
+        .pipe(rename('govuk-frontend.js'))
+        .pipe(dest('./wwwroot/js/'))
+        .pipe(uglify())
+        .pipe(rename(function (path) {
+            return {
+                dirname: path.dirname,
+                basename: 'govuk-frontend',
+                extname: '.min.js'
+            }
+        }))
+        .pipe(dest('./wwwroot/js/'));
 }
 
 function GdsStyles() {
-    return src('./node_modules/govuk-frontend/dist/govuk/all.scss')
+    return src('./node_modules/govuk-frontend/dist/govuk/index.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
         .pipe(replace(/assets\//g, 'OrchardCore.GDS.Theme/assets/'))
-        .pipe(dest('./wwwroot/'))
+        .pipe(rename('govuk-frontend.css'))
+        .pipe(dest('./wwwroot/css/',))
         .pipe(csso({ restructure: false }))
         .pipe(rename(function (path) {
             return {
                 dirname: path.dirname,
-                basename: path.basename,
+                basename: 'govuk-frontend',
                 extname: '.min.css'
             }
         }))
-        .pipe(dest('./wwwroot/'));
+        .pipe(dest('./wwwroot/css/'));
 }
 
 // jQuery
 function jquery() {
     return src('./node_modules/jquery/dist/*.js')
-        .pipe(dest('./wwwroot/'));
+        .pipe(dest('./wwwroot/js/'));
 }
 
 //site pack files
 function assets() {
-    return src('./pack/src/assets/**')
+    return src('./pack/assets/**')
         .pipe(dest('./wwwroot/assets/'));
 }
 
 function styles() {
-    return src('./pack/src/*.scss')
+    return src('./pack/src/scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
-        .pipe(dest('./wwwroot/'))
+        .pipe(dest('./wwwroot/css/'))
         .pipe(csso({ restructure: false }))
         .pipe(rename(function (path) {
             return {
@@ -68,15 +80,15 @@ function styles() {
                 extname: '.min.css'
             }
         }))
-        .pipe(dest('./wwwroot/'));
+        .pipe(dest('./wwwroot/css/'));
 };
 
 function scripts() {
-    return src('./pack/src/*.js')
-        .pipe(dest('./wwwroot/'))
+    return src('./pack/src/js/*.js')
+        .pipe(dest('./wwwroot/js/'))
         .pipe(uglify())
         .pipe(rename({ extname: '.min.js' }))
-        .pipe(dest('./wwwroot/'));
+        .pipe(dest('./wwwroot/js/'));
 }
 
 exports.clean = clean;

@@ -2,27 +2,27 @@
 @using OrchardCore.GDS.Components.Workflows.ViewModels
 @model ValidateWordCountTaskViewModel
 
-<div class="@Orchard.GetWrapperClasses()" asp-validation-class-for="FieldName">
-    <label asp-for="FieldName" class="@Orchard.GetLabelClasses()">@T["Field Name"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper" asp-validation-class-for="FieldName">
+    <label asp-for="FieldName" class="ocat-label">@T["Field Name"]</label>
+    <div class="ocat-end">
         <input type="text" asp-for="FieldName" class="form-control" />
         <span asp-validation-for="FieldName"></span>
         <span class="hint">@T["The name of the form field to validate."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()" asp-validation-class-for="ErrorMessage">
-    <label asp-for="ErrorMessage" class="@Orchard.GetLabelClasses()">@T["Error Message"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper" asp-validation-class-for="ErrorMessage">
+    <label asp-for="ErrorMessage" class="ocat-label">@T["Error Message"]</label>
+    <div class="ocat-end">
         <input type="text" asp-for="ErrorMessage" class="form-control" />
         <span asp-validation-for="ErrorMessage"></span>
         <span class="hint">@T["The validation error message to display."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()" asp-validation-class-for="Count">
-    <label asp-for="Count" class="@Orchard.GetLabelClasses()">@T["Count"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper" asp-validation-class-for="Count">
+    <label asp-for="Count" class="ocat-label">@T["Count"]</label>
+    <div class="ocat-end">
         <input type="number" asp-for="Count" class="form-control" />
         <span asp-validation-for="Count"></span>
         <span class="hint">@T["The validation count limit."]</span>

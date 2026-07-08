@@ -1,7 +1,7 @@
 ﻿@model GdsErrorSummaryPartViewModel
 
 @{
-    var formElementPart = Model.ContentItem.As<FormElementPart>();
+    var formElementPart = Model.ContentItem.Get<FormElementPart>(nameof(FormElementPart));
     var elementId = formElementPart.Id;
 }
 

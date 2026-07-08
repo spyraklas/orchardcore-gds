@@ -1,9 +1,9 @@
 @using OrchardCore
 @model GdsRadioGroupPartViewModel
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="LegendSize" class="@Orchard.GetLabelClasses()">@T["Legend Size"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="LegendSize" class="ocat-label">@T["Legend Size"]</label>
+    <div class="ocat-end">
         <select asp-for="LegendSize" class="form-select content-preview-select field-type-select-menu">
             <option value="" selected>@T["None"]</option>
             <option value="govuk-fieldset__legend--s">@T["Small"]</option>
@@ -15,9 +15,9 @@
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="LegendStyle" class="@Orchard.GetLabelClasses()">@T["Legend Size"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="LegendStyle" class="ocat-label">@T["Legend Size"]</label>
+    <div class="ocat-end">
         <select asp-for="LegendStyle" class="form-select content-preview-select field-type-select-menu">
             <option value="label">@T["Label"]</option>
             <option value="h1">@T["Header 1"]</option>
@@ -47,9 +47,9 @@
     <span class="hint">@T["Display small size radio buttons."]</span>
 </fieldset>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="SessionKey" class="@Orchard.GetLabelClasses()">@T["Session Key"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="SessionKey" class="ocat-label">@T["Session Key"]</label>
+    <div class="ocat-end">
         <input asp-for="SessionKey" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The session key value where application store a value for this field."]</span>
     </div>

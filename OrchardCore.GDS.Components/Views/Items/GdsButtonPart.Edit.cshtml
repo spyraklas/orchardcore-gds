@@ -1,25 +1,25 @@
 @using OrchardCore
 @model GdsButtonPartViewModel
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Value" class="@Orchard.GetLabelClasses()">@T["Value"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Value" class="ocat-label">@T["Value"]</label>
+    <div class="ocat-end">
         <input asp-for="Value" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The value for this button."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Class" class="@Orchard.GetLabelClasses()">@T["Class"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Class" class="ocat-label">@T["Class"]</label>
+    <div class="ocat-end">
         <input asp-for="Class" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The class attribute for the button."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Style" class="@Orchard.GetLabelClasses()">@T["Style"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Style" class="ocat-label">@T["Style"]</label>
+    <div class="ocat-end">
         <select asp-for="Style" class="form-select content-preview-select field-type-select-menu">
             <option value="">@T["Default"]</option>
             <option value="govuk-button--start">@T["Start"]</option>
@@ -31,9 +31,9 @@
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Type" class="@Orchard.GetLabelClasses()">@T["Type"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Type" class="ocat-label">@T["Type"]</label>
+    <div class="ocat-end">
         <select asp-for="Type" class="form-select content-preview-select field-type-select-menu">
             <option value="button">@T["Button"]</option>
             <option value="submit">@T["Submit"]</option>
@@ -43,25 +43,25 @@
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Href" class="@Orchard.GetLabelClasses()">@T["Href"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Href" class="ocat-label">@T["Href"]</label>
+    <div class="ocat-end">
         <input asp-for="Href" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The href attribute for the start button."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="Target" class="@Orchard.GetLabelClasses()">@T["Target"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="Target" class="ocat-label">@T["Target"]</label>
+    <div class="ocat-end">
         <input asp-for="Target" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The target attribute for the start button."]</span>
     </div>
 </div>
 
-<div class="@Orchard.GetWrapperClasses()">
-    <label asp-for="OnClick" class="@Orchard.GetLabelClasses()">@T["OnClick"]</label>
-    <div class="@Orchard.GetEndClasses()">
+<div class="ocat-wrapper">
+    <label asp-for="OnClick" class="ocat-label">@T["OnClick"]</label>
+    <div class="ocat-end">
         <input asp-for="OnClick" type="text" class="form-control content-preview-text" />
         <span class="hint">@T["The onclick attribute for the button."]</span>
     </div>

@@ -1,0 +1,10 @@
+﻿@model ValidateGdsUserTaskViewModel
+
+<div class="ocat-wrapper" asp-validation-class-for="UserRoles">
+    <label asp-for="UserRoles" class="ocat-label">@T["User Roles"]</label>
+    <div class="ocat-end">
+        <input type="text" asp-for="UserRoles" class="form-control" />
+        <span asp-validation-for="UserRoles"></span>
+        <span class="hint">@T["The user roles to validate seperated with commas. If empty validates only the user if is login successfully."]</span>
+    </div>
+</div>
