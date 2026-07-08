@@ -13,9 +13,11 @@ using OrchardCore.DSI.Core;
 using OrchardCore.DSI.Core.Extensions;
 using OrchardCore.DSI.Drivers;
 using OrchardCore.DSI.Handlers;
+using OrchardCore.DSI.Liquid;
 using OrchardCore.DSI.Models;
 using OrchardCore.Environment.Shell;
 using OrchardCore.Environment.Shell.Configuration;
+using OrchardCore.Liquid;
 using OrchardCore.Modules;
 
 namespace OrchardCore.DSI
@@ -45,6 +47,8 @@ namespace OrchardCore.DSI
             ConfigureDSI(services);
 
             ConfigureOrchardParts(services);
+
+            ConfigureLiquid(services);
 
             ConfigureDataMigration(services);
         }
@@ -136,6 +140,11 @@ namespace OrchardCore.DSI
                 _logger.LogInformation("DfE Sign-In configuration section is missing.");
                 throw new System.Exception("DfE Sign-In configuration section is missing.");
             }
+        }
+        
+        private void ConfigureLiquid(IServiceCollection services)
+        {
+            services.AddLiquidFilter<DSIAuthenticatedFilter>("dsi_authedicated");
         }
 
         #endregion
