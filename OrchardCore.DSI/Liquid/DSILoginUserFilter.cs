@@ -1,29 +1,30 @@
 ﻿using Fluid;
 using Fluid.Values;
 using OrchardCore.DSI.Core;
+using OrchardCore.DSI.Core.Models;
 using OrchardCore.Liquid;
 
 namespace OrchardCore.DSI.Liquid
 {
-    public class DSIAuthenticatedFilter : ILiquidFilter
+    public class DSILoginUserFilter : ILiquidFilter
     {
         private readonly IDSIUserHandler _dsiUserHandler;
 
-        public DSIAuthenticatedFilter(IDSIUserHandler dsiUserHandler)
+        public DSILoginUserFilter(IDSIUserHandler dsiUserHandler)
         {
             _dsiUserHandler = dsiUserHandler;
         }
 
         public async ValueTask<FluidValue> ProcessAsync(FluidValue input, FilterArguments arguments, LiquidTemplateContext context)
         {
-            var userroles = input.ToStringValue();
-
             if(!await _dsiUserHandler.IsAuthorized())
             {
-                return BooleanValue.Create(false);
+                return ObjectValue.Create(null, new TemplateOptions());
             }
 
-            return BooleanValue.Create(await _dsiUserHandler.IsAuthenticated(userroles));
+            User user = await _dsiUserHandler.GetLoginUser();
+
+            return ObjectValue.Create(user, context.Options);
         }
     }
 }

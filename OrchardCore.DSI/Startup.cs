@@ -11,6 +11,7 @@ using OrchardCore.Data.Migration;
 using OrchardCore.DSI.Config;
 using OrchardCore.DSI.Core;
 using OrchardCore.DSI.Core.Extensions;
+using OrchardCore.DSI.Core.Models;
 using OrchardCore.DSI.Drivers;
 using OrchardCore.DSI.Handlers;
 using OrchardCore.DSI.Liquid;
@@ -145,6 +146,15 @@ namespace OrchardCore.DSI
         private void ConfigureLiquid(IServiceCollection services)
         {
             services.AddLiquidFilter<DSIAuthenticatedFilter>("dsi_authedicated");
+            services.AddLiquidFilter<DSILoginUserFilter>("dsi_login_user");
+
+            services.Configure<TemplateOptions>(o => 
+            {
+                o.MemberAccessStrategy.Register<User>();
+                o.MemberAccessStrategy.Register<Role>();
+                o.MemberAccessStrategy.Register<Organization>(); 
+                o.MemberAccessStrategy.Register<Category>();
+            });
         }
 
         #endregion
