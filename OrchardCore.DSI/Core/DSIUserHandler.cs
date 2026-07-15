@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using OrchardCore.DSI.Core.Constants;
 using OrchardCore.DSI.Core.Models;
-using System.Security.Claims;
 
 namespace OrchardCore.DSI.Core
 {

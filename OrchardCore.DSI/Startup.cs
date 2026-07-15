@@ -147,6 +147,7 @@ namespace OrchardCore.DSI
         {
             services.AddLiquidFilter<DSIAuthenticatedFilter>("dsi_authedicated");
             services.AddLiquidFilter<DSILoginUserFilter>("dsi_login_user");
+            services.AddLiquidFilter<DSIChallengeFilter>("dsi_challenge");
 
             services.Configure<TemplateOptions>(o => 
             {
