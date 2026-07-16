@@ -1,9 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Http;
 @using OrchardCore.GDS.Components.Helpers;
+@using OrchardCore.Liquid
+@using System.Text.Encodings.Web
 
 @model GdsTextareaPartViewModel
 @inject IHttpContextAccessor httpContextAccessor
 @inject ISessionHelper sessionHelper
+@inject ILiquidTemplateManager liquidTemplateManager
 
 @{
     var formElementPart = Model.ContentItem.Get<FormElementPart>(nameof(FormElementPart));
@@ -18,6 +21,7 @@
 
     var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
     var fieldValue = !string.IsNullOrEmpty(sessionValue) ? sessionValue : Model.Value;
+    var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
     var groupClass = "govuk-form-group";
     var textareaClass = "govuk-textarea"; 
     var withHint = hintPart.Hint?.Length > 0;
@@ -69,6 +73,6 @@
             </p>            
         }
     }
-    <textarea class="@textareaClass" @(withStyle ? @$"style=""{cssPart.CssStyle}""" : "") id="@fieldId" name="@fieldName" rows="@Model.Rows" @areadescribedby spellcheck="@Model.SpellCheck.ToString().ToLower()">@fieldValue</textarea>
+    <textarea class="@textareaClass" @(withStyle ? @$"style=""{cssPart.CssStyle}""" : "") id="@fieldId" name="@fieldName" rows="@Model.Rows" @areadescribedby spellcheck="@Model.SpellCheck.ToString().ToLower()">@resultLiquidValue</textarea>
 </div>
 @Html.Raw(Html.EndWithCharacterCount(withCount, Model.CountWords, Model.Count, fieldId))
