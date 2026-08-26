@@ -8,7 +8,7 @@
     @foreach (var item in bagPart.ContentItems)
     {
         var part = item.ContentItem.Get<GdsAccordionSectionPart>(nameof(GdsAccordionSectionPart));
-        var withSummary = part.Summary.Length > 0;
+        var withSummary = !string.IsNullOrEmpty(part.Summary);
 
         <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">

@@ -20,9 +20,9 @@
       "name": "Feature",
       "enable": [
         "Application.Default",
-        "OrchardCore.GDS.Forms",
         "OrchardCore.Settings",
         "OrchardCore.Admin",
+        "OrchardCore.Liquid.Core",
         "OrchardCore.Liquid",
         "OrchardCore.Contents",
         "OrchardCore.ContentTypes",
@@ -34,9 +34,11 @@
         "OrchardCore.Templates",
         "OrchardCore.Alias",
         "OrchardCore.ArchiveLater",
+        "OrchardCore.HomeRoute",
         "OrchardCore.Autoroute",
         "OrchardCore.Scripting",
         "OrchardCore.Recipes",
+        "OrchardCore.Indexing",
         "OrchardCore.ContentFields",
         "OrchardCore.Roles.Core",
         "OrchardCore.Users",
@@ -46,13 +48,13 @@
         "OrchardCore.Deployment.Remote",
         "OrchardCore.Diagnostics",
         "OrchardCore.DynamicCache",
-        "OrchardCore.Resources",
+        "OrchardCore.Queries.Core",
         "OrchardCore.Widgets",
+        "OrchardCore.Resources",
         "OrchardCore.Features",
         "OrchardCore.Flows",
         "OrchardCore.Forms",
         "OrchardCore.GDS.Components",
-        "OrchardCore.HomeRoute",
         "OrchardCore.Https",
         "OrchardCore.Indexing",
         "OrchardCore.Rules",
@@ -77,6 +79,7 @@
         "OrchardCore.Workflows.Http",
         "OrchardCore.Workflows.Session",
         "OrchardCore.Workflows.Timers",
+        "OrchardCore.GDS.NeetTheme",
         "OrchardCore.GDS.Theme",
         "TheAdmin"
       ]
@@ -90,38 +93,23 @@
       "name": "Roles",
       "Roles": [
         {
-          "Name": "Administrator",
-          "Description": "Administrator",
-          "Permissions": []
-        },
-        {
           "Name": "Moderator",
-          "Description": "Moderator",
+          "Description": "Grants users the ability to moderate content.",
           "Permissions": []
         },
         {
           "Name": "Editor",
-          "Description": "Editor",
+          "Description": "Grants users the ability to edit existing content.",
           "Permissions": []
         },
         {
           "Name": "Author",
-          "Description": "Author",
+          "Description": "Grants users the ability to create content.",
           "Permissions": []
         },
         {
           "Name": "Contributor",
-          "Description": "Contributor",
-          "Permissions": []
-        },
-        {
-          "Name": "Authenticated",
-          "Description": "Authenticated",
-          "Permissions": []
-        },
-        {
-          "Name": "Anonymous",
-          "Description": "Anonymous",
+          "Description": "Grants users the ability to contribute content.",
           "Permissions": []
         }
       ]
@@ -270,13 +258,22 @@
         },
         {
           "Name": "HtmlEditor",
-          "DisplayName": "Html Editor",
+          "DisplayName": "HtmlEditor",
           "Settings": {
             "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
               "Stereotype": "Widget",
+              "Securable": false,
               "Description": "Provides a html with editor content item"
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -293,12 +290,12 @@
               "Name": "HtmlBodyPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "1",
+                  "Position": "0",
                   "Editor": "Trumbowyg"
                 },
                 "HtmlBodyPartSettings": {},
                 "HtmlBodyPartTrumbowygEditorSettings": {
-                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\"viewHTML\"],\r\n        [\"undo\", \"redo\"],\r\n        [\"formatting\"],\r\n        [\"strong\", \"em\", \"del\"],\r\n        [\"foreColor\", \"backColor\"],\r\n        [\"superscript\", \"subscript\"],\r\n        [\"link\"],\r\n        [\"insertShortcode\"],\r\n        [\"image\"],\r\n        [\"align\"],\r\n        [\"unorderedList\", \"orderedList\"],\r\n        [\"horizontalRule\"],\r\n        [\"removeformat\"],\r\n        [\"fullscreen\"]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"],\r\n            ico: \"justifyLeft\"\r\n        },\r\n        image: {\r\n            dropdown: [\"insertImage\", \"base64\", \"noembed\"],\r\n            ico: \"insertImage\"\r\n        }\r\n    }\r\n}",
+                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\u0022viewHTML\u0022],\r\n        [\u0022undo\u0022, \u0022redo\u0022],\r\n        [\u0022formatting\u0022],\r\n        [\u0022strong\u0022, \u0022em\u0022, \u0022del\u0022],\r\n        [\u0022foreColor\u0022, \u0022backColor\u0022],\r\n        [\u0022superscript\u0022, \u0022subscript\u0022],\r\n        [\u0022link\u0022],\r\n        [\u0022insertShortcode\u0022],\r\n        [\u0022image\u0022],\r\n        [\u0022align\u0022],\r\n        [\u0022unorderedList\u0022, \u0022orderedList\u0022],\r\n        [\u0022horizontalRule\u0022],\r\n        [\u0022removeformat\u0022],\r\n        [\u0022fullscreen\u0022]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\u0022justifyLeft\u0022, \u0022justifyCenter\u0022, \u0022justifyRight\u0022, \u0022justifyFull\u0022],\r\n            ico: \u0022justifyLeft\u0022\r\n        },\r\n        image: {\r\n            dropdown: [\u0022insertImage\u0022, \u0022base64\u0022, \u0022noembed\u0022],\r\n            ico: \u0022insertImage\u0022\r\n        }\r\n    }\r\n}",
                   "InsertMediaWithUrl": true
                 },
                 "LuceneContentIndexSettings": {}
@@ -308,13 +305,22 @@
         },
         {
           "Name": "HtmlRaw",
-          "DisplayName": "Html Raw",
+          "DisplayName": "HtmlRaw",
           "Settings": {
             "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
               "Stereotype": "Widget",
+              "Securable": false,
               "Description": "Provides a html raw content item"
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -331,7 +337,7 @@
               "Name": "HtmlBodyPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "1"
+                  "Position": "0"
                 }
               }
             }
@@ -339,7 +345,7 @@
         },
         {
           "Name": "SharedContent",
-          "DisplayName": "Shared Content",
+          "DisplayName": "SharedContent",
           "Settings": {
             "ContentTypeSettings": {
               "Creatable": true,
@@ -348,7 +354,11 @@
               "Versionable": true,
               "Securable": true
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -374,6 +384,25 @@
               "Name": "TitlePart",
               "Settings": {
                 "ContentTypePartSettings": {
+                  "DisplayName": "Title",
+                  "Position": "0"
+                },
+                "TitlePartSettings": {
+                  "Options": 0,
+                  "RenderTitle": false
+                },
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
+              }
+            },
+            {
+              "PartName": "AliasPart",
+              "Name": "AliasPart",
+              "Settings": {
+                "ContentTypePartSettings": {
                   "Position": "1"
                 }
               }
@@ -382,12 +411,21 @@
         },
         {
           "Name": "SharedContentPicker",
-          "DisplayName": "Shared Content Picker",
+          "DisplayName": "SharedContentPicker",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -403,12 +441,21 @@
         },
         {
           "Name": "LiquidEditor",
-          "DisplayName": "Liquid Editor",
+          "DisplayName": "LiquidEditor",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -425,7 +472,43 @@
               "Name": "LiquidPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "1"
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "DivContainer",
+          "DisplayName": "DivContainer",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false,
+              "ThumbnailPath": "~/OrchardCore.ContentTypes/placeholder.png"
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "DivContainer",
+              "Name": "DivContainer",
+              "Settings": {}
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
                 }
               }
             }
@@ -489,7 +572,8 @@
               "Name": "Items",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Items"
+                  "DisplayName": "Items",
+                  "Position": "0"
                 },
                 "ContentPickerFieldSettings": {
                   "Required": true,
@@ -500,6 +584,69 @@
                   "DisplayedStereotypes": []
                 },
                 "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "DivContainer",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Id",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Id",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Type": 0,
+                  "Required": true
+                },
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "CssClass",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "CSS class",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Type": 0,
+                  "Required": false
+                },
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "CssStyle",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "CSS style",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Type": 0,
+                  "Required": false
+                },
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
               }
             }
           ]
@@ -590,43 +737,18 @@
     {
       "name": "Placements",
       "Placements": {
-        "FlowPart_Edit": [
+        "TextField_Edit": [
           {
-            "place": "Parts:2",
-            "displayType": null,
-            "differentiator": null,
-            "alternates": null,
-            "wrappers": null,
-            "shape": null,
-            "contentType": [
-              "Page"
-            ]
-          }
-        ],
-        "TitlePart_Edit": [
+            "place": "Parts:0#JS;5",
+            "differentiator": "Page-JavaScript"
+          },
           {
-            "place": "Parts:0",
-            "displayType": null,
-            "differentiator": null,
-            "alternates": null,
-            "wrappers": null,
-            "shape": null,
-            "contentType": [
-              "Page"
-            ]
-          }
-        ],
-        "AutoroutePart_Edit": [
+            "place": "Parts:0#Style;4",
+            "differentiator": "DivContainer-CssClass"
+          },
           {
-            "place": "Parts:1",
-            "displayType": null,
-            "differentiator": null,
-            "alternates": null,
-            "wrappers": null,
-            "shape": null,
-            "contentType": [
-              "Page"
-            ]
+            "place": "Parts:1#Style;4",
+            "differentiator": "DivContainer-CssStyle"
           }
         ]
       }
@@ -680,6 +802,10 @@
         },
         "Widget__LiquidEditor": {
           "Content": "[file:text('Templates/Widget-LiquidEditor.liquid')]",
+          "Description": null
+        },
+        "Widget__DivContainer": {
+          "Content": "[file:text('Templates/Widget-DivContainer.liquid')]",
           "Description": null
         }
       }

@@ -5,12 +5,21 @@
       "ContentTypes": [
         {
           "Name": "GdsRowFull",
-          "DisplayName": "Gds Row Full",
+          "DisplayName": "GdsRowFull",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -28,7 +37,7 @@
               "Settings": {
                 "ContentTypePartSettings": {
                   "DisplayName": "Column",
-                  "Position": "1"
+                  "Position": "0"
                 }
               }
             }
@@ -36,12 +45,21 @@
         },
         {
           "Name": "GdsRowColumns",
-          "DisplayName": "Gds Row Columns",
+          "DisplayName": "GdsRowColumns",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -77,12 +95,21 @@
         },
         {
           "Name": "GdsHeading",
-          "DisplayName": "Gds Heading",
+          "DisplayName": "GdsHeading",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -98,13 +125,22 @@
         },
         {
           "Name": "GdsInsetText",
-          "DisplayName": "Gds Inset Text",
+          "DisplayName": "GdsInsetText",
           "Settings": {
             "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
               "Stereotype": "Widget",
+              "Securable": false,
               "Description": "Provides a GovUk Inset Text item"
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -117,31 +153,42 @@
               }
             },
             {
-              "PartName": "HtmlBodyPart",
-              "Name": "HtmlBodyPart",
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "1",
-                  "Editor": "Trumbowyg"
-                },
-                "HtmlBodyPartSettings": {},
-                "HtmlBodyPartTrumbowygEditorSettings": {
-                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\"viewHTML\"],\r\n        [\"undo\", \"redo\"],\r\n        [\"formatting\"],\r\n        [\"strong\", \"em\", \"del\"],\r\n        [\"foreColor\", \"backColor\"],\r\n        [\"superscript\", \"subscript\"],\r\n        [\"link\"],\r\n        [\"insertShortcode\"],\r\n        [\"image\"],\r\n        [\"align\"],\r\n        [\"unorderedList\", \"orderedList\"],\r\n        [\"horizontalRule\"],\r\n        [\"removeformat\"],\r\n        [\"fullscreen\"]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"],\r\n            ico: \"justifyLeft\"\r\n        },\r\n        image: {\r\n            dropdown: [\"insertImage\", \"base64\", \"noembed\"],\r\n            ico: \"insertImage\"\r\n        }\r\n    }\r\n}",
-                  "InsertMediaWithUrl": true
-                },
-                "LuceneContentIndexSettings": {}
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "GdsCssPart",
+              "Name": "GdsCssPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
               }
             }
           ]
         },
         {
           "Name": "GdsBody",
-          "DisplayName": "Gds Body",
+          "DisplayName": "GdsBody",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -184,13 +231,22 @@
         },
         {
           "Name": "GdsDetails",
-          "DisplayName": "Gds Details",
+          "DisplayName": "GdsDetails",
           "Settings": {
             "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
               "Stereotype": "Widget",
+              "Securable": false,
               "Description": "Provides a GovUk details item"
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -207,12 +263,12 @@
               "Name": "HtmlBodyPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "2",
+                  "Position": "1",
                   "Editor": "Trumbowyg"
                 },
                 "HtmlBodyPartSettings": {},
                 "HtmlBodyPartTrumbowygEditorSettings": {
-                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\"viewHTML\"],\r\n        [\"undo\", \"redo\"],\r\n        [\"formatting\"],\r\n        [\"strong\", \"em\", \"del\"],\r\n        [\"foreColor\", \"backColor\"],\r\n        [\"superscript\", \"subscript\"],\r\n        [\"link\"],\r\n        [\"insertShortcode\"],\r\n        [\"image\"],\r\n        [\"align\"],\r\n        [\"unorderedList\", \"orderedList\"],\r\n        [\"horizontalRule\"],\r\n        [\"removeformat\"],\r\n        [\"fullscreen\"]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"],\r\n            ico: \"justifyLeft\"\r\n        },\r\n        image: {\r\n            dropdown: [\"insertImage\", \"base64\", \"noembed\"],\r\n            ico: \"insertImage\"\r\n        }\r\n    }\r\n}",
+                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\u0022viewHTML\u0022],\r\n        [\u0022undo\u0022, \u0022redo\u0022],\r\n        [\u0022formatting\u0022],\r\n        [\u0022strong\u0022, \u0022em\u0022, \u0022del\u0022],\r\n        [\u0022foreColor\u0022, \u0022backColor\u0022],\r\n        [\u0022superscript\u0022, \u0022subscript\u0022],\r\n        [\u0022link\u0022],\r\n        [\u0022insertShortcode\u0022],\r\n        [\u0022image\u0022],\r\n        [\u0022align\u0022],\r\n        [\u0022unorderedList\u0022, \u0022orderedList\u0022],\r\n        [\u0022horizontalRule\u0022],\r\n        [\u0022removeformat\u0022],\r\n        [\u0022fullscreen\u0022]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\u0022justifyLeft\u0022, \u0022justifyCenter\u0022, \u0022justifyRight\u0022, \u0022justifyFull\u0022],\r\n            ico: \u0022justifyLeft\u0022\r\n        },\r\n        image: {\r\n            dropdown: [\u0022insertImage\u0022, \u0022base64\u0022, \u0022noembed\u0022],\r\n            ico: \u0022insertImage\u0022\r\n        }\r\n    }\r\n}",
                   "InsertMediaWithUrl": true
                 },
                 "LuceneContentIndexSettings": {}
@@ -235,12 +291,21 @@
         },
         {
           "Name": "GdsPanel",
-          "DisplayName": "Gds Panel",
+          "DisplayName": "GdsPanel",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -270,7 +335,7 @@
               "Name": "LiquidPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "2"
+                  "Position": "1"
                 }
               }
             }
@@ -278,155 +343,40 @@
         },
         {
           "Name": "GdsFieldset",
-          "Settings": {},
-          "ContentPartFieldDefinitionRecords": [
-            {
-              "FieldName": "TextField",
-              "Name": "Label",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Label",
-                  "Position": "0"
-                }
-              }
+          "DisplayName": "GdsFieldset",
+          "Settings": {
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
             },
-            {
-              "FieldName": "TextField",
-              "Name": "LabelClass",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Label Class",
-                  "Position": "3"
-                },
-                "TextFieldSettings": {},
-                "TextFieldPredefinedListEditorSettings": {
-                  "Options": [
-                    {
-                      "name": "Label",
-                      "value": "label"
-                    },
-                    {
-                      "name": "Header 1",
-                      "value": "h1"
-                    },
-                    {
-                      "name": "Header 2",
-                      "value": "h2"
-                    },
-                    {
-                      "name": "Header 3",
-                      "value": "h3"
-                    },
-                    {
-                      "name": "Header 4",
-                      "value": "h4"
-                    },
-                    {
-                      "name": "Header 5",
-                      "value": "h5"
-                    },
-                    {
-                      "name": "Header 6",
-                      "value": "h6"
-                    }
-                  ],
-                  "Editor": 1,
-                  "DefaultValue": "label"
-                },
-                "LuceneContentIndexSettings": {}
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "LabelStyle",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Label Style",
-                  "Editor": "PredefinedList",
-                  "Position": "1"
-                },
-                "TextFieldSettings": {},
-                "TextFieldPredefinedListEditorSettings": {
-                  "Options": [
-                    {
-                      "name": "label",
-                      "value": "label"
-                    },
-                    {
-                      "name": "Header 1",
-                      "value": "h1"
-                    },
-                    {
-                      "name": "Header 2",
-                      "value": "h2"
-                    },
-                    {
-                      "name": "Header 3",
-                      "value": "h3"
-                    },
-                    {
-                      "name": "Header 4",
-                      "value": "h4"
-                    },
-                    {
-                      "name": "Header 5",
-                      "value": "h5"
-                    },
-                    {
-                      "name": "Header 6",
-                      "value": "h6"
-                    }
-                  ],
-                  "Editor": 1
-                },
-                "LuceneContentIndexSettings": {}
-              }
-            },
-            {
-              "FieldName": "TextField",
-              "Name": "LabelSize",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Label Size",
-                  "Editor": "PredefinedList",
-                  "Position": "2"
-                },
-                "TextFieldSettings": {},
-                "TextFieldPredefinedListEditorSettings": {
-                  "Options": [
-                    {
-                      "name": "Extra Large",
-                      "value": "govuk-fieldset__legend--xl"
-                    },
-                    {
-                      "name": "Large",
-                      "value": "govuk-fieldset__legend--l"
-                    },
-                    {
-                      "name": "Medium",
-                      "value": "govuk-fieldset__legend--m"
-                    },
-                    {
-                      "name": "Small",
-                      "value": "govuk-fieldset__legend--s"
-                    }
-                  ],
-                  "Editor": 1,
-                  "DefaultValue": "govuk-fieldset__legend--l"
-                },
-                "LuceneContentIndexSettings": {}
-              }
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false
             }
-          ]
+          },
+          "ContentTypePartDefinitionRecords": []
         },
         {
           "Name": "GdsNotificationBanner",
-          "DisplayName": "Gds Notification Banner",
+          "DisplayName": "GdsNotificationBanner",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -464,12 +414,21 @@
         },
         {
           "Name": "GdsWarningText",
-          "DisplayName": "Gds Warning Text",
+          "DisplayName": "GdsWarningText",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -485,12 +444,21 @@
         },
         {
           "Name": "GdsTag",
-          "DisplayName": "Gds Tag",
+          "DisplayName": "GdsTag",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -506,12 +474,21 @@
         },
         {
           "Name": "GdsPhaseBanner",
-          "DisplayName": "Gds Phase Banner",
+          "DisplayName": "GdsPhaseBanner",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -527,12 +504,21 @@
         },
         {
           "Name": "GdsTabs",
-          "DisplayName": "Gds Tabs",
+          "DisplayName": "GdsTabs",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -575,10 +561,20 @@
         },
         {
           "Name": "GdsTab",
-          "DisplayName": "Gds Tab",
+          "DisplayName": "GdsTab",
           "Settings": {
-            "ContentTypeSettings": {},
-            "FullTextAspectSettings": {}
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -603,12 +599,21 @@
         },
         {
           "Name": "GdsBackLink",
-          "DisplayName": "Gds Back Link",
+          "DisplayName": "GdsBackLink",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -624,12 +629,21 @@
         },
         {
           "Name": "GdsSectionBreak",
-          "DisplayName": "Gds Section Break",
+          "DisplayName": "GdsSectionBreak",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -645,12 +659,21 @@
         },
         {
           "Name": "GdsSummaryList",
-          "DisplayName": "Gds Summary List",
+          "DisplayName": "GdsSummaryList",
           "Settings": {
             "ContentTypeSettings": {
-              "Stereotype": "Widget"
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
             },
-            "FullTextAspectSettings": {}
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -695,7 +718,8 @@
               "Settings": {
                 "ContentTypePartSettings": {
                   "DisplayName": "Actions List",
-                  "Description": "Adds a list of actions in the header of your Summary List"
+                  "Description": "Adds a list of actions in the header of your Summary List",
+                  "Position": "3"
                 },
                 "BagPartSettings": {
                   "ContainedContentTypes": [
@@ -710,10 +734,20 @@
         },
         {
           "Name": "GdsSummaryListRow",
-          "DisplayName": "Gds Summary List Row",
+          "DisplayName": "GdsSummaryListRow",
           "Settings": {
-            "ContentTypeSettings": {},
-            "FullTextAspectSettings": {}
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -746,16 +780,30 @@
             {
               "PartName": "GdsCssPart",
               "Name": "GdsCssPart",
-              "Settings": {}
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
             }
           ]
         },
         {
           "Name": "GdsSummaryListColumn",
-          "DisplayName": "Gds Summary List Column",
+          "DisplayName": "GdsSummaryListColumn",
           "Settings": {
-            "ContentTypeSettings": {},
-            "FullTextAspectSettings": {}
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -779,16 +827,30 @@
             {
               "PartName": "GdsCssPart",
               "Name": "GdsCssPart",
-              "Settings": {}
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
             }
           ]
         },
         {
           "Name": "GdsSummaryListActions",
-          "DisplayName": "Gds Summary List Actions",
+          "DisplayName": "GdsSummaryListActions",
           "Settings": {
-            "ContentTypeSettings": {},
-            "FullTextAspectSettings": {}
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Securable": false
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
           },
           "ContentTypePartDefinitionRecords": [
             {
@@ -805,7 +867,7 @@
               "Name": "GdsCssPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "1"
+                  "Position": "0"
                 }
               }
             },
@@ -814,7 +876,52 @@
               "Name": "FlowPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "2"
+                  "Position": "1"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsLink",
+          "DisplayName": "GdsLink",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false,
+              "ThumbnailPath": "~/OrchardCore.ContentTypes/placeholder.png"
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GdsLink",
+              "Name": "GdsLink",
+              "Settings": {}
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "GdsCssPart",
+              "Name": "GdsCssPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
                 }
               }
             }
@@ -853,7 +960,8 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Size",
-                  "Editor": "PredefinedList"
+                  "Editor": "PredefinedList",
+                  "Position": "1"
                 },
                 "TextFieldSettings": {},
                 "TextFieldPredefinedListEditorSettings": {
@@ -882,10 +990,14 @@
               "Name": "TextAlignment",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Text Alignment",
-                  "Editor": "PredefinedList"
+                  "DisplayName": "Text alignment",
+                  "Editor": "PredefinedList",
+                  "Position": "2"
                 },
-                "TextFieldSettings": {},
+                "TextFieldSettings": {
+                  "Type": 0,
+                  "Required": false
+                },
                 "TextFieldPredefinedListEditorSettings": {
                   "Options": [
                     {
@@ -907,7 +1019,11 @@
                   ],
                   "Editor": 1
                 },
-                "LuceneContentIndexSettings": {}
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
               }
             },
             {
@@ -915,10 +1031,14 @@
               "Name": "FontSize",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Font Size",
-                  "Editor": "PredefinedList"
+                  "DisplayName": "Font size",
+                  "Editor": "PredefinedList",
+                  "Position": "3"
                 },
-                "TextFieldSettings": {},
+                "TextFieldSettings": {
+                  "Type": 0,
+                  "Required": false
+                },
                 "TextFieldPredefinedListEditorSettings": {
                   "Options": [
                     {
@@ -960,7 +1080,11 @@
                   ],
                   "Editor": 1
                 },
-                "LuceneContentIndexSettings": {}
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
               }
             },
             {
@@ -968,10 +1092,14 @@
               "Name": "FontWeight",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Font Weight",
-                  "Editor": "PredefinedList"
+                  "DisplayName": "Font weight",
+                  "Editor": "PredefinedList",
+                  "Position": "4"
                 },
-                "TextFieldSettings": {},
+                "TextFieldSettings": {
+                  "Type": 0,
+                  "Required": false
+                },
                 "TextFieldPredefinedListEditorSettings": {
                   "Options": [
                     {
@@ -986,7 +1114,11 @@
                   "Editor": 1,
                   "DefaultValue": "govuk-!-font-weight-regular"
                 },
-                "LuceneContentIndexSettings": {}
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
               }
             }
           ]
@@ -1241,7 +1373,8 @@
               "Name": "Description",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Description"
+                  "DisplayName": "Description",
+                  "Position": "0"
                 }
               }
             },
@@ -1250,7 +1383,8 @@
               "Name": "Icon",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Icon"
+                  "DisplayName": "Icon",
+                  "Position": "1"
                 },
                 "TextFieldSettings": {},
                 "LuceneContentIndexSettings": {}
@@ -1261,7 +1395,8 @@
               "Name": "Class",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Class"
+                  "DisplayName": "Class",
+                  "Position": "2"
                 }
               }
             },
@@ -1270,7 +1405,8 @@
               "Name": "AssistiveText",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Assistive Text"
+                  "DisplayName": "Assistive Text",
+                  "Position": "3"
                 }
               }
             }
@@ -1450,7 +1586,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Value",
-                  "Position": "0"
+                  "Position": "1"
                 }
               }
             },
@@ -1460,7 +1596,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Class",
-                  "Position": "1"
+                  "Position": "2"
                 }
               }
             },
@@ -1470,7 +1606,7 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Href",
-                  "Position": "2"
+                  "Position": "0"
                 }
               }
             }
@@ -1486,7 +1622,8 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Size",
-                  "Editor": "PredefinedList"
+                  "Editor": "PredefinedList",
+                  "Position": "0"
                 },
                 "TextFieldSettings": {},
                 "TextFieldPredefinedListEditorSettings": {
@@ -1525,7 +1662,8 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Title Style",
-                  "Editor": "PredefinedList"
+                  "Editor": "PredefinedList",
+                  "Position": "0"
                 },
                 "TextFieldSettings": {},
                 "TextFieldPredefinedListEditorSettings": {
@@ -1621,7 +1759,8 @@
               "Name": "NoActions",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "No Actions"
+                  "DisplayName": "No Actions",
+                  "Position": "0"
                 }
               }
             }
@@ -1646,7 +1785,8 @@
               "Name": "Title",
               "Settings": {
                 "ContentPartFieldSettings": {
-                  "DisplayName": "Title"
+                  "DisplayName": "Title",
+                  "Position": "1"
                 }
               }
             },
@@ -1656,7 +1796,8 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Title Style",
-                  "Editor": "PredefinedList"
+                  "Editor": "PredefinedList",
+                  "Position": "2"
                 },
                 "TextFieldSettings": {},
                 "TextFieldPredefinedListEditorSettings": {
@@ -1708,7 +1849,8 @@
               "Settings": {
                 "ContentPartFieldSettings": {
                   "DisplayName": "Type",
-                  "Editor": "PredefinedList"
+                  "Editor": "PredefinedList",
+                  "Position": "0"
                 },
                 "TextFieldSettings": {},
                 "TextFieldPredefinedListEditorSettings": {
@@ -1730,6 +1872,89 @@
                   "DefaultValue": "-list__key"
                 },
                 "LuceneContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsInsetText",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Id",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Id",
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GdsLink",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Link",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Link",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Type": 0,
+                  "Required": true
+                },
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Target",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Target",
+                  "Editor": "PredefinedList",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Type": 0,
+                  "Required": false
+                },
+                "TextFieldPredefinedListEditorSettings": {
+                  "Options": [
+                    {
+                      "name": "Self",
+                      "value": "_self"
+                    },
+                    {
+                      "name": "Blank",
+                      "value": "_blank"
+                    },
+                    {
+                      "name": "Parent",
+                      "value": "_parent"
+                    },
+                    {
+                      "name": "Top",
+                      "value": "_top"
+                    }
+                  ],
+                  "Editor": 1,
+                  "DefaultValue": "_self"
+                },
+                "LuceneContentIndexSettings": {
+                  "Included": false,
+                  "Stored": false,
+                  "Keyword": false
+                }
               }
             }
           ]
@@ -1801,10 +2026,6 @@
         },
         "Widget__GdsHeading": {
           "Content": "[file:text('Templates/Widget-GdsHeading.liquid')]",
-          "Description": null
-        },
-        "Widget__GovUkInsetText": {
-          "Content": "[file:text('Templates/Widget-GovUkInsetText.liquid')]",
           "Description": null
         },
         "Widget__GdsDetails": {
@@ -1890,7 +2111,38 @@
         "Widget__GdsBody": {
           "Content": "[file:text('Templates/Widget-GdsBody.liquid')]",
           "Description": null
+        },
+        "Widget__GdsInsetText": {
+          "Content": "[file:text('Templates/Widget-GdsInsetText.liquid')]",
+          "Description": null
+        },
+        "Widget__GdsLink": {
+          "Content": "[file:text('Templates/Widget-GdsLink.liquid')]",
+          "Description": null
         }
+      }
+    },
+    {
+      "name": "Placements",
+      "Placements": {
+        "TextField_Edit": [
+          {
+            "place": "Parts:0#Style;4",
+            "differentiator": "GdsBody-Size"
+          },
+          {
+            "place": "Parts:1#Style;4",
+            "differentiator": "GdsBody-TextAlignment"
+          },
+          {
+            "place": "Parts:2#Style;4",
+            "differentiator": "GdsBody-FontSize"
+          },
+          {
+            "place": "Parts:3#Style;4",
+            "differentiator": "GdsBody-FontWeight"
+          }
+        ]
       }
     }
   ]

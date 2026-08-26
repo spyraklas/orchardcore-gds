@@ -1,0 +1,9 @@
+{% assign id = Model.ContentItem.Content.GdsInsetText.Id.Text %}
+{% assign css_class = Model.ContentItem.Content.GdsCssPart.CssClass %}
+{% assign css_style = Model.ContentItem.Content.GdsCssPart.CssStyle %}
+
+<div id="{{ id }}" class="govuk-inset-text {{ css_class }}" style="{{ css_style }}">
+    {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+        {{ item | shape_build_display: "Detail" | shape_render }}
+    {% endfor %}    
+</div>

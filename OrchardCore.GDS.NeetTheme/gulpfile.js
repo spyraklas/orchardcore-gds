@@ -6,6 +6,7 @@ const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const csso = require('gulp-csso');
 const replace = require('gulp-replace');
+const cleanCSS = require('gulp-clean-css');
 const del = require('del');
 
 // Clean the wwwroot folder
@@ -16,7 +17,7 @@ function clean() {
 
 // GDS files
 function GdsAssets() {
-    return src('./node_modules/govuk-frontend/dist/govuk/assets/**', { encoding: false } )
+    return src('./node_modules/govuk-frontend/dist/govuk/assets/**', { encoding: false })
         .pipe(dest('./wwwroot/assets/'));
 }
 
@@ -40,7 +41,7 @@ function GdsStyles() {
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
-        .pipe(replace(/assets\//g, 'OrchardCore.GDS.Theme/assets/'))
+        .pipe(replace(/assets\//g, 'OrchardCore.GDS.NeetTheme/assets/'))
         .pipe(rename('govuk-frontend.css'))
         .pipe(dest('./wwwroot/css/',))
         .pipe(csso({ restructure: false }))
@@ -71,6 +72,7 @@ function styles() {
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
+        .pipe(replace(/public\//g, 'OrchardCore.GDS.NeetTheme/assets/'))
         .pipe(dest('./wwwroot/css/'))
         .pipe(csso({ restructure: false }))
         .pipe(rename(function (path) {
@@ -81,7 +83,21 @@ function styles() {
             }
         }))
         .pipe(dest('./wwwroot/css/'));
-};
+}
+
+function neetstyles() {
+    return src('./pack/css/*.css', { encoding: false })
+        .pipe(dest('./wwwroot/css/'))
+        .pipe(cleanCSS())
+        .pipe(rename(function (path) {
+            return {
+                dirname: path.dirname,
+                basename: path.basename,
+                extname: '.min.css'
+            }
+        }))
+        .pipe(dest('./wwwroot/css/'));
+}
 
 function scripts() {
     return src('./pack/src/js/*.js', { encoding: false })
@@ -92,4 +108,4 @@ function scripts() {
 }
 
 exports.clean = clean;
-exports.build = series(clean, GdsAssets, GdsStyles, GdsScripts, jquery, assets, parallel(styles, scripts));
+exports.build = series(clean, GdsAssets, GdsStyles, GdsScripts, jquery, assets, parallel(styles, neetstyles, scripts));

@@ -1,0 +1,8 @@
+{% assign part = Model.ContentItem.Content.GdsLink %}
+{% assign cssPart = Model.ContentItem.Content.GdsCssPart %}
+
+<a href="{{ part.Link.Text }}" target="{{ part.Link.Target }}" class="govuk-link {{ cssPart.CssClass }}" style="{{ cssPart.CssStyle }}">
+    {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+        {{ item | shape_build_display: "Detail" | shape_render }}
+    {% endfor %}    
+</a>

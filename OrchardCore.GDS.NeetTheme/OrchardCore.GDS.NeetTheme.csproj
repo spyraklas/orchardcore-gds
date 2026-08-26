@@ -21,5 +21,9 @@
 	<ItemGroup>
 		<EmbeddedResource Update="wwwroot\**\*" />
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <Folder Include="pack\css\" />
+	</ItemGroup>
 
 </Project>

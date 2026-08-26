@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="{{ Culture.Name }}" class="govuk-template">
+<head>
+    <meta charset="utf-8">
+    <title>GOV.UK - {% page_title Site.SiteName, position: "before", separator: " - " %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="blue">
+    
+    {% resources type: "Meta" %}
+
+    <!-- INSERT REQUIRED RESOURCES HERE -->
+    {% link rel:"icon", sizes:"48x48", href:"~/OrchardCore.GDS.NeetTheme/assets/images/favicon.ico" %}
+    {% link rel:"icon", sizes:"any", href:"~/OrchardCore.GDS.NeetTheme/assets/images/favicon.svg", type:"image/svg+xml" %}
+    {% link rel:"mask-icon", href:"~/OrchardCore.GDS.NeetTheme/assets/images/govuk-icon-mask.svg", color:"blue" %}
+    {% link rel:"apple-touch-icon", href:"~/OrchardCore.GDS.NeetTheme/assets/images/govuk-icon-180.png" %}
+    {% link rel:"manifest", href:"~/OrchardCore.GDS.NeetTheme/assets/manifest.json" %}
+
+    {% style name:"gds-theme-frontend", type:"text/css", version:"6.3.0", at:"Head" %}
+    {% style name:"gds-theme", type:"text/css", version:"1.0.0", at:"Head" %}
+    {% style name:"gds-theme-neet", type:"text/css", version:"1.0.0", at:"Head" %}
+
+    {% resources type: "HeadLink" %}
+    {% resources type: "Stylesheet" %}
+    {% resources type: "HeadScript" %}   
+</head>
+<body dir="{{ Culture.Dir }}" class="govuk-template__body ">
+    <script>
+      document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
+    </script>
+
+    {% render_section "CookieBanner", required: false %}
+
+    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+    <header class="govuk-template__header">
+    {% render_section "Header", required: false %}
+    </header>
+
+    <div class="govuk-width-container app-width-container">
+    {% render_section "PhaseBanner", required: false %}
+    {% render_section "Breadcrumbs", required: false %}
+    {% render_section "BackLink", required: false %}
+    {% render_body %}
+    </div>
+
+    <footer class="govuk-footer">
+    {% render_section "Footer", required: false %}
+    </footer>
+       
+    {% script name:"gds-theme-jquery", at:"Foot" %}
+    {% script name:"gds-theme-frontend", type:"module", at:"Foot" %}
+    {% script name:"gds-theme", at:"Foot" %}
+    
+    {% resources type: "FootScript" %}
+
+    <script>
+        // Initialize scripts when the DOM is ready
+        document.addEventListener("DOMContentLoaded", function () {
+            initializeScripts();
+        });
+        
+        function initializeScripts() {
+            // Initialize GOVUK Frontend components
+            if (typeof GOVUKFrontend !== 'undefined') {
+                GOVUKFrontend.initAll();
+            }
+        }        
+    </script>
+
+    {% render_section "FooterScript", required: false %}
+</body>
+</html>

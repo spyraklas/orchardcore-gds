@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Data.Tables" Version="12.11.0" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.62.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="3.0.1" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="3.0.1" />
+    <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="3.0.1" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="3.0.1" />
+    <PackageReference Include="StackExchange.Redis" Version="3.0.17" />
+    <PackageReference Include="Dapper" Version="2.1.79" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
+  </ItemGroup>
+
+</Project>

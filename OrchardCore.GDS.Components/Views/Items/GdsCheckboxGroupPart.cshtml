@@ -20,6 +20,9 @@
     var fieldName = formInputElementPart.Name;
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
     var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
+    string[] sessionValueArray = (sessionValue.Length > 0 ? sessionValue.Split(',') : new string[0])
+        .Where(x => !string.IsNullOrWhiteSpace(x))
+        .ToArray();
 
     var groupClass = "govuk-form-group";
     var withHint = hintPart.Hint?.Length > 0;
@@ -77,7 +80,7 @@
                     var withCheckboxHint = checkboxHintPart.Hint?.Length > 0;
                     var checkboxChecked = string.Empty;
                     if (!string.IsNullOrEmpty(sessionValue))
-                        checkboxChecked = part.Value == sessionValue ? "checked" : "";
+                        checkboxChecked = sessionValueArray.Contains(part.Value.Trim().TrimEnd(','), StringComparer.OrdinalIgnoreCase) ? "checked" : "";
                     else
                         checkboxChecked = part.Selected ? "checked" : "";
 
