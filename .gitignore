@@ -36,3 +36,11 @@
 /OrchardCore.GDS.Theme/bin/Debug/net10.0
 /OrchardCore.DSI/bin/Debug/net10.0
 /OrchardCore.GDS.Components/bin/Debug/net10.0
+/OrchardCore.GDS.NeetTheme/bin/Debug
+/OrchardCore.GDS.NeetTheme/node_modules
+/OrchardCore.GDS.NeetTheme/obj
+/OrchardCore.GDS.NeetTheme/wwwroot/assets
+/OrchardCore.GDS.NeetTheme/wwwroot/css
+/OrchardCore.GDS.NeetTheme/wwwroot/js
+/OrchardCore.GDS.NeetTheme/package-lock.json
+/OrchardCore.Shared.Session/obj
