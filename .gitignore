@@ -44,3 +44,11 @@
 /OrchardCore.GDS.NeetTheme/wwwroot/js
 /OrchardCore.GDS.NeetTheme/package-lock.json
 /OrchardCore.Shared.Session/obj
+/OrchardCore.GDS.FeedbackTheme/bin/Debug
+/OrchardCore.GDS.FeedbackTheme/node_modules
+/OrchardCore.GDS.FeedbackTheme/obj
+/OrchardCore.GDS.FeedbackTheme/wwwroot/assets
+/OrchardCore.GDS.FeedbackTheme/wwwroot/css
+/OrchardCore.GDS.FeedbackTheme/wwwroot/js
+/OrchardCore.GDS.FeedbackTheme/package-lock.json
+/OrchardCore.Shared.Session/bin/Debug/net10.0
