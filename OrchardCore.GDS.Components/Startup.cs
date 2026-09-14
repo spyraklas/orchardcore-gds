@@ -65,7 +65,6 @@ namespace OrchardCore.GDS.Components
             int tenantSessionTimeout = _shellConfiguration.GetValue<int>("SessionSettings:Timeout");
             int globalSessionTimeout = Convert.ToInt32(_configuration["SessionSettings:Timeout"]);
 
-            services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
                 if (tenantSessionTimeout > 0)

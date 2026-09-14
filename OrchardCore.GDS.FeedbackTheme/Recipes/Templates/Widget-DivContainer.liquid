@@ -1,0 +1,7 @@
+{% assign id = Model.ContentItem.Content.DivContainer.Id.Text %}
+{% assign cssClass = Model.ContentItem.Content.DivContainer.CssClass.Text %}
+<div id="{{ id }}" class="{{ cssClass }}">
+  {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+    {{ item | shape_build_display: "Detail" | shape_render }}
+  {% endfor %}
+</div>

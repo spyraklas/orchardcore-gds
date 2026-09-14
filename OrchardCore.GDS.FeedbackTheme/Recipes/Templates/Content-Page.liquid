@@ -1,0 +1,11 @@
+<main class="govuk-main-wrapper" id="main-content" role="main">
+  {% for item in Model.ContentItem.Content.FlowPart.Widgets %}
+    {{ item | shape_build_display: "Detail" | shape_render }}
+  {% endfor %}
+</main>
+
+{% zone "FooterScript" %}
+<script type="text/javascript">
+	{{ Model.ContentItem.Content.Page.JavaScript.Text | raw }}
+</script>
+{% endzone %}

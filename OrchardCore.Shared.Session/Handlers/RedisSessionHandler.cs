@@ -1,20 +1,18 @@
-using System;
 using System.Text.Json;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 using OrchardCore.Shared.Session.Config;
-using StackExchange.Redis;
 
 namespace OrchardCore.Shared.Session.Handlers
 {
     internal class RedisSessionHandler : ISessionHandler
     {
-        private readonly IDatabase _db;
+        private readonly IDistributedCache _cache;
         private readonly SessionSettings _settings;
 
-        public RedisSessionHandler(IConnectionMultiplexer multiplexer, IOptions<SessionSettings> settings)
+        public RedisSessionHandler(IDistributedCache cache, IOptions<SessionSettings> settings)
         {
-            _db = multiplexer.GetDatabase();
+            _cache = cache;
             _settings = settings.Value;
         }
 
@@ -24,24 +22,30 @@ namespace OrchardCore.Shared.Session.Handlers
         {
             var json = JsonSerializer.Serialize(value);
             var expiry = TimeSpan.FromMinutes(Math.Max(1, _settings.ExpirationMinutes));
-            return _db.StringSetAsync(Key(sessionId, key), json, expiry);
+
+            var options = new DistributedCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = expiry
+            };
+
+            return _cache.SetStringAsync(Key(sessionId, key), json, options);
         }
 
         public async Task<T?> GetAsync<T>(string sessionId, string key)
         {
-            var value = await _db.StringGetAsync(Key(sessionId, key));
+            var value = await _cache.GetStringAsync(Key(sessionId, key));
 
-            if (value.IsNullOrEmpty)
+            if (string.IsNullOrEmpty(value))
             {
                 return default;
             }
 
-            return JsonSerializer.Deserialize<T?>(value.ToString());
+            return JsonSerializer.Deserialize<T?>(value);
         }
 
         public Task RemoveAsync(string sessionId, string key)
         {
-            return _db.KeyDeleteAsync(Key(sessionId, key));
+            return _cache.RemoveAsync(Key(sessionId, key));
         }
 
         public Task ClearAsync(string sessionId)
