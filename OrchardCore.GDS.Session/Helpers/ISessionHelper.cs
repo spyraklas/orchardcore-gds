@@ -1,0 +1,11 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace OrchardCore.GDS.Session.Helpers
+{
+    public interface ISessionHelper
+    {
+        string GetSessionValue(string sessionKey);
+    }
+}

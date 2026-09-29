@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.GDS.Session.Cookie.Helpers
 @using OrchardCore.Flows.Models;
 @using OrchardCore.GDS.Components.Helpers;
+@using OrchardCore.GDS.Session.Helpers;
+
 @model GdsSelectPartViewModel
 @inject IHttpContextAccessor httpContextAccessor
 @inject ISessionHelper sessionHelper
@@ -16,7 +19,7 @@
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
-    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
+    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey) : "";
 
     var groupClass = "govuk-form-group";
     var selectClass = "govuk-select"; 

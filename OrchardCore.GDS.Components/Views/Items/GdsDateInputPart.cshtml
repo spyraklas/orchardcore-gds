@@ -1,8 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Http;
+@using OrchardCore.GDS.Session.Cookie.Helpers
 @using OrchardCore.GDS.Components.Helpers;
+@using OrchardCore.GDS.Session.Helpers;
 
 @model GdsDateInputPartViewModel
-@inject IHttpContextAccessor httpContextAccessor
 @inject ISessionHelper sessionHelper
 
 @{
@@ -15,11 +16,11 @@
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
-        var sessionDayValue = Model.DaySessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.DaySessionKey, httpContextAccessor) : "";
+    var sessionDayValue = Model.DaySessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.DaySessionKey) : "";
     var fieldDayValue = !string.IsNullOrEmpty(sessionDayValue) ? sessionDayValue : Model.DayValue;
-    var sessionMonthValue = Model.MonthSessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.MonthSessionKey, httpContextAccessor) : "";
+    var sessionMonthValue = Model.MonthSessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.MonthSessionKey) : "";
     var fieldMonthValue = !string.IsNullOrEmpty(sessionMonthValue) ? sessionMonthValue : Model.MonthValue;
-    var sessionYearValue = Model.YearSessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.YearSessionKey, httpContextAccessor) : "";
+    var sessionYearValue = Model.YearSessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.YearSessionKey) : "";
     var fieldYearValue = !string.IsNullOrEmpty(sessionYearValue) ? sessionYearValue : Model.YearValue;
 
     var groupClass = "govuk-form-group";

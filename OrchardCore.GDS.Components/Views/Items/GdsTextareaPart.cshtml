@@ -1,10 +1,11 @@
-﻿@using Microsoft.AspNetCore.Http;
+﻿@using System.Text.Encodings.Web
+@using Microsoft.AspNetCore.Http;
+@using OrchardCore.GDS.Session.Cookie.Helpers
 @using OrchardCore.GDS.Components.Helpers;
-@using OrchardCore.Liquid
-@using System.Text.Encodings.Web
+@using OrchardCore.Liquid;
+@using OrchardCore.GDS.Session.Helpers;
 
 @model GdsTextareaPartViewModel
-@inject IHttpContextAccessor httpContextAccessor
 @inject ISessionHelper sessionHelper
 @inject ILiquidTemplateManager liquidTemplateManager
 
@@ -19,7 +20,7 @@
     var fieldName = formInputElementPart.Name;
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
 
-    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey, httpContextAccessor) : "";
+    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey) : "";
     var fieldValue = !string.IsNullOrEmpty(sessionValue) ? sessionValue : Model.Value;
     var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
     var groupClass = "govuk-form-group";

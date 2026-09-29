@@ -16,6 +16,8 @@ using OrchardCore.GDS.Components.Handlers;
 using OrchardCore.GDS.Components.Helpers;
 using OrchardCore.GDS.Components.Liquid;
 using OrchardCore.GDS.Components.Models;
+using OrchardCore.GDS.Session.Cookie.Helpers;
+using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.GDS.Components.Settings;
 using OrchardCore.Liquid;
 using OrchardCore.Modules;

@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{4850
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.GDS.FeedbackTheme", "OrchardCore.GDS.FeedbackTheme\OrchardCore.GDS.FeedbackTheme.csproj", "{3220B655-9B9D-42CF-61AB-65F71D69FEF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.GDS.Session.Cookie", "OrchardCore.GDS.Session.Cookie\OrchardCore.GDS.Session.Cookie.csproj", "{FBF16270-2C1A-4814-869B-175C3F207B46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.GDS.Session", "OrchardCore.GDS.Session\OrchardCore.GDS.Session.csproj", "{058E43FF-8D94-4DC9-9AB7-22FF431B19EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{3220B655-9B9D-42CF-61AB-65F71D69FEF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3220B655-9B9D-42CF-61AB-65F71D69FEF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3220B655-9B9D-42CF-61AB-65F71D69FEF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBF16270-2C1A-4814-869B-175C3F207B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF16270-2C1A-4814-869B-175C3F207B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF16270-2C1A-4814-869B-175C3F207B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF16270-2C1A-4814-869B-175C3F207B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{058E43FF-8D94-4DC9-9AB7-22FF431B19EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{058E43FF-8D94-4DC9-9AB7-22FF431B19EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{058E43FF-8D94-4DC9-9AB7-22FF431B19EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{058E43FF-8D94-4DC9-9AB7-22FF431B19EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

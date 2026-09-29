@@ -1,19 +1,16 @@
 ﻿using Fluid;
 using Fluid.Values;
-using Microsoft.AspNetCore.Http;
-using OrchardCore.GDS.Components.Helpers;
+using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.Liquid;
 
 namespace OrchardCore.GDS.Components.Liquid
 {
     public class SessionFilter : ILiquidFilter
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ISessionHelper _sessionHelper;
 
-        public SessionFilter(IHttpContextAccessor httpContextAccessor, ISessionHelper sessionHelper)
+        public SessionFilter(ISessionHelper sessionHelper)
         {
-            _httpContextAccessor = httpContextAccessor;
             _sessionHelper = sessionHelper;
         }
 
@@ -21,7 +18,7 @@ namespace OrchardCore.GDS.Components.Liquid
         {
             var sessionKey = input.ToStringValue();
 
-            return new StringValue(_sessionHelper.GetSessionValue(sessionKey, _httpContextAccessor));
+            return new StringValue(_sessionHelper.GetSessionValue(sessionKey));
         }
     }
 }

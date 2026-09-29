@@ -39,4 +39,9 @@
 		<Folder Include="Migrations\Templates\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\OrchardCore.GDS.Session.Cookie\OrchardCore.GDS.Session.Cookie.csproj" />
+	  <ProjectReference Include="..\OrchardCore.GDS.Session\OrchardCore.GDS.Session.csproj" />
+	</ItemGroup>
+
 </Project>
