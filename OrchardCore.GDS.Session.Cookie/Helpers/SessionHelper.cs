@@ -15,14 +15,22 @@ public class SessionHelper : ISessionHelper
 
     public string GetSessionValue(string sessionKey)
     {
-        string result = string.Empty;
-
-        if (_httpContextAccessor.HttpContext != null && _httpContextAccessor.HttpContext.Session != null && !string.IsNullOrEmpty(sessionKey))
+        var session = _httpContextAccessor?.HttpContext?.Session;
+        if (session == null || string.IsNullOrEmpty(sessionKey))
         {
-            string sessionValue = _httpContextAccessor.HttpContext.Session.GetString(sessionKey);
-            result = sessionValue != null ? sessionValue : "";
+            return string.Empty;
         }
 
-        return result;
+        var sessionValue = session.GetString(sessionKey);
+        return sessionValue ?? string.Empty;
+    }
+
+    public void SetSessionValue(string key, string value)
+    {
+        var session = _httpContextAccessor?.HttpContext?.Session;
+        if (session != null)
+        {
+            session.SetString(key, value);
+        }
     }
 }

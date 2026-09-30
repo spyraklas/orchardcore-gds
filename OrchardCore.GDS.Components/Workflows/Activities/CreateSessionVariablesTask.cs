@@ -2,11 +2,13 @@
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using OrchardCore.GDS.Session.Cookie.Helpers;
+using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.Workflows.Abstractions.Models;
 using OrchardCore.Workflows.Activities;
 using OrchardCore.Workflows.Models;
-using System.Text.Encodings.Web;
 using OrchardCore.Workflows.Services;
+using System.Text.Encodings.Web;
 
 namespace OrchardCore.GDS.Components.Workflows.Activities
 {
@@ -16,17 +18,20 @@ namespace OrchardCore.GDS.Components.Workflows.Activities
         private readonly IWorkflowExpressionEvaluator _expressionEvaluator;
         private readonly JavaScriptEncoder _javaScriptEncoder;
         private readonly IStringLocalizer S;
+        private readonly ISessionHelper _sessionHelper;
 
         public CreateSessionVariablesTask(
             IHttpContextAccessor httpContextAccessor,
             IWorkflowExpressionEvaluator expressionEvaluator,
             IStringLocalizer<CreateSessionVariablesTask> localizer,
-            JavaScriptEncoder javaScriptEncoder
+            JavaScriptEncoder javaScriptEncoder,
+            ISessionHelper sessionHelper
         )
         {
             _httpContextAccessor = httpContextAccessor;
             _expressionEvaluator = expressionEvaluator;
             _javaScriptEncoder = javaScriptEncoder;
+            _sessionHelper = sessionHelper;
             S = localizer;
         }
 
@@ -56,7 +61,9 @@ namespace OrchardCore.GDS.Components.Workflows.Activities
 
                 foreach (var item in objSession)
                 {
-                    _httpContextAccessor.HttpContext?.Session?.SetString(item.Key, item.Value?.Value<string>());
+                    var value = item.Value?.Value<string>();
+                   // _httpContextAccessor.HttpContext?.Session?.SetString(item.Key, value);
+                    _sessionHelper.SetSessionValue(item.Key, value);
                 }
 
 
