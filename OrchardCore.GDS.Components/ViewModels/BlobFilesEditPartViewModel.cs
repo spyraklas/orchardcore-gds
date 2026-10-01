@@ -4,14 +4,17 @@ using OrchardCore.GDS.Components.Models;
 
 namespace OrchardCore.GDS.Components.ViewModels
 {
-    public class GdsLegendPartViewModel
+    public class BlobFilesEditPartViewModel
     {
-        public string LegendSize { get; set; }
+        public string FileReference { get; set; }
 
         [BindNever]
         public ContentItem ContentItem { get; set; }
 
         [BindNever]
-        public GdsLegendPart GdsLegendPart { get; set; }
+        public BlobFilesEditPart BlobFilesEditPart { get; set; }
+
+        [BindNever]
+        public BlobFilesEditSettings Settings { get; set; }
     }
 }

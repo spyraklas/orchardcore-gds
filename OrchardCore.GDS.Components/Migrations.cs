@@ -43,11 +43,6 @@ namespace OrchardCore.GDS.Components
                 .Attachable()
                 .WithDescription("Provides a GDS hint part for your content item."));
 
-            //GdsLegendPart
-            await _contentDefinitionManager.AlterPartDefinitionAsync("GdsLegendPart", builder => builder
-                .Attachable()
-                .WithDescription("Provides a GDS legend part for your content item."));
-
             //GdsInputText
             await _contentDefinitionManager.AlterPartDefinitionAsync("GdsInputTextPart", builder => builder
                 .WithDescription("Provides a GDS input text part for your content item."));
@@ -146,12 +141,12 @@ namespace OrchardCore.GDS.Components
             await _contentDefinitionManager.AlterTypeDefinitionAsync("GdsCheckboxGroup", type => type
                 .WithPart("FormElementPart")
                 .WithPart("FormInputElementPart")
+                .WithPart("GdsCheckboxGroupPart")
                 .WithPart("GdsLabelPart")
                 .WithPart("GdsCssPart")
                 .WithPart("GdsHintPart")
-                .WithPart("GdsCheckboxGroupPart")
                 .WithPart("BagPart", part => part
-                    .WithPosition("2")
+                    .WithPosition("10")
                     .WithSettings(new BagPartSettings() { ContainedContentTypes = new string[] { "GdsCheckbox", "GdsCheckboxDivider" } })
                 )
                 .Stereotype("Widget")
@@ -188,12 +183,12 @@ namespace OrchardCore.GDS.Components
             await _contentDefinitionManager.AlterTypeDefinitionAsync("GdsRadioGroup", type => type
                 .WithPart("FormElementPart")
                 .WithPart("FormInputElementPart")
+                .WithPart("GdsRadioGroupPart")
                 .WithPart("GdsLabelPart")
                 .WithPart("GdsCssPart")
                 .WithPart("GdsHintPart")
-                .WithPart("GdsRadioGroupPart")
                 .WithPart("BagPart", part => part
-                    .WithPosition("2")
+                    .WithPosition("10")
                     .WithSettings(new BagPartSettings() { ContainedContentTypes = new string[] { "GdsRadio", "GdsRadioDivider" } })
                 )
                 .Stereotype("Widget")
@@ -257,7 +252,6 @@ namespace OrchardCore.GDS.Components
             await _contentDefinitionManager.AlterTypeDefinitionAsync("GdsDateInput", type => type
                 .WithPart("FormInputElementPart")
                 .WithPart("FormElementPart")
-                .WithPart("GdsLegendPart")
                 .WithPart("GdsLabelPart")
                 .WithPart("GdsCssPart")
                 .WithPart("GdsHintPart")
@@ -298,6 +292,16 @@ namespace OrchardCore.GDS.Components
             }
 
             return 2;
+        }
+
+        public async Task<int> UpdateFrom2Async()
+        {
+            //BlobFilesEditPart
+            await _contentDefinitionManager.AlterPartDefinitionAsync("BlobFilesEditPart", builder => builder
+                .Attachable()
+                .WithDescription("Provides a Blob Files Edit part for your content item."));
+
+            return 3;
         }
     }
 }

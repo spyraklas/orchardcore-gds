@@ -2,8 +2,8 @@
 
 namespace OrchardCore.GDS.Components.Models
 {
-    public class GdsLegendPart : ContentPart
+    public class BlobFilesEditPart : ContentPart
     {
-        public string LegendSize { get; set; }
+        public string FileReference { get; set; }
     }
 }

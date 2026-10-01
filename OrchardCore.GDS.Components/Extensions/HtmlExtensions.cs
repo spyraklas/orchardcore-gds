@@ -127,5 +127,39 @@ namespace OrchardCore.GDS.Components.Extensions
 
             return "";
         }
+
+        public static string GetLabelTypeClass(this IHtmlHelper html, string style, string size)
+        {
+            if (style == "h1" || style == "h2" || style == "h3" || style == "h4" || style == "h5" || style == "h6")
+            {
+                if (string.IsNullOrEmpty(size))
+                {
+                    return "govuk-heading";
+                }
+
+                return $"govuk-heading-{size}";
+            }
+            else if (style == "label")
+            {
+                if (string.IsNullOrEmpty(size))
+                {
+                    return "govuk-label";
+                }
+
+                return $"govuk-label govuk-label--{size}";
+            }
+
+            return "";
+        }
+        
+        public static string GetFieldsetClass(this IHtmlHelper html, string size)
+        {
+            if (string.IsNullOrEmpty(size))
+            {
+                return "govuk-fieldset__legend";
+            }
+
+            return $"govuk-fieldset__legend govuk-fieldset__legend--{size}";
+        }
     }
 }

@@ -8,8 +8,6 @@ namespace OrchardCore.GDS.Components.ViewModels
 {
     public class GdsCheckboxGroupPartViewModel
     {
-        public string LegendSize { get; set; }
-        public string LegendStyle { get; set; }
         public bool SmallCheckboxes { get; set; }
         public string SessionKey { get; set; }
 

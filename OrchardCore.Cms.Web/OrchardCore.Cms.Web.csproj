@@ -5,6 +5,8 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <UserSecretsId>e6866e30-be51-4368-8e17-b4e018aa12b0</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

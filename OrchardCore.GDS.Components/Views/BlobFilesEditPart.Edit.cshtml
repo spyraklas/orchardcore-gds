@@ -1,0 +1,61 @@
+@model BlobFilesEditPartViewModel
+
+@using OrchardCore.GDS.Components.Handlers
+@inject IBlobFilesHandler blobFilesHandler
+
+@{
+    var settings = Model.Settings;
+}
+
+@if (!string.IsNullOrEmpty(Model.FileReference))
+{
+    <form method="post" enctype="multipart/form-data" action="@settings.UploadAction">
+        @Html.AntiForgeryToken()
+        <div id="file-group" class="container-fluid mt-3 mb-3 p-2 border border-primary input-group w-75">
+            <input class="form-control" id="file" name="file" type="file" accept="@settings.FileTypesAllowed" />
+            <span class="input-group-text"><button id="submit" name="submit" type="submit" class="btn btn-primary">@settings.ButtonValue</button></span>
+        </div>
+    </form>
+
+    var storedFiles = await blobFilesHandler.GetStoredFilesAsync(Model.FileReference);
+
+    if (storedFiles.Count > 0)
+    {
+        <div class="container-fluid mt-3 mb-3 p-2 w-75">
+            @foreach (BlobFile file in storedFiles)
+            {
+                <div class="row border-bottom border-primary">
+                    <div class="col-4 p-1">
+                        @file.OriginalName
+                    </div>
+                    <div class="col-3 p-1">
+                        Size: @Html.DisplayFileSize(file.Size)
+                    </div>
+                    <div class="col-3 p-1">
+                        Type: @file.ContentType
+                    </div>
+                    @if (settings.WithDownload)
+                    {
+                        <div class="col-1 p-1">
+                            <form method="post" enctype="application/x-www-form-urlencoded" action="@settings.DownloadAction">
+                                @Html.AntiForgeryToken()
+                                <input id="filepath" name="filepath" type="hidden" value="@file.PathWithName" />
+                                <a href="#" class="btn btn-primary" onclick="this.closest('form').submit();return false;">Download <span class="visually-hidden">@file.OriginalName</span></a>
+                            </form>
+                        </div>
+                    }
+                    @if (settings.WithRemove)
+                    {
+                        <div class="col-1 p-1">
+                            <form method="post" enctype="application/x-www-form-urlencoded" action="@settings.RemoveAction">
+                                @Html.AntiForgeryToken()
+                                <input id="filepath" name="filepath" type="hidden" value="@file.PathWithName" />
+                                <a href="#" class="btn btn-danger" onclick="this.closest('form').submit();return false;">Remove <span class="visually-hidden">@file.OriginalName</span></a>
+                            </form>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+}

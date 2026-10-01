@@ -1,6 +1,5 @@
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Display.Models;
-using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.GDS.Components.Models;
 using OrchardCore.GDS.Components.ViewModels;
@@ -21,8 +20,6 @@ namespace OrchardCore.GDS.Components.Drivers
         {
             return Initialize<GdsCheckboxGroupPartViewModel>(GetEditorShapeType(context), model =>
             {
-                model.LegendSize = part.LegendSize;
-                model.LegendStyle = part.LegendStyle;
                 model.SmallCheckboxes = part.SmallCheckboxes;
                 model.SessionKey = part.SessionKey;
 
@@ -37,8 +34,6 @@ namespace OrchardCore.GDS.Components.Drivers
 
             if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
-                part.LegendSize = viewModel.LegendSize?.Trim();
-                part.LegendStyle = viewModel.LegendStyle?.Trim();
                 part.SmallCheckboxes = viewModel.SmallCheckboxes;
                 part.SessionKey = viewModel.SessionKey?.Trim();
             }
@@ -50,8 +45,6 @@ namespace OrchardCore.GDS.Components.Drivers
         {
             model.ContentItem = part.ContentItem;
 
-            model.LegendSize = part.LegendSize;
-            model.LegendStyle = part.LegendStyle;
             model.SmallCheckboxes = part.SmallCheckboxes;
             model.SessionKey = part.SessionKey;
 

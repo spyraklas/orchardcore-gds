@@ -11,7 +11,6 @@
     var cssPart = Model.ContentItem.Get<GdsCssPart>(nameof(GdsCssPart));
     var labelPart = Model.ContentItem.Get<GdsLabelPart>(nameof(GdsLabelPart));
     var hintPart = Model.ContentItem.Get<GdsHintPart>(nameof(GdsHintPart));
-    var legendPart = Model.ContentItem.Get<GdsLegendPart>(nameof(GdsLegendPart));
 
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;
@@ -78,10 +77,17 @@
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
     <fieldset class="govuk-fieldset" role="group" @(withHint ? $@"aria-describedby=""{fieldId}-hint""" : "")>
-        <legend class="govuk-fieldset__legend @legendPart.LegendSize">
-            @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, $"govuk-fieldset__heading {labelPart.LabelSize} {labelPart.LabelClass}"))
-            @labelPart.Label
-            @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+        <legend class="@Html.GetFieldsetClass(labelPart.LabelSize) @labelPart.LabelClass">
+            @if (labelPart.LabelStyle == "label")
+            {
+                @labelPart.Label
+            }
+            else
+            {
+                @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, $"govuk-fieldset__heading"))
+                @labelPart.Label
+                @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+            }
         </legend>
         @if (withHint)
         {

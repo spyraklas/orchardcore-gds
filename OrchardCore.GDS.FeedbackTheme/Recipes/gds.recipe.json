@@ -1,7 +1,7 @@
 {
-  "name": "GovUK GDS Website",
-  "displayName": "GovUK GDS Website",
-  "description": "Ready to use GovUK GDS website.",
+  "name": "GovUK GDS Feedback Website",
+  "displayName": "Feedback GDS Website",
+  "description": "Ready to use Feedback GovUK GDS website.",
   "author": "DfE - National Career Services Team",
   "website": "https://nationalcareers.service.gov.uk",
   "version": "1.0.0",

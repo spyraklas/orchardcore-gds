@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
+using OrchardCore.ContentTypes.Editors;
 using OrchardCore.Data.Migration;
 using OrchardCore.Environment.Shell.Configuration;
 using OrchardCore.GDS.Components.Config;
@@ -15,6 +16,7 @@ using OrchardCore.GDS.Components.Handlers;
 using OrchardCore.GDS.Components.Helpers;
 using OrchardCore.GDS.Components.Liquid;
 using OrchardCore.GDS.Components.Models;
+using OrchardCore.GDS.Components.Settings;
 using OrchardCore.Liquid;
 using OrchardCore.Modules;
 
@@ -95,6 +97,7 @@ namespace OrchardCore.GDS.Components
             services.AddScoped<ISessionHelper, SessionHelper>();
             services.AddScoped<IBlobFilesHelper, BlobFilesHelper>();
             services.AddScoped<IBlobFilesHandler, BlobFilesHandler>();
+            services.AddScoped<IContentTypePartDefinitionDisplayDriver, BlobFilesEditSettingsDisplayDriver>();
 
             string tenantBlobConnection = _shellConfiguration.GetValue<string>("BlobSettings:ConnectionString"); 
             string globalBlobConnection = _configuration["BlobSettings:ConnectionString"];
@@ -118,7 +121,6 @@ namespace OrchardCore.GDS.Components
                 o.MemberAccessStrategy.Register<GdsJsPart>();
                 o.MemberAccessStrategy.Register<GdsLabelPart>();
                 o.MemberAccessStrategy.Register<GdsHintPart>();
-                o.MemberAccessStrategy.Register<GdsLegendPart>();
                 o.MemberAccessStrategy.Register<GdsInputTextPart>();
                 o.MemberAccessStrategy.Register<GdsTextareaPart>();
                 o.MemberAccessStrategy.Register<GdsErrorSummaryPart>();
@@ -137,6 +139,8 @@ namespace OrchardCore.GDS.Components
                 o.MemberAccessStrategy.Register<GdsSelectOptionPart>();
                 o.MemberAccessStrategy.Register<GdsDateInputPart>();
                 o.MemberAccessStrategy.Register<GdsUploadFilesPart>();
+                o.MemberAccessStrategy.Register<BlobFilesEditPart>();
+                o.MemberAccessStrategy.Register<BlobFilesEditSettings>();
             });
 
             //Gds Css Attributes
@@ -158,11 +162,6 @@ namespace OrchardCore.GDS.Components
             services.AddContentPart<GdsHintPart>()
                 .UseDisplayDriver<GdsHintPartDisplayDriver>()
                 .AddHandler<GdsHintPartHandler>();
-
-            //Gds Legend
-            services.AddContentPart<GdsLegendPart>()
-                .UseDisplayDriver<GdsLegendPartDisplayDriver>()
-                .AddHandler<GdsLegendPartHandler>();
 
             //Gds Input Text
             services.AddContentPart<GdsInputTextPart>()
@@ -252,7 +251,12 @@ namespace OrchardCore.GDS.Components
             //Gds Upload Files
             services.AddContentPart<GdsUploadFilesPart>()
                 .UseDisplayDriver<GdsUploadFilesPartDisplayDriver>()
-                .AddHandler<GdsUploadFilesPartHandler>();
+                .AddHandler<GdsUploadFilesPartHandler>();            
+            
+            //Blob Upload Files Edit
+            services.AddContentPart<BlobFilesEditPart>()
+                .UseDisplayDriver<BlobFilesEditPartDisplayDriver>()
+                .AddHandler<BlobFilesEditPartHandler>();
 
         }
 

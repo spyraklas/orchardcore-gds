@@ -23,6 +23,7 @@
     var withHint = hintPart.Hint?.Length > 0;
     var withStyle = cssPart.CssStyle?.Length > 0;
     var describedby = withHint ? $"{fieldId}-hint" : "";
+    var labelClass = !string.IsNullOrEmpty(labelPart.LabelSize) ? $"govuk-label govuk-label--{labelPart.LabelSize} {labelPart.LabelClass}" : $"govuk-label {labelPart.LabelClass}";
 
     if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
     {
@@ -36,9 +37,20 @@
 }
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
-    @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, $"govuk-label {labelPart.LabelSize} {labelPart.LabelClass}"))
-    @labelPart.Label
-    @Html.Raw(Html.EndLabelRapperTag(labelPart.LabelStyle))
+    @if (labelPart.LabelStyle != "label")
+    {
+        @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, "govuk-label-wrapper"))
+        <label class="@labelClass" for="@fieldId">
+            @labelPart.Label
+        </label>
+        @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+    }
+    else
+    {
+        <label class="@labelClass" for="@fieldId">
+            @labelPart.Label
+        </label>
+    }
     @if (withHint)
     {
         <div id="@fieldId-hint" class="govuk-hint @hintPart.HintClass">

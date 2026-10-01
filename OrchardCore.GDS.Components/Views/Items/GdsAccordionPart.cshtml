@@ -1,5 +1,6 @@
-﻿@using OrchardCore.Flows.Models;
-@model GdsAccordionPartViewModel
+﻿@model GdsAccordionPartViewModel
+
+@using OrchardCore.Flows.Models
 @inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
 
 @{ var bagPart = Model.ContentItem.Get<BagPart>(nameof(BagPart)); }

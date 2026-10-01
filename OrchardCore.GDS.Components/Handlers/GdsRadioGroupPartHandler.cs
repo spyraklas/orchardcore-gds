@@ -7,7 +7,6 @@ namespace OrchardCore.GDS.Components.Handlers
     {
         public override Task InitializingAsync(InitializingContentContext context, GdsRadioGroupPart part)
         {
-            part.LegendStyle = "label";
             part.Inline = false;
             part.SmallRadios = false;
             part.SessionKey = string.Empty;

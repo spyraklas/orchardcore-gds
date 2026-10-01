@@ -14,7 +14,7 @@
     {% link rel:"icon", sizes:"any", href:"~/OrchardCore.GDS.Theme/assets/rebrand/images/favicon.svg", type:"image/svg+xml" %}
     {% link rel:"mask-icon", href:"~/OrchardCore.GDS.Theme/assets/rebrand/images/govuk-icon-mask.svg", color:"blue" %}
     {% link rel:"apple-touch-icon", href:"~/OrchardCore.GDS.Theme/assets/rebrand/images/govuk-icon-180.png" %}
-    {% link rel:"manifest", href:"~/OrchardCore.GDS.Theme/assets/rebrand/manifest.json" %}
+    {% link rel:"manifest", href:"~/OrchardCore.GDS.Theme/assets/manifest.json" %}
 
     {% style name:"gds-theme-frontend", version:"6.3.0", at:"Head" %}
     {% style name:"gds-theme", version:"1.0.0", at:"Head" %}
@@ -53,11 +53,18 @@
     
     {% resources type: "FootScript" %}
 
-    <script type="module">
-        import {
-            initAll
-        } from '/OrchardCore.GDS.Theme/js/govuk-frontend.min.js'
-        initAll()
+    <script>
+        // Initialize scripts when the DOM is ready
+        document.addEventListener("DOMContentLoaded", function () {
+            initializeScripts();
+        });
+        
+        function initializeScripts() {
+            // Initialize GOVUK Frontend components
+            if (typeof GOVUKFrontend !== 'undefined') {
+                GOVUKFrontend.initAll();
+            }
+        }        
     </script>
 
     {% render_section "FooterScript", required: false %}

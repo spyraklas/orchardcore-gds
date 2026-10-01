@@ -45,10 +45,17 @@
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
     <fieldset class="govuk-fieldset" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : withError ? Html.Raw(@$"aria-describedby=""{fieldId}-error""") : "")>
-        <legend class="govuk-fieldset__legend @Model.LegendSize">
-            @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, @$"govuk-fieldset__heading {labelPart.LabelSize} {labelPart.LabelClass}"))
-            @labelPart.Label
-            @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+        <legend class="@Html.GetFieldsetClass(labelPart.LabelSize) @labelPart.LabelClass">
+            @if (labelPart.LabelStyle == "label")
+            {
+                @labelPart.Label
+            }
+            else
+            {
+                @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, $"govuk-fieldset__heading"))
+                @labelPart.Label
+                @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
+            }
         </legend>
         @if (withHint)
         {

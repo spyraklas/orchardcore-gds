@@ -22,6 +22,7 @@
     var inputClass = "govuk-file-upload";
     var withHint = hintPart.Hint?.Length > 0;
     var withStyle = cssPart.CssStyle?.Length > 0;
+    var labelClass = !string.IsNullOrEmpty(labelPart.LabelSize) ? $"govuk-label govuk-label--{labelPart.LabelSize} {labelPart.LabelClass}" : $"govuk-label {labelPart.LabelClass}";
 
     if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
     {
@@ -36,17 +37,17 @@
 <form method="post" enctype="multipart/form-data" action="@Model.UploadAction">
     @Html.AntiForgeryToken()
     <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
-        @if(labelPart.LabelStyle != "label")
+        @if (labelPart.LabelStyle != "label")
         {
             @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, "govuk-label-wrapper"))
-            <label class="govuk-label @labelPart.LabelSize @labelPart.LabelClass" for="@fieldId">
+            <label class="@labelClass" for="@fieldId">
                 @labelPart.Label
             </label>
             @Html.Raw(@Html.EndLabelRapperTag(labelPart.LabelStyle))
         }
         else
         {
-            <label class="govuk-label @labelPart.LabelSize @labelPart.LabelClass" for="@fieldId">
+            <label class="@labelClass" for="@fieldId">
                 @labelPart.Label
             </label>
         }

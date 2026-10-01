@@ -7,7 +7,6 @@ namespace OrchardCore.GDS.Components.Handlers
     {
         public override Task InitializingAsync(InitializingContentContext context, GdsCheckboxGroupPart part)
         {
-            part.LegendStyle = "label";
             part.SmallCheckboxes = false;
             part.SessionKey = string.Empty;
 

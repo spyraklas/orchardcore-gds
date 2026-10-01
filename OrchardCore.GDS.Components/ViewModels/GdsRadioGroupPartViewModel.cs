@@ -8,8 +8,6 @@ namespace OrchardCore.GDS.Components.ViewModels
 {
     public class GdsRadioGroupPartViewModel
     {
-        public string LegendSize { get; set; }
-        public string LegendStyle { get; set; }
         public bool Inline { get; set; }
         public bool SmallRadios { get; set; }
         public string SessionKey { get; set; }
