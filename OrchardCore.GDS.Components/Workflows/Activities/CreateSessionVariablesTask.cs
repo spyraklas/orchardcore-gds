@@ -14,21 +14,21 @@ namespace OrchardCore.GDS.Components.Workflows.Activities
 {
     public class CreateSessionVariablesTask : TaskActivity
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
+       // private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IWorkflowExpressionEvaluator _expressionEvaluator;
         private readonly JavaScriptEncoder _javaScriptEncoder;
         private readonly IStringLocalizer S;
         private readonly ISessionHelper _sessionHelper;
 
         public CreateSessionVariablesTask(
-            IHttpContextAccessor httpContextAccessor,
+           // IHttpContextAccessor httpContextAccessor,
             IWorkflowExpressionEvaluator expressionEvaluator,
             IStringLocalizer<CreateSessionVariablesTask> localizer,
             JavaScriptEncoder javaScriptEncoder,
             ISessionHelper sessionHelper
         )
         {
-            _httpContextAccessor = httpContextAccessor;
+           // _httpContextAccessor = httpContextAccessor;
             _expressionEvaluator = expressionEvaluator;
             _javaScriptEncoder = javaScriptEncoder;
             _sessionHelper = sessionHelper;

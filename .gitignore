@@ -51,11 +51,11 @@
 /OrchardCore.GDS.FeedbackTheme/wwwroot/css
 /OrchardCore.GDS.FeedbackTheme/wwwroot/js
 /OrchardCore.GDS.FeedbackTheme/package-lock.json
-/OrchardCore.Shared.Session/bin/Debug/net10.0
-/OrchardCore.Cms.Sessions.Cookie/obj
+/OrchardCore.Shared.Session/bin
 /OrchardCore.GDS.Session.Cookie/obj
-/OrchardCore.GDS.Session.Cookie/bin/Debug/net10.0
-/OrchardCore.GDS.Session/bin/Debug/net10.0
-/OrchardCore.GDS.Session/obj/Debug/net10.0
+/OrchardCore.GDS.Session.Cookie/bin
 /OrchardCore.GDS.Session/obj
+/OrchardCore.GDS.Session/bin
+/OrchardCore.GDS.Session.MemoryCache/obj
+/OrchardCore.GDS.Session.MemoryCache/bin
 /OrchardCore.Cms.Web/Properties/serviceDependencies.local.json.user

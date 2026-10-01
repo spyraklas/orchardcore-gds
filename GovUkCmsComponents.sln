@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.GDS.Session", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.GDS.Session.Cookie", "OrchardCore.GDS.Session.Cookie\OrchardCore.GDS.Session.Cookie.csproj", "{603723C5-3770-30FE-7B08-EE4E4ACD08D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.GDS.Session.MemoryCache", "OrchardCore.GDS.Session.MemoryCache\OrchardCore.GDS.Session.MemoryCache.csproj", "{0701DFEA-EBC6-5673-0CEB-E15572697F08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{603723C5-3770-30FE-7B08-EE4E4ACD08D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{603723C5-3770-30FE-7B08-EE4E4ACD08D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{603723C5-3770-30FE-7B08-EE4E4ACD08D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0701DFEA-EBC6-5673-0CEB-E15572697F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0701DFEA-EBC6-5673-0CEB-E15572697F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0701DFEA-EBC6-5673-0CEB-E15572697F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0701DFEA-EBC6-5673-0CEB-E15572697F08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{3220B655-9B9D-42CF-61AB-65F71D69FEF5} = {2A24720E-61C4-49C1-B50A-406D825B2E0A}
 		{A5389A96-F680-8FB0-C85C-DB851A9D3378} = {48500A61-6176-40AD-AEF2-3841129FDE8D}
 		{603723C5-3770-30FE-7B08-EE4E4ACD08D3} = {48500A61-6176-40AD-AEF2-3841129FDE8D}
+		{0701DFEA-EBC6-5673-0CEB-E15572697F08} = {48500A61-6176-40AD-AEF2-3841129FDE8D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {943F8BB5-3B54-4CB4-9B51-9569E7C8DC16}

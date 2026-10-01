@@ -16,7 +16,7 @@ using OrchardCore.GDS.Components.Handlers;
 using OrchardCore.GDS.Components.Helpers;
 using OrchardCore.GDS.Components.Liquid;
 using OrchardCore.GDS.Components.Models;
-using OrchardCore.GDS.Session.Cookie.Helpers;
+//using OrchardCore.GDS.Session.Cookie.Helpers;
 using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.GDS.Components.Settings;
 using OrchardCore.Liquid;
@@ -96,7 +96,11 @@ namespace OrchardCore.GDS.Components
 
         private void ConfigureDI(IServiceCollection services)
         {
-            services.AddScoped<ISessionHelper, SessionHelper>();
+            //using OrchardCore.GDS.Session.Cookie.Helpers;
+
+            //services.AddScoped<ISessionHelper, Session.Cookie.Helpers.SessionHelper>();
+            services.AddScoped<ISessionHelper, Session.MemoryCache.Helpers.SessionHelper>();
+
             services.AddScoped<IBlobFilesHelper, BlobFilesHelper>();
             services.AddScoped<IBlobFilesHandler, BlobFilesHandler>();
             services.AddScoped<IContentTypePartDefinitionDisplayDriver, BlobFilesEditSettingsDisplayDriver>();

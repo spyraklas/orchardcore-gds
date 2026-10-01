@@ -41,6 +41,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\OrchardCore.GDS.Session.Cookie\OrchardCore.GDS.Session.Cookie.csproj" />
+	  <ProjectReference Include="..\OrchardCore.GDS.Session.MemoryCache\OrchardCore.GDS.Session.MemoryCache.csproj" />
 	  <ProjectReference Include="..\OrchardCore.GDS.Session\OrchardCore.GDS.Session.csproj" />
 	</ItemGroup>
 
