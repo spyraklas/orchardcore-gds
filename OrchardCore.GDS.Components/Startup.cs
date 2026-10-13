@@ -6,7 +6,6 @@ using Microsoft.Azure.Cosmos.Fluent;
 using Microsoft.Extensions.Caching.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OrchardCore.ContentManagement;
@@ -26,7 +25,6 @@ using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.Liquid;
 using OrchardCore.Modules;
 using OrchardCore.Workflows.Activities;
-using OrchardCore.Workflows.Drivers;
 using OrchardCore.Workflows.Helpers;
 using OrchardCore.Workflows.Http.Controllers;
 using OrchardCore.Workflows.Options;
@@ -51,20 +49,11 @@ namespace OrchardCore.GDS.Components
             _logger = logger;
             _workflowOptions = workflowOptions;
 
-            try
+            if (_workflowOptions.Value.IsActivityRegistered(typeof(CommitTransactionTask)))
             {
-                // Unregister by Type
                 _workflowOptions.Value.UnregisterActivityType(typeof(CommitTransactionTask));
-
-                // Register the activity and its display driver by Type
-                // _workflowOptions.Value.RegisterActivity(typeof(CommitTransactionTask), typeof(CommitTransactionTaskDisplayDriver));
-                 _workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(GDSCommitTransactionTaskDisplayDriver));
+                _workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(GDSCommitTransactionTaskDisplayDriver));
             }
-            catch (Exception)
-            {
-            }
-
-
         }
 
         #region Public Functions
@@ -81,6 +70,9 @@ namespace OrchardCore.GDS.Components
             ConfigureOrchardParts(services);
 
             ConfigureDataMigration(services);
+
+            //_workflowOptions.Value.UnregisterActivityType(typeof(CommitTransactionTask));
+            //_workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(GDSCommitTransactionTaskDisplayDriver));
         }
 
         public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)

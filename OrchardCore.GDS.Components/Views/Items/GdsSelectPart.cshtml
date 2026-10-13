@@ -39,7 +39,7 @@
 }
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
-    @Html.GDSComponentSessionKeyPartial(fieldName, Model.SessionKey)
+    @sessionHelper.SessionKeyField(fieldName, Model.SessionKey)
     @if (labelPart.LabelStyle != "label")
     {
         @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, "govuk-label-wrapper"))

@@ -53,7 +53,7 @@
 }
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
-    @Html.GDSComponentSessionKeyPartial(fieldId, Model.SessionKey)
+    @sessionHelper.SessionKeyField(fieldId, Model.SessionKey)
     <fieldset class="govuk-fieldset" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : withError ? Html.Raw(@$"aria-describedby=""{fieldId}-error""") : "")>
         <legend class="@Html.GetFieldsetClass(labelPart.LabelSize) @labelPart.LabelClass">
             @if (labelPart.LabelStyle == "label")

@@ -44,7 +44,7 @@
 
 @Html.Raw(Html.StartWithCharacterCount(withCount, Model.CountWords, Model.Count, fieldId + "-group-count"))
 
-@Html.GDSComponentSessionKeyPartial(fieldName, Model.SessionKey)
+@sessionHelper.SessionKeyField(fieldName, Model.SessionKey)
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
     @if (labelPart.LabelStyle != "label")
