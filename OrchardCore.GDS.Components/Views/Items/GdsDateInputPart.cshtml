@@ -144,9 +144,9 @@
                 </div>
             </div>
 
-            @Html.ComponentSessionKeyToken(fieldId + "-day", Model.DaySessionKey)
-            @Html.ComponentSessionKeyToken(fieldId + "-month", Model.MonthSessionKey)
-            @Html.ComponentSessionKeyToken(fieldId + "-year", Model.YearSessionKey)
+            @Html.GDSComponentSessionKeyPartial(fieldId + "-day", Model.DaySessionKey)
+            @Html.GDSComponentSessionKeyPartial(fieldId + "-month", Model.MonthSessionKey)
+            @Html.GDSComponentSessionKeyPartial(fieldId + "-year", Model.YearSessionKey)
         </div>
     </fieldset>
 </div>

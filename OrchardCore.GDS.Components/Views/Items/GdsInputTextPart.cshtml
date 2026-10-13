@@ -40,7 +40,7 @@
     var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
 }
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
-    @Html.ComponentSessionKeyToken(fieldName, Model.SessionKey)
+    @Html.GDSComponentSessionKeyPartial(fieldName, Model.SessionKey)
     @if (labelPart.LabelStyle != "label")
     {
         @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, "govuk-label-wrapper"))
