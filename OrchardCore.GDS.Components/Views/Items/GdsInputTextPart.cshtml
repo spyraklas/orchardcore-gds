@@ -1,9 +1,7 @@
 ﻿@using System.Text.Encodings.Web
-@using Microsoft.AspNetCore.Http;
-@using OrchardCore.GDS.Session.Cookie.Helpers
-@using OrchardCore.GDS.Components.Helpers;
-@using OrchardCore.Liquid;
 @using OrchardCore.GDS.Session.Helpers;
+@using OrchardCore.Liquid;
+@using OrchardCore.GDS.Components.Helpers
 
 @model GdsInputTextPartViewModel
 @inject ISessionHelper sessionHelper
@@ -21,7 +19,7 @@
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
     var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey) : "";
     var fieldValue = !string.IsNullOrEmpty(sessionValue) ? sessionValue : Model.Value;
-    var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
+
     var groupClass = "govuk-form-group";
     var inputClass = "govuk-input";
     var withHint = hintPart.Hint?.Length > 0;
@@ -39,10 +37,11 @@
         }
     }
 
+    var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
 }
-
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
-    @if(labelPart.LabelStyle != "label")
+    @Html.ComponentSessionKeyToken(fieldName, Model.SessionKey)
+    @if (labelPart.LabelStyle != "label")
     {
         @Html.Raw(Html.StartLabelRapperTag(labelPart.LabelStyle, "govuk-label-wrapper"))
         <label class="@labelClass" for="@fieldId">

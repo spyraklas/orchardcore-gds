@@ -13,6 +13,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.29.1" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Cosmos" Version="1.8.0" />
+		<PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="10.0.12" />
+		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.12" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="OrchardCore.DisplayManagement.Abstractions" Version="3.0.1" />
 		<PackageReference Include="OrchardCore.DisplayManagement.Liquid" Version="3.0.1" />
@@ -40,9 +43,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\OrchardCore.GDS.Session.Cookie\OrchardCore.GDS.Session.Cookie.csproj" />
-	  <ProjectReference Include="..\OrchardCore.GDS.Session.MemoryCache\OrchardCore.GDS.Session.MemoryCache.csproj" />
-	  <ProjectReference Include="..\OrchardCore.GDS.Session\OrchardCore.GDS.Session.csproj" />
+		<ProjectReference Include="..\OrchardCore.GDS.Session.MemoryCache\OrchardCore.GDS.Session.MemoryCache.csproj" />
+		<ProjectReference Include="..\OrchardCore.GDS.Session\OrchardCore.GDS.Session.csproj" />
 	</ItemGroup>
 
 </Project>

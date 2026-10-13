@@ -1,9 +1,7 @@
 ﻿@using System.Text.Encodings.Web
-@using Microsoft.AspNetCore.Http;
-@using OrchardCore.GDS.Session.Cookie.Helpers
-@using OrchardCore.GDS.Components.Helpers;
-@using OrchardCore.Liquid;
+@using OrchardCore.GDS.Components.Helpers
 @using OrchardCore.GDS.Session.Helpers;
+@using OrchardCore.Liquid;
 
 @model GdsTextareaPartViewModel
 @inject ISessionHelper sessionHelper
@@ -45,6 +43,9 @@
 }
 
 @Html.Raw(Html.StartWithCharacterCount(withCount, Model.CountWords, Model.Count, fieldId + "-group-count"))
+
+@Html.ComponentSessionKeyToken(fieldName, Model.SessionKey)
+
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
     @if (labelPart.LabelStyle != "label")
     {

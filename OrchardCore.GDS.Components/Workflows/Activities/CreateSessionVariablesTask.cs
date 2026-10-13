@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Localization;
+﻿using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using OrchardCore.GDS.Session.Cookie.Helpers;
+using OrchardCore.ContentManagement;
 using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.Workflows.Abstractions.Models;
 using OrchardCore.Workflows.Activities;
@@ -14,21 +13,18 @@ namespace OrchardCore.GDS.Components.Workflows.Activities
 {
     public class CreateSessionVariablesTask : TaskActivity
     {
-       // private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IWorkflowExpressionEvaluator _expressionEvaluator;
         private readonly JavaScriptEncoder _javaScriptEncoder;
         private readonly IStringLocalizer S;
         private readonly ISessionHelper _sessionHelper;
 
         public CreateSessionVariablesTask(
-           // IHttpContextAccessor httpContextAccessor,
             IWorkflowExpressionEvaluator expressionEvaluator,
             IStringLocalizer<CreateSessionVariablesTask> localizer,
             JavaScriptEncoder javaScriptEncoder,
             ISessionHelper sessionHelper
         )
         {
-           // _httpContextAccessor = httpContextAccessor;
             _expressionEvaluator = expressionEvaluator;
             _javaScriptEncoder = javaScriptEncoder;
             _sessionHelper = sessionHelper;
@@ -54,6 +50,8 @@ namespace OrchardCore.GDS.Components.Workflows.Activities
 
         public async override Task<ActivityExecutionResult> ExecuteAsync(WorkflowExecutionContext workflowContext, ActivityContext activityContext)
         {
+            //return Outcomes("Done");
+
             if (!String.IsNullOrWhiteSpace(ContentProperties.Expression))
             {
                 var contentProperties = await _expressionEvaluator.EvaluateAsync(ContentProperties, workflowContext, _javaScriptEncoder);
@@ -62,7 +60,6 @@ namespace OrchardCore.GDS.Components.Workflows.Activities
                 foreach (var item in objSession)
                 {
                     var value = item.Value?.Value<string>();
-                   // _httpContextAccessor.HttpContext?.Session?.SetString(item.Key, value);
                     _sessionHelper.SetSessionValue(item.Key, value);
                 }
 

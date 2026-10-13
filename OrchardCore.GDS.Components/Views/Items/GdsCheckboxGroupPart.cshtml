@@ -1,8 +1,6 @@
-﻿@using Microsoft.AspNetCore.Http;
-@using OrchardCore.GDS.Session.Cookie.Helpers
-@using OrchardCore.ContentManagement.Display;
+﻿@using OrchardCore.ContentManagement.Display;
 @using OrchardCore.Flows.Models;
-@using OrchardCore.GDS.Components.Helpers;
+@using OrchardCore.GDS.Components.Helpers
 @using OrchardCore.GDS.Session.Helpers;
 
 @model GdsCheckboxGroupPartViewModel
@@ -20,10 +18,6 @@
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
-    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey) : "";
-    string[] sessionValueArray = (sessionValue.Length > 0 ? sessionValue.Split(',') : new string[0])
-        .Where(x => !string.IsNullOrWhiteSpace(x))
-        .ToArray();
 
     var groupClass = "govuk-form-group";
     var withHint = hintPart.Hint?.Length > 0;
@@ -35,18 +29,32 @@
         checkboxDivClass += " govuk-checkboxes--small";
     }
 
-        if (ViewData.ModelState.TryGetValue(fieldName, out var fieldEntry))
+    string sessionValue = string.Empty;
+
+    if (ViewData.ModelState.TryGetValue(fieldName, out var fieldEntry))
     {
         if (fieldEntry.Errors.Count > 0)
         {
+            sessionValue = fieldEntry.AttemptedValue;
             withError = true;
             groupClass += " govuk-form-group--error";
         }
     }
+
+    if (!withError)
+    {
+        sessionValue = sessionHelper.GetSessionValue(Model.SessionKey);
+    }
+
+    sessionValue = sessionValue ?? "";
+    string[] sessionValueArray = (sessionValue.Length > 0 ? sessionValue.Split(',') : new string[0])
+        .Where(x => !string.IsNullOrWhiteSpace(x))
+        .ToArray();
 }
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
-    <fieldset class="govuk-fieldset" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : withError ? Html.Raw(@$"aria-describedby=""{fieldId}-error""") : "") >
+    @Html.ComponentSessionKeyToken(fieldId, Model.SessionKey)
+    <fieldset class="govuk-fieldset" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : withError ? Html.Raw(@$"aria-describedby=""{fieldId}-error""") : "")>
         <legend class="@Html.GetFieldsetClass(labelPart.LabelSize) @labelPart.LabelClass">
             @if (labelPart.LabelStyle == "label")
             {
@@ -74,6 +82,7 @@
                 </p>
             }
         }
+
         <div class="@checkboxDivClass" data-module="govuk-checkboxes">
             @foreach (var item in bagPart.ContentItems)
             {

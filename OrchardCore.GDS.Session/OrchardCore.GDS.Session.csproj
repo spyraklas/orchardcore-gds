@@ -16,6 +16,7 @@
     <PackageReference Include="OrchardCore.ContentManagement" Version="3.0.1" />
     <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="3.0.1" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="3.0.1" />
+    <PackageReference Include="OrchardCore.Workflows" Version="3.0.1" />
   </ItemGroup>
 
 </Project>

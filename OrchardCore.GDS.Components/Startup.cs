@@ -2,9 +2,13 @@ using Azure.Storage.Blobs;
 using Fluid;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Azure.Cosmos.Fluent;
+using Microsoft.Extensions.Caching.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentTypes.Editors;
@@ -16,11 +20,16 @@ using OrchardCore.GDS.Components.Handlers;
 using OrchardCore.GDS.Components.Helpers;
 using OrchardCore.GDS.Components.Liquid;
 using OrchardCore.GDS.Components.Models;
-//using OrchardCore.GDS.Session.Cookie.Helpers;
-using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.GDS.Components.Settings;
+using OrchardCore.GDS.Components.Workflows.Activities;
+using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.Liquid;
 using OrchardCore.Modules;
+using OrchardCore.Workflows.Activities;
+using OrchardCore.Workflows.Drivers;
+using OrchardCore.Workflows.Helpers;
+using OrchardCore.Workflows.Http.Controllers;
+using OrchardCore.Workflows.Options;
 
 namespace OrchardCore.GDS.Components
 {
@@ -30,12 +39,32 @@ namespace OrchardCore.GDS.Components
         private readonly IShellConfiguration _shellConfiguration;
         private readonly IConfiguration _configuration;
         public readonly ILogger<Startup> _logger;
+        public readonly ILogger<HttpWorkflowController> _workflowLogger;
+        public readonly IOptions<WorkflowOptions> _workflowOptions;
 
-        public Startup(IShellConfiguration shellConfiguration, IConfiguration configuration, ILogger<Startup> logger)
+        public Startup(IShellConfiguration shellConfiguration, IConfiguration configuration, ILogger<Startup> logger, IOptions<WorkflowOptions> workflowOptions
+            ,IServiceCollection services
+            )
         {
             _shellConfiguration = shellConfiguration;
             _configuration = configuration;
             _logger = logger;
+            _workflowOptions = workflowOptions;
+
+            try
+            {
+                // Unregister by Type
+                _workflowOptions.Value.UnregisterActivityType(typeof(CommitTransactionTask));
+
+                // Register the activity and its display driver by Type
+                // _workflowOptions.Value.RegisterActivity(typeof(CommitTransactionTask), typeof(CommitTransactionTaskDisplayDriver));
+                 _workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(GDSCommitTransactionTaskDisplayDriver));
+            }
+            catch (Exception)
+            {
+            }
+
+
         }
 
         #region Public Functions
@@ -57,6 +86,17 @@ namespace OrchardCore.GDS.Components
         public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
             app.UseSession();
+
+            app.Use(async (context, next) =>
+            {
+                var cookie = context.Request.Cookies[".AspNetCore.Session"];
+                var sessionId = context.Session.Id;
+
+                Console.WriteLine($"Cookie : {cookie}");
+                Console.WriteLine($"Session ID: {sessionId}");
+
+                await next();
+            });
 
             base.Configure(app, routes, serviceProvider);
         }
@@ -96,10 +136,37 @@ namespace OrchardCore.GDS.Components
 
         private void ConfigureDI(IServiceCollection services)
         {
-            //using OrchardCore.GDS.Session.Cookie.Helpers;
+          //  _workflowOptions.Value.UnregisterActivityType<CommitTransactionTask>();
+            //_workflowOptions.Value.UnregisterActivityType<TaskActivity<CommitTransactionTask>>();
 
-            //services.AddScoped<ISessionHelper, Session.Cookie.Helpers.SessionHelper>();
-            services.AddScoped<ISessionHelper, Session.MemoryCache.Helpers.SessionHelper>();
+            //services.AddActivity<GDSCommitTransactionTask, GDSCommitTransactionTaskDisplayDriver>();
+
+            services.AddScoped<ISessionHelper, SessionHelper>();
+            services.AddDistributedMemoryCache();
+
+            services.AddDistributedSqlServerCache(options =>
+            {
+                options.ConnectionString = "Data Source=localhost;Initial Catalog=gds-Session;Integrated Security=True;TrustServerCertificate=True";
+                options.SchemaName = "dbo";
+                options.TableName = "CacheTable";
+                options.DefaultSlidingExpiration = TimeSpan.FromMinutes(5);
+                options.ExpiredItemsDeletionInterval = TimeSpan.FromMinutes(5);
+            });
+
+            services.AddCosmosCache((CosmosCacheOptions options) =>
+            {
+                options.ContainerName = "CacheTable";
+                options.DatabaseName = "gds-Session";
+                options.ClientBuilder = new CosmosClientBuilder("AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+                options.CreateIfNotExists = true;
+                options.DefaultTimeToLiveInMs = 1800;
+            });
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = "localhost:6379";
+                options.InstanceName = "OrchardCore:";
+            });
 
             services.AddScoped<IBlobFilesHelper, BlobFilesHelper>();
             services.AddScoped<IBlobFilesHandler, BlobFilesHandler>();

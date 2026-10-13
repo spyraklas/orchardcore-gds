@@ -1,6 +1,4 @@
-﻿@using Microsoft.AspNetCore.Http;
-@using OrchardCore.GDS.Session.Cookie.Helpers
-@using OrchardCore.GDS.Components.Helpers;
+﻿@using OrchardCore.GDS.Components.Helpers
 @using OrchardCore.GDS.Session.Helpers;
 
 @model GdsDateInputPartViewModel
@@ -145,6 +143,10 @@
                     <input class="@inputYearClass" id="@fieldId-year" name="@fieldId-year" type="text" @(Model.AutoComplete?.Length > 0 ? Html.Raw(@$"autocomplete=""{Model.AutoComplete}-year""") : "") inputmode="numeric" value="@fieldYearValue">
                 </div>
             </div>
+
+            @Html.ComponentSessionKeyToken(fieldId + "-day", Model.DaySessionKey)
+            @Html.ComponentSessionKeyToken(fieldId + "-month", Model.MonthSessionKey)
+            @Html.ComponentSessionKeyToken(fieldId + "-year", Model.YearSessionKey)
         </div>
     </fieldset>
 </div>

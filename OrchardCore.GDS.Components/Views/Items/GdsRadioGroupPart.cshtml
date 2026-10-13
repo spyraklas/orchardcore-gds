@@ -1,8 +1,6 @@
-﻿@using Microsoft.AspNetCore.Http;
-@using OrchardCore.GDS.Session.Cookie.Helpers
-@using OrchardCore.ContentManagement.Display;
+﻿@using OrchardCore.ContentManagement.Display;
 @using OrchardCore.Flows.Models;
-@using OrchardCore.GDS.Components.Helpers;
+@using OrchardCore.GDS.Components.Helpers
 @using OrchardCore.GDS.Session.Helpers;
 
 @model GdsRadioGroupPartViewModel
@@ -45,6 +43,7 @@
 }
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
+    @Html.ComponentSessionKeyToken(fieldName, Model.SessionKey)
     <fieldset class="govuk-fieldset" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : withError ? Html.Raw(@$"aria-describedby=""{fieldId}-error""") : "")>
         <legend class="@Html.GetFieldsetClass(labelPart.LabelSize) @labelPart.LabelClass">
             @if (labelPart.LabelStyle == "label")
