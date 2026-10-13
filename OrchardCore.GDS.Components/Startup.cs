@@ -70,9 +70,6 @@ namespace OrchardCore.GDS.Components
             ConfigureOrchardParts(services);
 
             ConfigureDataMigration(services);
-
-            //_workflowOptions.Value.UnregisterActivityType(typeof(CommitTransactionTask));
-            //_workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(GDSCommitTransactionTaskDisplayDriver));
         }
 
         public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
@@ -128,11 +125,6 @@ namespace OrchardCore.GDS.Components
 
         private void ConfigureDI(IServiceCollection services)
         {
-          //  _workflowOptions.Value.UnregisterActivityType<CommitTransactionTask>();
-            //_workflowOptions.Value.UnregisterActivityType<TaskActivity<CommitTransactionTask>>();
-
-            //services.AddActivity<GDSCommitTransactionTask, GDSCommitTransactionTaskDisplayDriver>();
-
             services.AddScoped<ISessionHelper, SessionHelper>();
             services.AddDistributedMemoryCache();
 
