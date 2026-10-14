@@ -22,6 +22,7 @@ namespace OrchardCore.GDS.Components.Drivers
             {
                 model.SmallCheckboxes = part.SmallCheckboxes;
                 model.SessionKey = part.SessionKey;
+                model.Autosave = part.Autosave;
 
                 model.ContentItem = part.ContentItem;
                 model.GdsCheckboxGroupPart = part;
@@ -36,6 +37,7 @@ namespace OrchardCore.GDS.Components.Drivers
             {
                 part.SmallCheckboxes = viewModel.SmallCheckboxes;
                 part.SessionKey = viewModel.SessionKey?.Trim();
+                part.Autosave = viewModel.Autosave;
             }
 
             return await EditAsync(part, context);
@@ -47,6 +49,7 @@ namespace OrchardCore.GDS.Components.Drivers
 
             model.SmallCheckboxes = part.SmallCheckboxes;
             model.SessionKey = part.SessionKey;
+            model.Autosave = part.Autosave;
 
             model.GdsCheckboxGroupPart = part;
             model.BuildPartDisplayContext = context;

@@ -6,5 +6,6 @@ namespace OrchardCore.GDS.Components.Models
     {
         public bool SmallCheckboxes { get; set; }
         public string SessionKey { get; set; }
+        public bool Autosave { get; set; }
     }
 }

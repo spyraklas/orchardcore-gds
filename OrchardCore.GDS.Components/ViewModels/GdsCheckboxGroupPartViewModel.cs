@@ -10,6 +10,7 @@ namespace OrchardCore.GDS.Components.ViewModels
     {
         public bool SmallCheckboxes { get; set; }
         public string SessionKey { get; set; }
+        public bool Autosave { get; set; }
 
         [BindNever]
         public ContentItem ContentItem { get; set; }
