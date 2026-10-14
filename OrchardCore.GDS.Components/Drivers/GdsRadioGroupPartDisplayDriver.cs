@@ -23,6 +23,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 model.Inline = part.Inline;
                 model.SmallRadios = part.SmallRadios;
                 model.SessionKey = part.SessionKey;
+                model.Autosave = part.Autosave;
 
                 model.ContentItem = part.ContentItem;
                 model.GdsRadioGroupPart = part;
@@ -38,6 +39,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.Inline = viewModel.Inline;
                 part.SmallRadios = viewModel.SmallRadios;
                 part.SessionKey = viewModel.SessionKey?.Trim();
+                part.Autosave = viewModel.Autosave;
             }
 
             return await EditAsync(part, context);
@@ -50,6 +52,7 @@ namespace OrchardCore.GDS.Components.Drivers
             model.Inline = part.Inline;
             model.SmallRadios = part.SmallRadios;
             model.SessionKey = part.SessionKey;
+            model.Autosave = part.Autosave;
 
             model.GdsRadioGroupPart = part;
             model.BuildPartDisplayContext = context;

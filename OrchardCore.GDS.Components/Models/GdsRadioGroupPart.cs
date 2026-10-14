@@ -7,6 +7,6 @@ namespace OrchardCore.GDS.Components.Models
         public bool Inline { get; set; }
         public bool SmallRadios { get; set; }
         public string SessionKey { get; set; }
-
+        public bool Autosave { get; set; }
     }
 }

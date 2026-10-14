@@ -43,7 +43,10 @@
 }
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
-    @sessionHelper.SessionKeyField(fieldName, Model.SessionKey)
+    @if (Model.Autosave)
+    {
+        @sessionHelper.SessionKeyField(fieldName, Model.SessionKey);
+    }
 
     <fieldset class="govuk-fieldset" @(withHint ? Html.Raw(@$"aria-describedby=""{fieldId}-hint""") : withError ? Html.Raw(@$"aria-describedby=""{fieldId}-error""") : "")>
         <legend class="@Html.GetFieldsetClass(labelPart.LabelSize) @labelPart.LabelClass">

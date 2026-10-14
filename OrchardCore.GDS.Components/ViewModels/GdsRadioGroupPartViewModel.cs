@@ -11,6 +11,7 @@ namespace OrchardCore.GDS.Components.ViewModels
         public bool Inline { get; set; }
         public bool SmallRadios { get; set; }
         public string SessionKey { get; set; }
+        public bool Autosave { get; set; }
 
         [BindNever]
         public ContentItem ContentItem { get; set; }
