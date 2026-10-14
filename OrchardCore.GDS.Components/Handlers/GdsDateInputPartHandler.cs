@@ -14,6 +14,7 @@ namespace OrchardCore.GDS.Components.Handlers
             part.DaySessionKey = string.Empty;
             part.MonthSessionKey = string.Empty;
             part.YearSessionKey = string.Empty;
+            part.Autosave = false;
 
             return Task.CompletedTask;
         }

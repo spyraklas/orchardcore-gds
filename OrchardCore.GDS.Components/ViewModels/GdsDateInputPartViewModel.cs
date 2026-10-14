@@ -13,6 +13,7 @@ namespace OrchardCore.GDS.Components.ViewModels
         public string DaySessionKey { get; set; }
         public string MonthSessionKey { get; set; }
         public string YearSessionKey { get; set; }
+        public bool Autosave { get; set; }
 
         [BindNever]
         public ContentItem ContentItem { get; set; }

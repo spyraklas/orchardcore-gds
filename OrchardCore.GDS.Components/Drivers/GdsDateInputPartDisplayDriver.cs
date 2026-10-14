@@ -27,6 +27,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 model.DaySessionKey = part.DaySessionKey;
                 model.MonthSessionKey = part.MonthSessionKey;
                 model.YearSessionKey = part.YearSessionKey;
+                model.Autosave = part.Autosave;
 
                 model.ContentItem = part.ContentItem;
                 model.GdsDateInputPart = part;
@@ -46,6 +47,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.DaySessionKey = viewModel.DaySessionKey?.Trim();
                 part.MonthSessionKey = viewModel.MonthSessionKey?.Trim();
                 part.YearSessionKey = viewModel.YearSessionKey?.Trim();
+                part.Autosave = viewModel.Autosave;
             }
 
             return await EditAsync(part, context);
@@ -62,6 +64,7 @@ namespace OrchardCore.GDS.Components.Drivers
             model.DaySessionKey = part.DaySessionKey;
             model.MonthSessionKey = part.MonthSessionKey;
             model.YearSessionKey = part.YearSessionKey;
+            model.Autosave = part.Autosave;
 
             model.GdsDateInputPart = part;
 

@@ -11,5 +11,7 @@ namespace OrchardCore.GDS.Components.Models
         public string DaySessionKey { get; set; }
         public string MonthSessionKey { get; set; }
         public string YearSessionKey { get; set; }
+        public bool Autosave { get; set; }
+
     }
 }

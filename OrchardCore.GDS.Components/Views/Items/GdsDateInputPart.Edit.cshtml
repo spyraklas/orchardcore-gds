@@ -55,3 +55,11 @@
         <span class="hint">@T["The session key value for year where application store a value for this field."]</span>
     </div>
 </div>
+
+<div class="ocat-wrapper">
+    <label asp-for="Autosave" class="ocat-label">@T["Autosave"]</label>
+    <div class="ocat-end">
+        <input asp-for="Autosave" class="form-check-input" type="checkbox" />
+        <span class="hint">@T["Whether to automatically save the field values to the session."]</span>
+    </div>
+</div>
