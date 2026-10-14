@@ -48,12 +48,6 @@ namespace OrchardCore.GDS.Components
             _configuration = configuration;
             _logger = logger;
             _workflowOptions = workflowOptions;
-
-            if (_workflowOptions.Value.IsActivityRegistered(typeof(CommitTransactionTask)))
-            {
-                _workflowOptions.Value.UnregisterActivityType(typeof(CommitTransactionTask));
-                _workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(GDSCommitTransactionTaskDisplayDriver));
-            }
         }
 
         #region Public Functions
@@ -74,24 +68,25 @@ namespace OrchardCore.GDS.Components
 
         public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
+            RegisterUpdatedWorkflowActivities();
+
             app.UseSession();
-
-            app.Use(async (context, next) =>
-            {
-                var cookie = context.Request.Cookies[".AspNetCore.Session"];
-                var sessionId = context.Session.Id;
-
-                Console.WriteLine($"Cookie : {cookie}");
-                Console.WriteLine($"Session ID: {sessionId}");
-
-                await next();
-            });
-
             base.Configure(app, routes, serviceProvider);
         }
         #endregion
 
         #region Private Functions
+
+        private void RegisterUpdatedWorkflowActivities()
+        {
+            if (_workflowOptions.Value.IsActivityRegistered(typeof(CommitTransactionTask)))
+            {
+                _workflowOptions.Value.UnregisterActivityType(typeof(CommitTransactionTask));
+                _workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(GDSCommitTransactionTaskDisplayDriver));
+
+            }
+        }
+
         private void ConfigureSession(IServiceCollection services)
         {
             
