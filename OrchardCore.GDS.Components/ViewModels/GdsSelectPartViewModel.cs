@@ -7,6 +7,7 @@ namespace OrchardCore.GDS.Components.ViewModels
     public class GdsSelectPartViewModel
     {
         public string SessionKey { get; set; }
+        public bool Autosave { get; set; }
 
         [BindNever]
         public ContentItem ContentItem { get; set; }

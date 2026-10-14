@@ -4,6 +4,7 @@ namespace OrchardCore.GDS.Components.Models
 {
     public class GdsSelectPart : ContentPart
     {
-        public string SessionKey { get; set; } 
+        public string SessionKey { get; set; }
+        public bool Autosave { get; set; }
     }
 }

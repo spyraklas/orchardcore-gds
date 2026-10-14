@@ -21,6 +21,7 @@ namespace OrchardCore.GDS.Components.Drivers
             return Initialize<GdsSelectPartViewModel>(GetEditorShapeType(context), model =>
             {
                 model.SessionKey = part.SessionKey;
+                model.Autosave = part.Autosave;
 
                 model.ContentItem = part.ContentItem;
                 model.GdsSelectPart = part;
@@ -34,6 +35,7 @@ namespace OrchardCore.GDS.Components.Drivers
             if (await context.Updater.TryUpdateModelAsync(viewModel, Prefix))
             {
                 part.SessionKey = viewModel.SessionKey?.Trim();
+                part.Autosave = viewModel.Autosave;
             }
 
             return await EditAsync(part, context);
@@ -44,6 +46,7 @@ namespace OrchardCore.GDS.Components.Drivers
             model.ContentItem = part.ContentItem;
 
             model.SessionKey = part.SessionKey;
+            model.Autosave = part.Autosave;
 
             model.GdsSelectPart = part;
 
