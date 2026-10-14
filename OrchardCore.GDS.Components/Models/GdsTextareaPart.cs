@@ -10,5 +10,6 @@ namespace OrchardCore.GDS.Components.Models
         public bool CountWords { get; set; }
         public int Count { get; set; }
         public string SessionKey { get; set; }
+        public bool Autosave { get; set; }
     }
 }

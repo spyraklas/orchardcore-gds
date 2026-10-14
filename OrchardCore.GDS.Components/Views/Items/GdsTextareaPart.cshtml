@@ -44,7 +44,10 @@
 
 @Html.Raw(Html.StartWithCharacterCount(withCount, Model.CountWords, Model.Count, fieldId + "-group-count"))
 
-@sessionHelper.SessionKeyField(fieldName, Model.SessionKey)
+@if (Model.Autosave)
+{
+    @sessionHelper.SessionKeyField(fieldName, Model.SessionKey);
+}
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
     @if (labelPart.LabelStyle != "label")

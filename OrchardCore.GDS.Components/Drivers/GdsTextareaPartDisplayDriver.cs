@@ -26,6 +26,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 model.Count = part.Count;
                 model.CountWords = part.CountWords;
                 model.SessionKey = part.SessionKey;
+                model.Autosave = part.Autosave;
 
                 model.ContentItem = part.ContentItem;
                 model.GdsTextareaPart = part;
@@ -44,6 +45,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.CountWords = viewModel.CountWords;
                 part.Rows = viewModel.Rows;
                 part.SessionKey = viewModel.SessionKey?.Trim();
+                part.Autosave = viewModel.Autosave;
             }
 
             return await EditAsync(part, context);
@@ -59,6 +61,7 @@ namespace OrchardCore.GDS.Components.Drivers
             model.Count = part.Count;
             model.CountWords = part.CountWords;
             model.SessionKey = part.SessionKey;
+            model.Autosave = part.Autosave;
 
             model.GdsTextareaPart = part;
 
