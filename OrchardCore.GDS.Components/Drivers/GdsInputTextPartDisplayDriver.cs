@@ -28,6 +28,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 model.Type = part.Type;
                 model.AutoComplete = part.AutoComplete;
                 model.SessionKey = part.SessionKey;
+                model.Autosave = part.Autosave;
 
                 model.ContentItem = part.ContentItem;
                 model.GdsTextInputPart = part;
@@ -48,6 +49,7 @@ namespace OrchardCore.GDS.Components.Drivers
                 part.Type = viewModel.Type?.Trim();
                 part.AutoComplete = viewModel.AutoComplete?.Trim();
                 part.SessionKey = viewModel.SessionKey?.Trim();
+                part.Autosave = viewModel.Autosave;
             }
 
             return await EditAsync(part, context);
@@ -65,6 +67,7 @@ namespace OrchardCore.GDS.Components.Drivers
             model.Type = part.Type;
             model.AutoComplete = part.AutoComplete;
             model.SessionKey = part.SessionKey;
+            model.Autosave = part.Autosave;
 
             model.GdsTextInputPart = part;
 

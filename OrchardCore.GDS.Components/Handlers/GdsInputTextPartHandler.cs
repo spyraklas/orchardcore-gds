@@ -15,6 +15,7 @@ namespace OrchardCore.GDS.Components.Handlers
             part.Type = "text";
             part.SpellCheck = false;
             part.SessionKey = string.Empty;
+            part.Autosave = false;
 
             return Task.CompletedTask;
         }

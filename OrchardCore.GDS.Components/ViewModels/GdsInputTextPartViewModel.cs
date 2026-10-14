@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OrchardCore.ContentManagement;
 using OrchardCore.GDS.Components.Models;
+using OrchardCore.GDS.Session.Helpers;
 
 namespace OrchardCore.GDS.Components.ViewModels
 {
@@ -14,6 +15,7 @@ namespace OrchardCore.GDS.Components.ViewModels
         public string Suffix { get; set; }
         public bool SpellCheck { get; set; }
         public string SessionKey { get; set; }
+        public bool Autosave { get; set; }
 
         [BindNever]
         public ContentItem ContentItem { get; set; }

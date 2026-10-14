@@ -1,4 +1,6 @@
 ﻿using OrchardCore.ContentManagement;
+using OrchardCore.GDS.Components.ViewModels;
+using OrchardCore.GDS.Session.Helpers;
 
 namespace OrchardCore.GDS.Components.Models
 {
@@ -12,5 +14,6 @@ namespace OrchardCore.GDS.Components.Models
         public string Suffix { get; set; }
         public bool SpellCheck { get; set; }
         public string SessionKey { get; set; }
+        public bool Autosave { get; set; }
     }
 }
