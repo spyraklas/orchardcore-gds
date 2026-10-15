@@ -53,3 +53,6 @@
 /OrchardCore.GDS.FeedbackTheme/package-lock.json
 /OrchardCore.Shared.Session/bin/Debug/net10.0
 /OrchardCore.Cms.Web/Properties/serviceDependencies.local.json.user
+/OrchardCore.GDS.Components/node_modules
+/OrchardCore.GDS.Components/wwwroot/js
+/OrchardCore.GDS.Components/package-lock.json
