@@ -1,22 +1,4 @@
-
 @model BlobFilesEditSettingsViewModel
-
-<div class="ocat-wrapper">
-    <label asp-for="UploadAction" class="ocat-label ocat-label-required">@T["Upload Action"]</label>
-    <div class="ocat-end">
-        <input asp-for="UploadAction" type="text" class="form-control content-preview-text" />
-        <span class="hint">@T["Form action for uploading blob files"]</span>
-    </div>
-    <span asp-validation-for="UploadAction"></span>
-</div>
-
-<div class="ocat-wrapper">
-    <label asp-for="ButtonValue" class="ocat-label ocat-label-required">@T["Button Value"]</label>
-    <div class="ocat-end">
-        <input asp-for="ButtonValue" type="text" class="form-control content-preview-text" />
-        <span class="hint">@T["Form submit button value"]</span>
-    </div>
-</div>
 
 <div class="ocat-wrapper">
     <label asp-for="FileTypesAllowed" class="ocat-label">@T["File Types Allowed"]</label>
@@ -26,36 +8,26 @@
     </div>
 </div>
 
+<div class="ocat-wrapper">
+    <label asp-for="FileSizeAllowed" class="ocat-label">@T["File Size Allowed"]</label>
+    <div class="ocat-end">
+        <input asp-for="FileSizeAllowed" type="number" class="form-control content-preview-text" />
+        <span class="hint">@T["Maximum file size allowed for upload (in bytes)."]</span>
+    </div>
+</div>
+
 <fieldset class="mb-3" asp-validation-class-for="WithDownload">
     <div class="form-check">
         <input asp-for="WithDownload" class="form-check-input" type="checkbox" />
-        <label asp-for="WithDownload" class="form-check-label">@T["With Download Action"]</label>
+        <label asp-for="WithDownload" class="form-check-label">@T["With Download File Action"]</label>
     </div>
-    <span class="hint">@T["Files can be downloaded"]</span>
+    <span class="hint">@T["File can be downloaded"]</span>
 </fieldset>
-
-<div class="ocat-wrapper">
-    <label asp-for="DownloadAction" class="ocat-label">@T["Download Action"]</label>
-    <div class="ocat-end">
-        <input asp-for="DownloadAction" type="text" class="form-control content-preview-text" />
-        <span class="hint">@T["Form action for downloading blob files"]</span>
-    </div>
-    <span asp-validation-for="DownloadAction"></span>
-</div>
 
 <fieldset class="mb-3" asp-validation-class-for="WithRemove">
     <div class="form-check">
         <input asp-for="WithRemove" class="form-check-input" type="checkbox" />
-        <label asp-for="WithRemove" class="form-check-label">@T["With Remove Action"]</label>
+        <label asp-for="WithRemove" class="form-check-label">@T["With Remove File Action"]</label>
     </div>
-    <span class="hint">@T["Files can be removed"]</span>
+    <span class="hint">@T["File can be removed"]</span>
 </fieldset>
-
-<div class="ocat-wrapper">
-    <label asp-for="RemoveAction" class="ocat-label">@T["Remove Action"]</label>
-    <div class="ocat-end">
-        <input asp-for="RemoveAction" type="text" class="form-control content-preview-text" />
-        <span class="hint">@T["Form action for removing blob files"]</span>
-    </div>
-    <span asp-validation-for="RemoveAction"></span>
-</div>

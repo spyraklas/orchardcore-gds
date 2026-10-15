@@ -5,7 +5,6 @@ using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.GDS.Components.Models;
 using OrchardCore.GDS.Components.ViewModels;
-using OrchardCore.Mvc.ModelBinding;
 
 namespace OrchardCore.GDS.Components.Settings
 {
@@ -24,13 +23,10 @@ namespace OrchardCore.GDS.Components.Settings
             {
                 var settings = contentTypePartDefinition.GetSettings<BlobFilesEditSettings>();
 
-                model.ButtonValue = settings.ButtonValue;
-                model.UploadAction = settings.UploadAction;
                 model.FileTypesAllowed = settings.FileTypesAllowed;
+                model.FileSizeAllowed = settings.FileSizeAllowed;
                 model.WithDownload = settings.WithDownload;
-                model.DownloadAction = settings.DownloadAction;
                 model.WithRemove = settings.WithRemove;
-                model.RemoveAction = settings.RemoveAction;
 
                 model.BlobFilesEditSettings = settings;
 
@@ -42,43 +38,17 @@ namespace OrchardCore.GDS.Components.Settings
             var model = new BlobFilesEditSettingsViewModel();
 
             await context.Updater.TryUpdateModelAsync(model, Prefix,
-                m => m.ButtonValue,
-                m => m.UploadAction,
                 m => m.FileTypesAllowed,
+                m => m.FileSizeAllowed,
                 m => m.WithDownload,
-                m => m.DownloadAction,
-                m => m.WithRemove,
-                m => m.RemoveAction);
-
-            if (string.IsNullOrWhiteSpace(model.UploadAction))
-            {
-                context.Updater.ModelState.AddModelError(Prefix, nameof(model.UploadAction), S["The upload action is required."]);
-            }
-
-            if (string.IsNullOrWhiteSpace(model.ButtonValue))
-            {
-                context.Updater.ModelState.AddModelError(Prefix, nameof(model.ButtonValue), S["The button value is required."]);
-            }
-
-            if (model.WithDownload && string.IsNullOrWhiteSpace(model.DownloadAction))
-            {
-                context.Updater.ModelState.AddModelError(Prefix, nameof(model.DownloadAction), S["The download action is required when the download option is enabled."]);
-            }
-
-            if (model.WithRemove && string.IsNullOrWhiteSpace(model.RemoveAction))
-            {
-                context.Updater.ModelState.AddModelError(Prefix, nameof(model.RemoveAction), S["The remove action is required when the remove option is enabled."]);
-            }
+                m => m.WithRemove);
 
             context.Builder.WithSettings(new BlobFilesEditSettings
             {
-                ButtonValue = model.ButtonValue,
-                UploadAction = model.UploadAction,
                 FileTypesAllowed = model.FileTypesAllowed,
+                FileSizeAllowed = model.FileSizeAllowed,
                 WithDownload = model.WithDownload,
-                DownloadAction = model.DownloadAction,
-                WithRemove = model.WithRemove,
-                RemoveAction = model.RemoveAction
+                WithRemove = model.WithRemove
             });
 
             return Edit(contentTypePartDefinition, context);

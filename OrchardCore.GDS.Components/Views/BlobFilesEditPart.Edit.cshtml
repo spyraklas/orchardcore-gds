@@ -1,17 +1,56 @@
+@using Microsoft.AspNetCore.Http
+@using OrchardCore.GDS.Components.Config
 @model BlobFilesEditPartViewModel
-
-@using OrchardCore.GDS.Components.Handlers
-@inject IBlobFilesHandler blobFilesHandler
+@inject IHttpContextAccessor httpContextAccessor
 
 @{
+    var fullUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
     var settings = Model.Settings;
+
+    //set session variables to be used in the List, Upload, Download and Remove actions
+    httpContextAccessor.HttpContext.Session.SetString(Constants.Files.SessionKey, Model.FileReference);
 }
 
-@if (!string.IsNullOrEmpty(Model.FileReference))
+<div class="ol-file-manager"
+     data-list-url="@Url.Content(Constants.Files.ListUrl)"
+     data-upload-url="@Url.Content(Constants.Files.UploadUrl)"
+     data-with-download="@settings.WithDownload"
+     data-download-url="@Url.Content(Constants.Files.DownloadUrl)"
+     data-with-remove="@settings.WithRemove"
+     data-remove-url="@Url.Content(Constants.Files.RemoveUrl)"
+     data-max-file-size="10485760">
+
+    @Html.AntiForgeryToken()
+
+    <div class="ol-file-manager__toolbar">
+        <input type="file" class="ol-file-manager__input" />
+        <button type="button" class="btn btn-primary ol-file-manager__upload">
+            Upload
+        </button>
+    </div>
+
+    <div class="ol-file-manager__message" role="status" aria-live="polite"></div>
+
+    <div class="ol-file-manager__files">
+        <p>Select a file or refresh the list.</p>
+    </div>
+</div>
+
+<script asp-name="gds-file-manager" at="Foot"></script>
+
+
+
+
+
+
+
+
+
+@* @if (!string.IsNullOrEmpty(Model.FileReference))
 {
     <form method="post" enctype="multipart/form-data" action="@settings.UploadAction">
         @Html.AntiForgeryToken()
-        <div id="file-group" class="container-fluid mt-3 mb-3 p-2 border border-primary input-group w-75">
+        <div id="file-group" class="container-fluid mt-3 mb-3 p-2 border border-primary input-group">
             <input class="form-control" id="file" name="file" type="file" accept="@settings.FileTypesAllowed" />
             <span class="input-group-text"><button id="submit" name="submit" type="submit" class="btn btn-primary">@settings.ButtonValue</button></span>
         </div>
@@ -58,4 +97,4 @@
             }
         </div>
     }
-}
+} *@
