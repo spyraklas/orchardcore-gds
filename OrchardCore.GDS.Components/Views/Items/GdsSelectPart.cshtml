@@ -1,6 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http;
 @using OrchardCore.Flows.Models;
-@using OrchardCore.GDS.Components.Helpers
 @using OrchardCore.GDS.Session.Helpers;
 
 @model GdsSelectPartViewModel
@@ -19,6 +18,7 @@
     var fieldName = formInputElementPart.Name;
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
     var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey) : "";
+    var fieldValue = sessionValue;
 
     var groupClass = "govuk-form-group";
     var selectClass = "govuk-select"; 
@@ -27,8 +27,10 @@
     var describedby = withHint ? $"{fieldId}-hint" : "";
     var labelClass = !string.IsNullOrEmpty(labelPart.LabelSize) ? $"govuk-label govuk-label--{labelPart.LabelSize} {labelPart.LabelClass}" : $"govuk-label {labelPart.LabelClass}";
 
-    if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
+    if (ViewData.ModelState.TryGetValue(fieldName, out var fieldEntry))
     {
+        fieldValue = fieldEntry.AttemptedValue;
+
         if (fieldEntry.Errors.Count > 0)
         {
             groupClass += " govuk-form-group--error";
@@ -77,8 +79,8 @@
         {
             var part = item.ContentItem.Get<GdsSelectOptionPart>(nameof(GdsSelectOptionPart));
             var selected = string.Empty;
-            if (!string.IsNullOrEmpty(sessionValue))
-                selected = part.Value == sessionValue ? "selected" : "";
+            if (!string.IsNullOrEmpty(fieldValue))
+                selected = part.Value == fieldValue ? "selected" : "";
             else
                 selected = part.Selected ? "selected" : "";
 

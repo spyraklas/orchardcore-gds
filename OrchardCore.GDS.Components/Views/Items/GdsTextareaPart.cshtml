@@ -1,5 +1,4 @@
 ﻿@using System.Text.Encodings.Web
-@using OrchardCore.GDS.Components.Helpers
 @using OrchardCore.GDS.Session.Helpers;
 @using OrchardCore.Liquid;
 
@@ -17,10 +16,8 @@
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
-
     var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey) : "";
     var fieldValue = !string.IsNullOrEmpty(sessionValue) ? sessionValue : Model.Value;
-    var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
     var groupClass = "govuk-form-group";
     var textareaClass = "govuk-textarea"; 
     var withHint = hintPart.Hint?.Length > 0;
@@ -30,7 +27,7 @@
     var areadescribedby = withCount ? $@"aria-describedby=""{fieldId}-info""" : withHint ? $@"aria-describedby=""{fieldId}-hint""" : "";
     var labelClass = !string.IsNullOrEmpty(labelPart.LabelSize) ? $"govuk-label govuk-label--{labelPart.LabelSize} {labelPart.LabelClass}" : $"govuk-label {labelPart.LabelClass}";
 
-    if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
+    if (ViewData.ModelState.TryGetValue(fieldName, out var fieldEntry))
     {
         fieldValue = fieldEntry.AttemptedValue;
 
@@ -40,6 +37,8 @@
             textareaClass += " govuk-textarea--error";
         }
     }
+
+    var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
 }
 
 @Html.Raw(Html.StartWithCharacterCount(withCount, Model.CountWords, Model.Count, fieldId + "-group-count"))

@@ -1,7 +1,6 @@
 ﻿@using System.Text.Encodings.Web
 @using OrchardCore.GDS.Session.Helpers;
 @using OrchardCore.Liquid;
-@using OrchardCore.GDS.Components.Helpers
 
 @model GdsInputTextPartViewModel
 @inject ISessionHelper sessionHelper
@@ -26,10 +25,9 @@
     var withStyle = cssPart.CssStyle?.Length > 0;
     var labelClass = !string.IsNullOrEmpty(labelPart.LabelSize) ? $"govuk-label govuk-label--{labelPart.LabelSize} {labelPart.LabelClass}" : $"govuk-label {labelPart.LabelClass}";
 
-    if (ViewData.ModelState.TryGetValue(fieldId, out var fieldEntry))
+    if (ViewData.ModelState.TryGetValue(fieldName, out var fieldEntry))
     {
         fieldValue = fieldEntry.AttemptedValue;
-
         if (fieldEntry.Errors.Count > 0)
         {
             groupClass += " govuk-form-group--error";
@@ -39,6 +37,7 @@
 
     var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
 }
+
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
     @if (Model.Autosave)
     {
