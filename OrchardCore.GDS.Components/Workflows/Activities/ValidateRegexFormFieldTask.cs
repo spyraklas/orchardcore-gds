@@ -77,13 +77,8 @@ namespace OrchardCore.GDS.Components.Workflows.Activities
 
         private bool IsValid(string value, string pattern)
         {
-            if (!string.IsNullOrEmpty(value) && !string.IsNullOrEmpty(pattern))
-            {
-                Regex validationRegex = new Regex(pattern);
-                return validationRegex.IsMatch(value);
-            }
-
-            return false;
+            var validationRegex = new Regex(pattern);
+            return validationRegex.IsMatch(value ?? "");
         }
     }
 }
