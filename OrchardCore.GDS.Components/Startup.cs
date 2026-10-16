@@ -25,6 +25,7 @@ using OrchardCore.GDS.Session.Helpers;
 using OrchardCore.Liquid;
 using OrchardCore.Modules;
 using OrchardCore.Workflows.Activities;
+using OrchardCore.Workflows.Drivers;
 using OrchardCore.Workflows.Helpers;
 using OrchardCore.Workflows.Http.Controllers;
 using OrchardCore.Workflows.Options;
@@ -82,7 +83,7 @@ namespace OrchardCore.GDS.Components
             if (_workflowOptions.Value.IsActivityRegistered(typeof(CommitTransactionTask)))
             {
                 _workflowOptions.Value.UnregisterActivityType(typeof(CommitTransactionTask));
-                _workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(GDSCommitTransactionTaskDisplayDriver));
+                _workflowOptions.Value.RegisterActivity(typeof(GDSCommitTransactionTask), typeof(CommitTransactionTaskDisplayDriver));
 
             }
         }
