@@ -24,6 +24,7 @@ namespace OrchardCore.DSI
         {
             //UserValidatorPart
             await _contentDefinitionManager.AlterPartDefinitionAsync("DSIPagePart", builder => builder
+                .WithDisplayName("DSIPagePart")    
                 .WithDescription("Provides a DSI User Validator for your content item."));
 
             await _contentDefinitionManager.AlterTypeDefinitionAsync("DSIPage", type => type
@@ -48,6 +49,7 @@ namespace OrchardCore.DSI
                 .WithPart("FlowPart", part => part
                     .WithPosition("7")
                 )
+                .WithDisplayName("DSIPage")
                 .Securable()
                 .Versionable()
                 .Creatable()
