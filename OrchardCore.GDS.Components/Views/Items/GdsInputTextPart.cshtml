@@ -1,4 +1,5 @@
 ﻿@using System.Text.Encodings.Web
+@using Microsoft.AspNetCore.Mvc.ModelBinding
 @using OrchardCore.GDS.Session.Helpers;
 @using OrchardCore.Liquid;
 
@@ -16,8 +17,6 @@
     var elementId = formElementPart.Id;
     var fieldName = formInputElementPart.Name;
     var fieldId = !String.IsNullOrEmpty(elementId) ? elementId : !String.IsNullOrEmpty(fieldName) ? Html.GenerateIdFromName(fieldName) : default(string);
-    var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey) : "";
-    var fieldValue = !string.IsNullOrEmpty(sessionValue) ? sessionValue : Model.Value;
 
     var groupClass = "govuk-form-group";
     var inputClass = "govuk-input";
@@ -25,23 +24,41 @@
     var withStyle = cssPart.CssStyle?.Length > 0;
     var labelClass = !string.IsNullOrEmpty(labelPart.LabelSize) ? $"govuk-label govuk-label--{labelPart.LabelSize} {labelPart.LabelClass}" : $"govuk-label {labelPart.LabelClass}";
 
-    if (ViewData.ModelState.TryGetValue(fieldName, out var fieldEntry))
-    {
-        fieldValue = fieldEntry.AttemptedValue;
-        if (fieldEntry.Errors.Count > 0)
-        {
-            groupClass += " govuk-form-group--error";
-            inputClass += " govuk-input--error";
-        }
-    }
+    var values = GetValue(fieldName);
+    var fieldValue = values.value;
+    var fieldEntry = values.modelStateEntry;
 
+    if (fieldEntry?.Errors.Count > 0)
+    {
+        groupClass += " govuk-form-group--error";
+        inputClass += " govuk-input--error";
+    }
     var resultLiquidValue = await liquidTemplateManager.RenderStringAsync(fieldValue, HtmlEncoder.Default, null);
+
+    (string value, ModelStateEntry modelStateEntry) GetValue(string fieldName)
+    {
+        var sessionValue = Model.SessionKey?.Length > 0 ? sessionHelper.GetSessionValue(Model.SessionKey) : "";
+        string value = string.Empty;
+        ModelStateEntry fieldEntry = null;
+
+        if (ViewData.ModelState.TryGetValue(fieldName, out fieldEntry))
+        {
+            value = fieldEntry.AttemptedValue;
+        }
+        else
+        {
+            value = !string.IsNullOrEmpty(sessionValue) ? sessionValue : Model.Value;
+        }
+
+        return (value, fieldEntry);
+    }
 }
 
 <div id="@fieldId-group" @Html.Raw(Html.BuildCssAttributes(cssPart, groupClass))>
     @if (Model.Autosave)
     {
-        @sessionHelper.SessionKeyField(fieldName, Model.SessionKey);
+        @sessionHelper.SessionKeyField(fieldName, Model.SessionKey)
+        ;
     }
 
     @if (labelPart.LabelStyle != "label")
@@ -64,13 +81,13 @@
             @Html.Raw(hintPart.Hint)
         </div>
     }
-    @if(fieldEntry != null)
+    @if (fieldEntry != null)
     {
         @foreach (var error in fieldEntry.Errors)
         {
             <p id="@fieldId-error" class="govuk-error-message">
                 <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
-            </p>            
+            </p>
         }
     }
     <div class="govuk-input__wrapper">
